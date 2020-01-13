@@ -21,7 +21,7 @@ void reg_test() {
 
     printf("i=%d ",i);
     printf("reg_w(i)=%x",reg_w(i));
-    printf("-");
+    printf("  ");
     printf("sample[i]=%x",sample[i]);
     printf("\n");
 
