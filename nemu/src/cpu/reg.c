@@ -18,6 +18,11 @@ void reg_test() {
   for (i = R_EAX; i <= R_EDI; i ++) {
     sample[i] = rand();
     reg_l(i) = sample[i];
+
+    print("%d",i);
+    printf("%x",reg_w(i));
+    printf("%x",sample[i]);
+
     assert(reg_w(i) == (sample[i] & 0xffff));//--
   }
 
