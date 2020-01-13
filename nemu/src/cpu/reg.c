@@ -19,9 +19,10 @@ void reg_test() {
     sample[i] = rand();
     reg_l(i) = sample[i];
 
-    print("%d",i);
+    printf("%d : ",i);
     printf("%x",reg_w(i));
     printf("%x",sample[i]);
+    printf("\n");
 
     assert(reg_w(i) == (sample[i] & 0xffff));//--
   }
