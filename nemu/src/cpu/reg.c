@@ -17,7 +17,7 @@ void reg_test() {
   int i;
   for (i = R_EAX; i <= R_EDI; i ++) {
     sample[i] = rand();
-    reg_l(i) = sample[i];
+    reg_l(i) = sample[i];// directly give value to _32
     printf("reg_l(i)=%x",reg_l(i));
     printf(" ");
     printf("i=%d ",i);
