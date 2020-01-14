@@ -34,7 +34,7 @@ typedef struct {
 
 extern CPU_state cpu;
 
-static inline int check_reg_index(int index) {
+static inline int check_reg_index(int index) {//check index's validation
   assert(index >= 0 && index < 8);
   return index;
 }
