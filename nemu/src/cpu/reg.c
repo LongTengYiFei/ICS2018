@@ -42,7 +42,7 @@ void reg_test() {
   printf("sample[R_EAX]=%x",sample[R_EAX]);
   printf(" ");
   printf("cpu.eax=%x",cpu.eax);
-  prinf("\n");
+  printf("\n");
 
   assert(sample[R_EAX] == cpu.eax);
   assert(sample[R_ECX] == cpu.ecx);
