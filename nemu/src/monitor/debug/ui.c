@@ -18,7 +18,7 @@ char* rl_gets() {
     line_read = NULL;
   }
 
-  line_read = readline("(nemu) ");
+  line_read = readline("(cyf nemu) ");
 
   if (line_read && *line_read) {
     add_history(line_read);
