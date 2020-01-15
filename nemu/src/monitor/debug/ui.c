@@ -42,6 +42,7 @@ static int cmd_help(char *args);
 //My Commands Start-------------------------
 static int cmd_si(char *args){
   printf("si execute\n");
+  printf("args %s execute\n",args);
   return 0;
 }
 
