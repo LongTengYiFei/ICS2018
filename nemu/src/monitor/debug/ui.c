@@ -42,13 +42,13 @@ static int cmd_help(char *args);
 //My Commands Start-------------------------
 static int cmd_si(char *args){
   printf("si ");
-  printf("%s",args[0]);
+ // printf("%s",args[0]);
   return 0;
 }
 
 static int cmd_info(char *args){
   printf("info ");
-  printf("%s",args[0]);
+ // printf("%s",args[0]);
   return 0;
 }
 
