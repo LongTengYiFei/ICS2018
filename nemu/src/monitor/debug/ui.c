@@ -43,6 +43,8 @@ static int cmd_help(char *args);
 static int cmd_si(char *args){
   printf("si execute\n");
   printf("args %s execute\n",args);
+  int step_count = atoi(args);
+  printf("step_count is %d\n",step_count); 
   return 0;
 }
 
