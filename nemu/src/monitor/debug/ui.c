@@ -58,6 +58,13 @@ static int cmd_info(char *args){
     if(strcmp(args,"r") == 0)
 	  printf("print register's value.\n");
           printf("EAX = %x\n",cpu.eax);
+          printf("EDX = %x\n",cpu.edx);
+          printf("ECX = %x\n",cpu.ecx);
+          printf("EBX = %x\n",cpu.ebx);
+          printf("EBP = %x\n",cpu.ebp);
+          printf("ESI = %x\n",cpu.esi);
+          printf("EDI = %x\n",cpu.edi);
+          printf("ESP = %x\n",cpu.esp);
     if(strcmp(args,"w") == 0)
 	  printf("print watchpoint's information.\n");
   }
