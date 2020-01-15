@@ -34,13 +34,13 @@ typedef struct {
 } CPU_state;
 
 #define eax gpr[0]._32
-#define ecx gpr[1]._32
-#define edx gpr[2]._32
+#define edx gpr[1]._32
+#define ecx gpr[2]._32
 #define ebx gpr[3]._32
-#define esp gpr[4]._32
-#define ebp gpr[5]._32
-#define esi gpr[6]._32
-#define edi gpr[7]._32
+#define ebp gpr[4]._32
+#define esi gpr[5]._32
+#define edi gpr[6]._32
+#define esp gpr[7]._32
 
 extern CPU_state cpu;
 
