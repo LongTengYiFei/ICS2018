@@ -41,12 +41,15 @@ static int cmd_help(char *args);
 
 //My Commands Start-------------------------
 static int cmd_si(char *args){
-printf("si ");
-printf("%s",args[0]);
+  printf("si ");
+  printf("%s",args[0]);
+  return 0;
 }
+
 static int cmd_info(char *args){
-printf("info ");
-printf("%s",args[0]);
+  printf("info ");
+  printf("%s",args[0]);
+  return 0;
 }
 
 //My Commands End------------------------------------
@@ -118,6 +121,7 @@ void ui_mainloop(int is_batch_mode) {
 #endif
 
     int i;
+    //search command one by one
     for (i = 0; i < NR_CMD; i ++) {
       if (strcmp(cmd, cmd_table[i].name) == 0) {
         if (cmd_table[i].handler(args) < 0) { return; }
