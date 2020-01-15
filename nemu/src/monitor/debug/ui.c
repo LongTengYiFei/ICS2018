@@ -73,7 +73,7 @@ static int cmd_info(char *args){
 
 static int cmd_x(char *args){
   printf("x execute\n");
-  printf("args \"%s excute \n\"",args);
+  printf("args \"%s\" excute \n",args);
 
 }
 //My Commands End------------------------------------
