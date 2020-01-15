@@ -71,6 +71,11 @@ static int cmd_info(char *args){
   return 0;
 }
 
+static int cmd_x(char *args){
+  printf("x execute\n");
+  printf("args \"%s excute \n\"",args);
+
+}
 //My Commands End------------------------------------
 static struct {
   char *name;
@@ -82,8 +87,8 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
 
   { "si","single instruction",cmd_si},
-  {"info","information of register or watchpoint",cmd_info}
-
+  {"info","information of register or watchpoint",cmd_info},
+  {"x","scan memmory",cmd_x}
   /* TODO: Add more commands */
 
 };
