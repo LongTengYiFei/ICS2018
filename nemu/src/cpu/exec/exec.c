@@ -224,7 +224,7 @@ static inline void update_eip(void) {
   else { cpu.eip = decoding.seq_eip; }
 }
 
-void exec_wrapper(bool print_flag) {
+void exec_wrapper(bool print_flag) {//update PC
   vaddr_t ori_eip = cpu.eip;
 
 #ifdef DEBUG

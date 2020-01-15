@@ -38,6 +38,12 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
+
+//My Commands Start-------------------------
+static int cmd_si(char *args);
+static int cmd_info(char *args);
+
+//My Commands End------------------------------------
 static struct {
   char *name;
   char *description;
@@ -46,6 +52,9 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
+
+  { "si","single instruction",cmd_si},
+  {"info","information of register or watchpoint",cmd_info}
 
   /* TODO: Add more commands */
 

@@ -32,9 +32,12 @@ void cpu_exec(uint64_t n) {
 
   bool print_flag = n < MAX_INSTR_TO_PRINT;
 
+   //main loop
   for (; n > 0; n --) {
-    /* Execute one instruction, including instruction fetch,
-     * instruction decode, and the actual execution. */
+    /* Execute one instruction, including
+     * instruction fetch,
+     * instruction decode,
+     * actual execution. */
     exec_wrapper(print_flag);
     nr_guest_instr_add(1);
 
