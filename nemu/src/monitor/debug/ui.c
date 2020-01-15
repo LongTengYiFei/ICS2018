@@ -41,14 +41,12 @@ static int cmd_help(char *args);
 
 //My Commands Start-------------------------
 static int cmd_si(char *args){
-  printf("si ");
- // printf("%s",args[0]);
+  printf("si execute\n");
   return 0;
 }
 
 static int cmd_info(char *args){
-  printf("info ");
- // printf("%s",args[0]);
+  printf("info excute\n");
   return 0;
 }
 
@@ -103,12 +101,13 @@ void ui_mainloop(int is_batch_mode) {
   for (char *str; (str = rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
     
-    printf("%s",str);
+    printf("str is %s\n",str);
 
     /* extract the first token as the command */
     char *cmd = strtok(str, " ");
     if (cmd == NULL) { continue; }
-
+    
+    printf("cmd is %s\n",cmd);
     /* treat the remaining string as the arguments,
      * which may need further parsing
      */
