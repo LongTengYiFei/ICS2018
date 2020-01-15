@@ -44,7 +44,10 @@ static int cmd_si(char *args){
   printf("si execute\n");
   printf("args %s execute\n",args);
   int step_count = atoi(args);
-  printf("step_count is %d\n",step_count); 
+  printf("step_count is %d\n",step_count);
+
+ //we need check the step_count's validation later
+  cpu_exec(step_count); 
   return 0;
 }
 
