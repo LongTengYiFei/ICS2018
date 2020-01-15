@@ -28,16 +28,7 @@ typedef struct {
    */
 
  // rtlreg_t eax, ecx, edx, ebx, esp, ebp, esi, edi;  //uint32
-/*
-   rtlreg_t &eax = gpr[0]._32;
-   rtlreg_t &ecx = gpr[1]._32;
-   rtlreg_t &edx = gpr[2]._32;
-   rtlreg_t &ebx = gpr[3]._32;
-   rtlreg_t &esp = gpr[4]._32;
-   rtlreg_t &ebp = gpr[5]._32;
-   rtlreg_t &esi = gpr[6]._32;
-   rtlreg_t &edi = gpr[7]._32;
-*/
+
   vaddr_t eip;//uint32
 
 } CPU_state;

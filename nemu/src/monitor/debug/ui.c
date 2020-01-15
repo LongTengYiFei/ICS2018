@@ -57,7 +57,7 @@ static int cmd_info(char *args){
   if(args != NULL){
     if(strcmp(args,"r") == 0)
 	  printf("print register's value.\n");
-
+          printf("EAX = %x\n",cpu.eax);
     if(strcmp(args,"w") == 0)
 	  printf("print watchpoint's information.\n");
   }
