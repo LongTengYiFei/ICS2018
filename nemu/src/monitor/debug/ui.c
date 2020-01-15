@@ -54,10 +54,10 @@ static int cmd_si(char *args){
 static int cmd_info(char *args){
   printf("info excute\n");
   printf("args %s execute\n",args);
-  if(args == "r")
+  if(strcmp(args,"r") == 0)
 	  printf("print register's value.\n");
 
-  if(args == "w")
+  if(strcmp(args,"w") == 0)
 	  printf("print watchpoint's information.\n");
   return 0;
 }
