@@ -102,6 +102,8 @@ void ui_mainloop(int is_batch_mode) {
 
   for (char *str; (str = rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
+    
+    printf("%s",str);
 
     /* extract the first token as the command */
     char *cmd = strtok(str, " ");
@@ -115,7 +117,7 @@ void ui_mainloop(int is_batch_mode) {
       args = NULL;
     }
 
-    printf("%s\n",args);
+   // printf("%s\n",args);
 #ifdef HAS_IOE
     extern void sdl_clear_event_queue(void);
     sdl_clear_event_queue();
