@@ -73,9 +73,11 @@ static int cmd_info(char *args){
 
 static int cmd_x(char *args){
   printf("x execute\n");
-  printf("arg0 \"%s\" excute \n",args);
-  printf("arg1 \"%s\" excute \n",args[1]);
-
+  printf("args \"%s\" excute \n",args);
+  char * arg0 = strtok(args," ");
+  char * arg1 = strtok(NULL," "); 
+  printf("arg0 \"%s\" excute \n",arg0);
+  printf("arg1 \"%s\" excute \n",arg1);
 
 }
 //My Commands End------------------------------------
