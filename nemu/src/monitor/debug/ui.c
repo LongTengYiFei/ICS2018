@@ -81,6 +81,8 @@ static int cmd_x(char *args){
 
   int  n_arg0 = atoi(arg0);//N
   int  n_arg1 = atoi(arg1);//address
+  printf("%d\n",n_arg0);
+  printf("%d\n",n_arg1);
 
 }
 //My Commands End------------------------------------
