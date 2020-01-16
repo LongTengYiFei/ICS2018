@@ -80,12 +80,22 @@ static int cmd_x(char *args){
   printf("arg1 \"%s\" excute \n",arg1);
 
   int  n_arg0 = atoi(arg0);//N
-  int  n_arg1 = atoi(arg1);//address
+  char *rest;
+  int  n_addr = strtol(arg1,&rest,16);//address
+  printf("%x",n_addr);
+ /*
+  for(int i=1 ;i<=N;i++){
+   printf("%x ", vaddr_read(0x100000,1));
+   printf("%x ", vaddr_read(0x100000,1));
+   printf("%x ", vaddr_read(0x100000,1));
+   printf("%x\n", vaddr_read(0x100000,1));
+  }
  printf("%x\n", vaddr_read(0x100000,4));
  printf("%x\n", vaddr_read(0x100004,4));
  printf("%x\n", vaddr_read(0x100008,4));
  printf("%x\n", vaddr_read(0x100027,1));
  printf("%x\n", vaddr_read(0x100028,1));
+ */
 }
 //My Commands End------------------------------------
 static struct {
