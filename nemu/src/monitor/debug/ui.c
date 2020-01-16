@@ -79,6 +79,9 @@ static int cmd_x(char *args){
   printf("arg0 \"%s\" excute \n",arg0);
   printf("arg1 \"%s\" excute \n",arg1);
 
+  int  n_arg0 = atoi(arg0);//N
+  int  n_arg1 = atoi(arg1);//address
+
 }
 //My Commands End------------------------------------
 static struct {
