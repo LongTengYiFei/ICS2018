@@ -90,6 +90,14 @@ static int cmd_x(char *args){
    printf("%x\n", vaddr_read(++n_addr,1));
    n_addr++;
   }
+  return 0;
+}
+
+static int cmd_p(char *args){
+  printf("Express is : \"%s \"",args);
+
+
+return 0;
 }
 //My Commands End------------------------------------
 static struct {
@@ -103,7 +111,8 @@ static struct {
 
   { "si","single instruction",cmd_si},
   {"info","information of register or watchpoint",cmd_info},
-  {"x","scan memmory",cmd_x}
+  {"x","scan memmory",cmd_x},
+  {"p","caculate the value of express",cmd_p}
   /* TODO: Add more commands */
 
 };
