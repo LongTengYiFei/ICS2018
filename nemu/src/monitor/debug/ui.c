@@ -84,6 +84,7 @@ static int cmd_x(char *args){
  printf("%x\n", vaddr_read(0x100000,4));
  printf("%x\n", vaddr_read(0x100004,4));
  printf("%x\n", vaddr_read(0x100008,4));
+ printf("%x\n", vaddr_read(0x100027,4));
 }
 //My Commands End------------------------------------
 static struct {
