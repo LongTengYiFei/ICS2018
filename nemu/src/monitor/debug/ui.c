@@ -95,7 +95,7 @@ static int cmd_x(char *args){
 
 static int cmd_p(char *args){
   printf("Express is : \"%s\"\n",args);
-
+  make_token(args); 
 
 return 0;
 }
@@ -116,6 +116,10 @@ static struct {
   /* TODO: Add more commands */
 
 };
+
+
+
+
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
 
