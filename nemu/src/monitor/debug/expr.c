@@ -101,12 +101,12 @@ static bool make_token(char *e) {
 }
 
 uint32_t expr(char *e, bool *success) {
-  if (!make_token(e)) {
-    *success = false;
   for(int i = 0; i <= nr_token-1;i++){
      printf("tokens[i].type = %c  ",tokens[i].type);
      printf("tokens[i].str = %s\n",tokens[i].str);
   } 
+  if (!make_token(e)) {
+    *success = false;
     return 0;
    
   }
