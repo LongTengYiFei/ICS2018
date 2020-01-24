@@ -79,8 +79,8 @@ static bool make_token(char *e) {
          * of tokens, some extra actions should be performed.
          */
 	printf("%s", rules[i].regex);
-        if(strcmp(rules[i].regex,"\\+") == 0){
- 	   tokens[nr_token].type = '+';
+        if(strcmp(rules[i].regex,"==") == 0){
+ 	   tokens[nr_token].type = 3;
 	   nr_token++;
 	}
 
