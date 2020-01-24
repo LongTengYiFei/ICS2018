@@ -101,7 +101,7 @@ static bool make_token(char *e) {
 }
 
 uint32_t expr(char *e, bool *success) {
-  printf("nr_token = %d" , nr_token);
+  printf("nr_token = %d\n" , nr_token);
 
   for(int i = 0; i <= nr_token-1;i++){
      printf("tokens[i].type = %c  ",tokens[i].type);
