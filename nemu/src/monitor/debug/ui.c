@@ -95,7 +95,7 @@ static int cmd_x(char *args){
 
 static int cmd_p(char *args){
   printf("Express is : \"%s\"\n",args);
-  make_token(args); 
+  expr(args,true); 
 
 return 0;
 }
