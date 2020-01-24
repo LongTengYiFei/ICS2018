@@ -54,13 +54,11 @@ typedef struct token {
 } Token;
 
 Token tokens[32];
-int nr_token;
-
+int nr_token = 0;
 static bool make_token(char *e) {
   int position = 0;
   int i;
   
-  int countOfTokens = 0;
   regmatch_t pmatch;
 
   nr_token = 0;
@@ -81,13 +79,12 @@ static bool make_token(char *e) {
          * of tokens, some extra actions should be performed.
          */
         if(strcmp(rules[i].regex,"+") == 0){
- 	   tokens[countOfTokens].type = '+';
-	   countOfTokens++;
+ 	   tokens[nr_token].type = '+';
+	   nr_token++;
 	}
-        printf("%c\n",tokens[countOfTokens]);
 
         switch (rules[i].token_type) {
-          default: TODO();
+          default: ;
         }
 
         break;
@@ -108,9 +105,11 @@ uint32_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
-
+  for(int i = 0; i <= nr_token-1;i++){
+     printf("tokens[i].type = %c  ",tokens[i].type);
+     printf("tokens[i].str = %s\n",tokens[i].str);
+  }
   /* TODO: Insert codes to evaluate the expression. */
-  TODO();
 
   return 0;
 }
