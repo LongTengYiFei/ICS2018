@@ -59,6 +59,8 @@ int nr_token;
 static bool make_token(char *e) {
   int position = 0;
   int i;
+  
+  int countOfTokens = 0;
   regmatch_t pmatch;
 
   nr_token = 0;
@@ -78,6 +80,11 @@ static bool make_token(char *e) {
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
+        if(strcmp(rules[i].regex,"+") == 0){
+ 	   tokens[countOfTokens].type = '+';
+	   countOfTokens++;
+	}
+        printf("%c\n",tokens[countOfTokens]);
 
         switch (rules[i].token_type) {
           default: TODO();
