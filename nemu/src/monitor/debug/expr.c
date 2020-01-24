@@ -78,7 +78,7 @@ static bool make_token(char *e) {
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
-        if(strcmp(rules[i].regex,"\\+") == 0){
+        if(strcmp(rules[i].regex,"\\+") == 1){
  	   tokens[nr_token].type = '+';
 	   nr_token++;
 	}
