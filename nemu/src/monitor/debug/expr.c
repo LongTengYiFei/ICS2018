@@ -84,7 +84,7 @@ static bool make_token(char *e) {
  	   tokens[nr_token].type = 3;
 	   nr_token++;
 	}
-
+        printf("%d",nr_token);
         switch (rules[i].token_type) {
           default: ;
         }
