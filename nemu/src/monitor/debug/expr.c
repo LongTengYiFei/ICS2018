@@ -49,6 +49,9 @@ void init_regex() {
       panic("regex compilation failed: %s\n%s", error_msg, rules[i].regex);
     }
   }
+  for(int i = 0; i <= NR_REGEX-1;i++)
+     printf("%s\n",re[i]);
+  
 }
 
 typedef struct token {
@@ -143,9 +146,6 @@ uint32_t expr(char *e, bool *success) {
   for(int i = 0; i <= nr_token-1;i++){
      printf("tokens[%d].type : %d  ",i,tokens[i].type);
      printf("tokens[%d].str : %s\n",i,tokens[i].str);
-  }
-  for(int i = 0; i <= NR_REGEX-1;i++){
-     printf("%s\n",re[i]);
   }
   /* TODO: Insert codes to evaluate the expression. */
 
