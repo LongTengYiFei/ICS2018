@@ -27,6 +27,8 @@ static struct rule {
   {"\\-",'-'},          //sub 
   {"\\*",'*'},          //multi 
   {"\\/",'/'},          //div 
+  {"\\(",'('},          //left 
+  {"\\)",')'},          //right 
   {"==", TK_EQ}         // equal
 };
 
@@ -102,6 +104,16 @@ static bool make_token(char *e) {
 	case  '/':
 	       strcpy(tokens[nr_token].str,"/");
 	       tokens[nr_token].type = '/';
+	       nr_token ++;
+	       break;
+	case  '(':
+	       strcpy(tokens[nr_token].str,"(");
+	       tokens[nr_token].type = '(';
+	       nr_token ++;
+	       break;
+	case  ')':
+	       strcpy(tokens[nr_token].str,")");
+	       tokens[nr_token].type = ')';
 	       nr_token ++;
 	       break;
         case TK_EQ:
