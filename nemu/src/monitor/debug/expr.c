@@ -116,11 +116,9 @@ uint32_t expr(char *e, bool *success) {
   printf("nr_token = %d\n" , nr_token);
 
   for(int i = 0; i <= nr_token-1;i++){
-     printf("tokens[i].type : %c  ",tokens[i].type);
-     printf("tokens[i].str : %s\n",tokens[i].str);
+     printf("tokens[%d].type : %c  ",i,tokens[i].type);
+     printf("tokens[%d].str : %s\n",i,tokens[i].str);
   }
-     printf("tokens[0].type : %c  ",tokens[0].type);
-     printf("tokens[0].str : %s\n",tokens[0].str);
    
   if (!make_token(e)) {
     *success = false;
