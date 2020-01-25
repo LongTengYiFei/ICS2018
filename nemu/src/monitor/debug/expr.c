@@ -49,8 +49,8 @@ void init_regex() {
       panic("regex compilation failed: %s\n%s", error_msg, rules[i].regex);
     }
   }
-  for(int i = 0; i <= NR_REGEX-1;i++)
-     printf("%s\n",re[i]);
+  for(int j = 0; j <= NR_REGEX-1;j++)
+     printf("%s\n",re[j]);
   
 }
 
