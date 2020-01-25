@@ -144,17 +144,17 @@ static bool make_token(char *e) {
 }
 
 uint32_t expr(char *e, bool *success) {
-  printf("nr_token = %d\n" , nr_token);
-
-  for(int i = 0; i <= nr_token-1;i++){
-     printf("tokens[%d].type : %c  ",i,tokens[i].type);
-     printf("tokens[%d].str : %s\n",i,tokens[i].str);
-  }
    
   if (!make_token(e)) {
     *success = false;
     return 0;
    
+  }
+  printf("nr_token = %d\n" , nr_token);
+
+  for(int i = 0; i <= nr_token-1;i++){
+     printf("tokens[%d].type : %c  ",i,tokens[i].type);
+     printf("tokens[%d].str : %s\n",i,tokens[i].str);
   }
   /* TODO: Insert codes to evaluate the expression. */
 
