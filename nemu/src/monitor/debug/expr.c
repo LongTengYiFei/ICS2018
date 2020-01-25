@@ -78,6 +78,7 @@ static bool make_token(char *e) {
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
+	printf("%d",strcmp(rules[i].regex,"=="));
 	if(strcmp(rules[i].regex,"==") == 0)
         strcpy(tokens[nr_token].str,"==");
 
