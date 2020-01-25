@@ -153,7 +153,7 @@ uint32_t expr(char *e, bool *success) {
   printf("nr_token = %d\n" , nr_token);
 
   for(int i = 0; i <= nr_token-1;i++){
-     printf("tokens[%d].type : %c  ",i,tokens[i].type);
+     printf("tokens[%d].type : %d  ",i,tokens[i].type);
      printf("tokens[%d].str : %s\n",i,tokens[i].str);
   }
   /* TODO: Insert codes to evaluate the expression. */
