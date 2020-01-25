@@ -144,6 +144,9 @@ uint32_t expr(char *e, bool *success) {
      printf("tokens[%d].type : %d  ",i,tokens[i].type);
      printf("tokens[%d].str : %s\n",i,tokens[i].str);
   }
+  for(int i = 0; i <= NR_REGEX-1;i++){
+     printf("%s\n",re[i]);
+  }
   /* TODO: Insert codes to evaluate the expression. */
 
   return 0;
