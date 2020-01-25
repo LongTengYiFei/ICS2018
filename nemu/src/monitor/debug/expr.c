@@ -44,7 +44,7 @@ void init_regex() {
 
   for (i = 0; i < NR_REGEX; i ++) {
     ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);
-    printf("%d\n",re[i]);
+    printf("re[%d]:%c\n",i,re[i]);
     if (ret != 0) {
       regerror(ret, &re[i], error_msg, 128);
       panic("regex compilation failed: %s\n%s", error_msg, rules[i].regex);
