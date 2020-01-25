@@ -118,7 +118,8 @@ static bool make_token(char *e) {
 	       nr_token ++;
 	       break;
 	case  TK_NUM:
-	       strcpy(tokens[nr_token].str,"0");
+	       strncpy(tokens[nr_token].str,e + position,substr_len);
+	       tokens[nr_token].str[substr_len] = '\0';
 	       tokens[nr_token].type = TK_NUM;
 	       nr_token ++;
 	       break;
