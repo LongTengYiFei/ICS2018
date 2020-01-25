@@ -29,7 +29,7 @@ static struct rule {
   {"\\/",'/'},          //div 
   {"\\(",'('},          //left 
   {"\\)",')'},          //right 
-  {"\d",TK_NUM},  //num 
+  {"\\d",TK_NUM},  //num 
   {"==", TK_EQ}         // equal
 };
 
