@@ -29,7 +29,7 @@ static struct rule {
   {"\\/",'/'},          //div 
   {"\\(",'('},          //left 
   {"\\)",')'},          //right 
-  {"^-?[1-9]\d*$",TK_NUM},  //num 
+  {"^[0-9]+$",TK_NUM},  //num 
   {"==", TK_EQ}         // equal
 };
 
@@ -115,6 +115,11 @@ static bool make_token(char *e) {
 	case  ')':
 	       strcpy(tokens[nr_token].str,")");
 	       tokens[nr_token].type = ')';
+	       nr_token ++;
+	       break;
+	case  TK_NUM:
+	       strcpy(tokens[nr_token].str,"0");
+	       tokens[nr_token].type = TK_NUM;
 	       nr_token ++;
 	       break;
         case TK_EQ:
