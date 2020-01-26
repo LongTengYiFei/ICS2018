@@ -233,7 +233,9 @@ uint32_t expr(char *e, bool *success) {
      printf("tokens[%d].type : %d  ",i,tokens[i].type);
      printf("tokens[%d].str : %s\n",i,tokens[i].str);
   }
-  //printf("eax :%x",valueOfToken(tokens[0].str));
+
+  printf("token[0]'s value :%x",valueOfToken(tokens[0].str));
+
   /* TODO: Insert codes to evaluate the expression. */
   return eval(0,nr_token-1);
 }
