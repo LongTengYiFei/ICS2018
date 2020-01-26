@@ -162,6 +162,20 @@ static bool make_token(char *e) {
 uint32_t valueOfToken(char *token){
    if(strcmp(token,"$eax") == 0)
 	   return cpu.eax;
+   if(strcmp(token,"$ebx") == 0)
+	   return cpu.ebx;
+   if(strcmp(token,"$ecx") == 0)
+	   return cpu.ecx;
+   if(strcmp(token,"$edx") == 0)
+	   return cpu.edx;
+   if(strcmp(token,"$ebp") == 0)
+	   return cpu.esp;
+   if(strcmp(token,"$esp") == 0)
+	   return cpu.esp;
+   if(strcmp(token,"$esi") == 0)
+	   return cpu.esi;
+   if(strcmp(token,"$edi") == 0)
+	   return cpu.edi;
 
 
 
@@ -219,7 +233,7 @@ uint32_t expr(char *e, bool *success) {
      printf("tokens[%d].type : %d  ",i,tokens[i].type);
      printf("tokens[%d].str : %s\n",i,tokens[i].str);
   }
-  printf("eax :%x",valueOfToken(tokens[0].str));
+  //printf("eax :%x",valueOfToken(tokens[0].str));
   /* TODO: Insert codes to evaluate the expression. */
   return eval(0,nr_token-1);
 }
