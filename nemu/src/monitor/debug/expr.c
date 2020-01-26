@@ -159,6 +159,53 @@ static bool make_token(char *e) {
   return true;
 }
 
+uint32_t valueOfToken(char *token){
+   if(strcmp(token,"$eax") == 0)
+	   return cpu.eax;
+
+
+
+   return 0;
+}
+
+bool check_parentheses(int p,int q){
+  bool flag=true;
+   
+
+
+ return flag;
+}
+
+uint32_t select_main_pos(int p,int q){
+ int main_pos;
+
+ return main_pos;
+}
+
+uint32_t eval(int p,int q){
+    if(p>q){
+       printf("Bad expression.");
+       return 0;
+    }
+    else if(p == q)
+      return valueOfToken(tokens[p].str);
+    else if(check_parentheses(p,q) == true)
+      return eval(p+1,q-1);
+    else{
+    int op = select_main_pos(p,q);
+    int val1 = eval(p,op - 1);
+    int val2 = eval(op + 1,q);
+    int op_type = tokens[op].type;
+    switch(op_type){
+	    case '+':return val1 + val2;
+	    case '-':return val1 - val2;
+	    case '*':return val1 * val2;
+	    case '/':return val1 / val2;
+            default : assert(0);
+    }
+   }
+}
+
 uint32_t expr(char *e, bool *success) {
    
   if (!make_token(e)) {
@@ -172,7 +219,7 @@ uint32_t expr(char *e, bool *success) {
      printf("tokens[%d].type : %d  ",i,tokens[i].type);
      printf("tokens[%d].str : %s\n",i,tokens[i].str);
   }
+  printf("eax :%d",valueOfToken(tokens[0].str));
   /* TODO: Insert codes to evaluate the expression. */
-
-  return 0;
+  return eval(0,nr_token-1);
 }
