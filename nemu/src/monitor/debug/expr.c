@@ -199,8 +199,14 @@ bool check_parentheses(int p,int q){
 		 nr_brackets++;
   printf("nr_brackets is:%d\n",nr_brackets);
   parents = (char *)malloc(sizeof(char) * nr_brackets);
+  int j=0;
+  for(int i=0;i<=nr_token-1;i++)
+	  if(tokens[i].type == '(')
+		 parents[j++] = '(';
+          else if(tokens[i].type == ')')
+		 parents[j++] = ')';
 
-
+  printf("parents is :%s\n",parents);
   return flag;
 }
 
