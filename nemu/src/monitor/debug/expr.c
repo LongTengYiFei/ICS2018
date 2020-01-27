@@ -280,7 +280,8 @@ uint32_t expr(char *e, bool *success) {
   }
 
   printf("token[0]'s value :%x\n",valueOfToken(tokens[0].str));
-  check_parentheses(0,nr_token-1);
+  if(check_parentheses(0,nr_token-1) == true)printf("parents true\n");
+  else printf("parents false\n");
   /* TODO: Insert codes to evaluate the expression. */
   return eval(0,nr_token-1);
 }
