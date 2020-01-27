@@ -188,6 +188,10 @@ uint32_t valueOfToken(char *token){
 }
 
 bool check_parentheses(int p,int q){
+  if(tokens[p].type!='(')
+	  return false;
+  if(tokens[q].type!=')')
+	  return false;
   char *parents;
   int nr_brackets = 0; 
   for(int i=0;i<=nr_token-1;i++)
