@@ -189,10 +189,19 @@ uint32_t valueOfToken(char *token){
 
 bool check_parentheses(int p,int q){
   bool flag=true;
-   
+  char *parents;
+  int nr_brackets = 0;
+
+  for(int i=0;i<=nr_token-1;i++)
+	  if(tokens[i].type == '(')
+		 nr_brackets++;
+          else if(tokens[i].type == ')')
+		 nr_brackets++;
+  printf("nr_brackets is:%d\n",nr_brackets);
+  parents = (char *)malloc(sizeof(char) * nr_brackets);
 
 
- return flag;
+  return flag;
 }
 
 uint32_t select_main_pos(int p,int q){
@@ -240,7 +249,7 @@ uint32_t expr(char *e, bool *success) {
   }
 
   printf("token[0]'s value :%x\n",valueOfToken(tokens[0].str));
-
+  check_parentheses(0,nr_token-1);
   /* TODO: Insert codes to evaluate the expression. */
   return eval(0,nr_token-1);
 }
