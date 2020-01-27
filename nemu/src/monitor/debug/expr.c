@@ -190,15 +190,16 @@ uint32_t valueOfToken(char *token){
 bool check_parentheses(int p,int q){
   bool flag=true;
   char *parents;
-  int nr_brackets = 0;
-
+  int nr_brackets = 0; 
   for(int i=0;i<=nr_token-1;i++)
 	  if(tokens[i].type == '(')
 		 nr_brackets++;
           else if(tokens[i].type == ')')
 		 nr_brackets++;
   printf("nr_brackets is:%d\n",nr_brackets);
+  if(nr_brackets == 1 || nr_brackets == 0)return false;
   parents = (char *)malloc(sizeof(char) * nr_brackets);
+  char *check_stack = (char *)malloc(sizeof(char) * nr_brackets);
   int j=0;
   for(int i=0;i<=nr_token-1;i++)
 	  if(tokens[i].type == '(')
@@ -207,7 +208,31 @@ bool check_parentheses(int p,int q){
 		 parents[j++] = ')';
 
   printf("parents is :%s\n",parents);
-  return flag;
+  if(parents[0] == '('&& parents[nr_brackets-1] == '(')
+	  return false;
+  if(parents[0] == ')'&& parents[nr_brackets-1] == ')')
+	  return false;
+  if(parents[0] == ')'&& parents[nr_brackets-1] == '(')
+	  return false;
+  if(nr_brackets%2 != 0)
+	  return false;
+
+  int rest_brackets=0;
+  for(int i=1;i<=nr_brackets-2;i++){
+     if(rest_brackets == 0){
+       check_stack[rest_brackets] = parents[i];
+       rest_brackets ++;
+       continue;
+     }
+     else{
+       check_stack[rest_brackets] = parents[i];
+       rest_brackets++;
+       if(check_stack[rest_brackets-2]=='('&&check_stack[rest_brackets-1]==')')
+	       rest_brackets -=2;
+     }
+  }
+  if(rest_brackets != 0)return false;
+  else return true;
 }
 
 uint32_t select_main_pos(int p,int q){
