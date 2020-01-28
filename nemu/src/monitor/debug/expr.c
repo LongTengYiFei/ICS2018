@@ -243,9 +243,9 @@ uint32_t select_main_pos(int p,int q){
  char * flags = (char *)malloc(nr_token * sizeof(char));
  //if the token is not op,it is false.
  for(int i=0;i<=nr_token-1;i++)
-	 if(tokens[i].type!='+'||tokens[i].type!='-'||tokens[i].type!='*'||tokens[i].type!='/')
-		 flags[i] = false;
-         else flags[i] = true;
+	 if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/')
+		 flags[i] = true;
+         else flags[i] = false;
 //check
     for(int i=0;i<=nr_token -1;i++)
 	    printf("%d\n",flags[i]);
