@@ -320,9 +320,9 @@ uint32_t select_main_pos(int p,int q){
 	    main_pos = i;
 	    break;
 	   } 
-
+//check
     for(int i=0;i<=nr_token -1;i++)
-	    printf("%c\n",flags[i]);
+	    printf("%d\n",flags[i]);
  }
 
  return main_pos;
