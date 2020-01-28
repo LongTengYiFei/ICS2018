@@ -246,6 +246,9 @@ uint32_t select_main_pos(int p,int q){
 	 if(tokens[i].type!='+'||tokens[i].type!='-'||tokens[i].type!='*'||tokens[i].type!='/')
 		 flags[i] = false;
          else flags[i] = true;
+//check
+    for(int i=0;i<=nr_token -1;i++)
+	    printf("%d\n",flags[i]);
  
  //if the op is in the brackets,it is false
  for(int i=2;i<=nr_token-3;i++)
