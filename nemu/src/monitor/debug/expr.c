@@ -240,6 +240,87 @@ bool check_parentheses(int p,int q){
 
 uint32_t select_main_pos(int p,int q){
  int main_pos;
+ char * flags = (char *)malloc(nr_token * sizeof(char));
+ //if the token is not op,it is false.
+ for(int i=0;i<=nr_token;i++)
+	 if(tokens[i].type!='+'||tokens[i].type!='-'||tokens[i].type!='*'||tokens[i].type!='/')
+		 flags[i] = false;
+         else flags[i] = true;
+ 
+ //if the op is in the brackets,it is false
+ for(int i=2;i<=nr_token-3;i++)
+    if(flags[i] == true)
+	if(tokens[i-2].type=='('&&tokens[i+2].type== ')')
+	   flags[i]= false;
+
+ char main_op = 0;
+ int pre_pos = 0;
+ //+ 43
+ //- 45
+ //* 42
+ //div 47
+ for(int i=0;i<=nr_token-1;i++)
+ {
+   if(main_op == 0 && flags[i] == true)
+     { 
+       main_op = tokens[i].type;
+       pre_pos = i;
+       continue;
+     }
+
+    if(main_op == '*' && flags[i] == true && tokens[i].type == '+')
+    {
+      main_op = '+';
+      flags[pre_pos] = false;
+      pre_pos = i;
+      continue;
+    } 
+    if(main_op == '*' && flags[i] == true && tokens[i].type == '-')
+    {
+      main_op = '-';
+      flags[pre_pos] = false;
+      pre_pos = i;
+      continue;
+    } 
+    if(main_op == '/' && flags[i] == true && tokens[i].type == '+')
+    {
+      main_op = '+';
+      flags[pre_pos] = false;
+      pre_pos = i;
+      continue;
+    } 
+    if(main_op == '/' && flags[i] == true && tokens[i].type == '-')
+    {
+      main_op = '-';
+      flags[pre_pos] = false;
+      pre_pos = i;
+      continue;
+    }
+
+    if(main_op == '+' && flags[i] == true && tokens[i].type == '*'){
+      flags[i] = false;
+      continue;
+    }
+    if(main_op == '+' && flags[i] == true && tokens[i].type == '/'){
+      flags[i] = false;
+      continue;
+    }
+    if(main_op == '-' && flags[i] == true && tokens[i].type == '*'){
+      flags[i] = false;
+      continue;
+    }
+    if(main_op == '-' && flags[i] == true && tokens[i].type == '/'){
+      flags[i] = false;
+      continue;
+    }
+//back trace to find the main_pos
+    for(int i = nr_token -1;i>=0;i--)
+	   if(flags[i] == true)
+	   {
+	    main_pos = i;
+	    break;
+	   } 
+ }
 
  return main_pos;
 }
@@ -287,5 +368,6 @@ uint32_t expr(char *e, bool *success) {
   else printf("parents false\n");
   /* TODO: Insert codes to evaluate the expression. */
   //return eval(0,nr_token-1);
+  printf("The main_pos is:%d\n",select_main_pos(0,nr_token-1));
   return 0;
 }
