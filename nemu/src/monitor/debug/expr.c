@@ -367,7 +367,6 @@ uint32_t expr(char *e, bool *success) {
   if(check_parentheses(0,nr_token-1) == true)printf("parents true\n");
   else printf("parents false\n");
   /* TODO: Insert codes to evaluate the expression. */
-  //return eval(0,nr_token-1);
   printf("The main_pos is:%d\n",select_main_pos(0,nr_token-1));
-  return 0;
+  return eval(0,nr_token-1);
 }
