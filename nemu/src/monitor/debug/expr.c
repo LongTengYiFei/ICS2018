@@ -194,7 +194,7 @@ bool check_parentheses(int p,int q){
 	  return false;
   char *parents;
   int nr_brackets = 0; 
-  for(int i=0;i<=nr_token-1;i++)
+  for(int i=p;i<=q;i++)
 	  if(tokens[i].type == '(')
 		 nr_brackets++;
           else if(tokens[i].type == ')')
@@ -204,7 +204,7 @@ bool check_parentheses(int p,int q){
   parents = (char *)malloc(sizeof(char) * nr_brackets);
   char *check_stack = (char *)malloc(sizeof(char) * nr_brackets);
   int j=0;
-  for(int i=0;i<=nr_token-1;i++)
+  for(int i=p;i<=q;i++)
 	  if(tokens[i].type == '(')
 		 parents[j++] = '(';
           else if(tokens[i].type == ')')
