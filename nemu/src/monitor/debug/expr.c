@@ -242,13 +242,13 @@ uint32_t select_main_pos(int p,int q){
  int main_pos;
  char * flags = (char *)malloc(nr_token * sizeof(char));
  //if the token is not op,it is false.
- for(int i=0;i<=nr_token-1;i++)
+ for(int i=p;i<=q;i++)
 	 if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/')
 		 flags[i] = true;
          else flags[i] = false;
  
  //if the op is in the brackets,it is false
- for(int i=2;i<=nr_token-3;i++)
+ for(int i=p+2;i<=q-2;i++)
     if(flags[i] == true)
 	if(tokens[i-2].type=='('&&tokens[i+2].type== ')')
 	   flags[i]= false;
@@ -259,7 +259,7 @@ uint32_t select_main_pos(int p,int q){
  //- 45
  //* 42
  //div 47
- for(int i=0;i<=nr_token-1;i++)
+ for(int i=p;i<=q;i++)
  {
    if(main_op == 0 && flags[i] == true)
      { 
@@ -314,7 +314,7 @@ uint32_t select_main_pos(int p,int q){
       continue;
     }
 //back trace to find the main_pos
-    for(int i = nr_token -1;i>=0;i--)
+    for(int i =q;i>=p;i--)
 	   if(flags[i] == true)
 	   {
 	    main_pos = i;
