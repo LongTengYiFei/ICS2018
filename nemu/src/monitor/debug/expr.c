@@ -193,7 +193,11 @@ bool check_parentheses(int p,int q){
   if(tokens[q].type!=')')
 	  return false;
   char *parents;
-  int nr_brackets = 0; 
+  int nr_brackets = 0;
+ //attention!! if you want to traversal the tokens,the start must be p
+ //and the end must be q
+ //
+ //count the number of brackets 
   for(int i=p;i<=q;i++)
 	  if(tokens[i].type == '(')
 		 nr_brackets++;
@@ -204,6 +208,10 @@ bool check_parentheses(int p,int q){
   parents = (char *)malloc(sizeof(char) * nr_brackets);
   char *check_stack = (char *)malloc(sizeof(char) * nr_brackets);
   int j=0;
+ //attention!! if you want to traversal the tokens,the start must be p
+ //and the end must be q 
+ //
+ //get all brackets
   for(int i=p;i<=q;i++)
 	  if(tokens[i].type == '(')
 		 parents[j++] = '(';
@@ -219,7 +227,8 @@ bool check_parentheses(int p,int q){
 	  return false;
   if(nr_brackets%2 != 0)
 	  return false;
-
+  
+  //stack check to elimilate the brackets
   int rest_brackets=0;
   for(int i=1;i<=nr_brackets-2;i++){
      if(rest_brackets == 0){
@@ -234,6 +243,7 @@ bool check_parentheses(int p,int q){
 	       rest_brackets -=2;
      }
   }
+  //if still remain bracket,it is false
   if(rest_brackets != 0)return false;
   else return true;
 }
