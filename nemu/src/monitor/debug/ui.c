@@ -95,8 +95,9 @@ static int cmd_x(char *args){
 
 static int cmd_p(char *args){// express
   printf("Express is : \"%s\"\n",args);
-  printf("result 10 is:%d\n",expr(args,true)); 
-  printf("result 16 is:%x\n",expr(args,true)); 
+  int result = expr(args,true);
+  printf("result 10 is:%d\n",result); 
+  printf("result 16 is:%x\n",result); 
 
 return 0;
 }
