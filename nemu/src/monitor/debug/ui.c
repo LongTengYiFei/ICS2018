@@ -82,7 +82,8 @@ static int cmd_x(char *args){
   int  N = atoi(arg0);//N
   char *rest;
   //int  n_addr = strtol(arg1,&rest,16);//address
-  int n_addr = expr(args,true);
+  int n_addr = expr(arg1,true);
+  printf("n_addr is :%x\n",n_addr);
   for(int i=1 ;i<=N;i++){
    printf("%x:",n_addr);
    printf("%x ", vaddr_read(n_addr,1));
