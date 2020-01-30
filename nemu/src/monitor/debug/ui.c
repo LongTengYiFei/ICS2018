@@ -72,8 +72,8 @@ static int cmd_info(char *args){
 	  printf("The NR_WP is %d\n",get_nr_wp());
 	 
           for(int i=0;i<=get_nr_wp()-1;i++)
-		 if(get_expr(i)!=0)
-			printf("expr  is :%s\n" ,get_expr(i)); 
+		 if(expresses[i]!=0)
+			printf("expr  is :%s\n" ,expresses[i]); 
     
     }
   }
