@@ -70,7 +70,9 @@ static int cmd_info(char *args){
     if(strcmp(args,"w") == 0){
 	  printf("print watchpoint's information.\n");
 	  printf("The NR_WP is %d\n",get_nr_wp());
-	  printf("%x",get_expr(0));
+	  char * tmp = get_expr(0);
+	  char t = *tmp;
+	  printf("%c\n",t);
 	  /*
           for(int i=0;i<=get_nr_wp()-1;i++)
 		 if(get_expr(i)!=0)
