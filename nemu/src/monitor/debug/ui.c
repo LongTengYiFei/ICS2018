@@ -47,7 +47,10 @@ static int cmd_si(char *args){
   printf("step_count is %d\n",step_count);
 
  //we need check the step_count's validation later
-  cpu_exec(step_count); 
+ // cpu_exec(step_count);
+ for(int i=1;i<=step_count;i++){
+   cpu_exec(1);
+ } 
   return 0;
 }
 
