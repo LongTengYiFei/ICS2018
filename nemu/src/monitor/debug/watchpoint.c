@@ -22,6 +22,7 @@ void init_wp_pool() {
 /* TODO: Implement the functionality of watchpoint */
 int nr_free_wp = NR_WP;
 
+
 WP* new_wp(char * express){
  if(nr_free_wp == 0){
    printf("There is no free watchpoint.\n");
@@ -52,4 +53,11 @@ void free_wp(int N){
    if(i == NR_WP+1)
 	printf("There is no [%d] wp\n",N);
    
+}
+
+char * get_expr(int index){
+   return wp_pool[index].expr;
+}
+uint32_t get_nr_wp(){
+  return NR_WP;
 }

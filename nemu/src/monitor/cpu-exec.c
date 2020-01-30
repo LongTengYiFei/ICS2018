@@ -1,6 +1,7 @@
 #include "nemu.h"
 #include "monitor/monitor.h"
-
+#include"string.h"
+#include "monitor/watchpoint.h"
 /* The assembly code of instructions executed is only output to the screen
  * when the number of instructions executed is less than this value.
  * This is useful when you use the `si' command.
@@ -33,6 +34,13 @@ void cpu_exec(uint64_t n) {
   bool print_flag = n < MAX_INSTR_TO_PRINT;
 
    //main loop
+   uint32_t pre_value[get_nr_wp()];
+   uint32_t pos_value[get_nr_wp()];
+    for(int i=0; i<=get_nr_wp()-1 ;i++)
+	    if(get_expr(i) != 0)
+		    pre_value[i] = expr(get_expr(i));
+            else 
+		    pre_value[i] = 0;//maybe not good
   for (; n > 0; n --) {
 
     /* Execute one instruction, including
@@ -44,16 +52,16 @@ void cpu_exec(uint64_t n) {
   
 #ifdef DEBUG
     /* TODO: check watchpoints here. */
-/*
-    for(int i=0;i<=NR_WP-1;i++)
-	    if(wp_pool[i].expr!=0)
-		    pos_value[i] = expr(wp_pool[i].expr);
+
+    for(int i=0;i<=get_nr_wp()-1;i++)
+	    if( get_expr(i) != 0 )
+		    pos_value[i] = expr(get_expr(i));
             else 
 		    pos_value[i] = 0;//maybe not good
 
     bool wp_trigger = false;
-    for(int i=0;i<=NR_WP-1;i++){
-       if(wp_pool[i].expr!=0&&pre_value[i]!=pos_value[i])
+    for(int i=0;i<= get_nr_wp()-1;i++){
+       if(get_expr(i) != 0 && strcmp(pre_value[i],pos_value[i]) != 0)
          {
 	    wp_trigger = true;	 
             printf("wp NO.%d has been triggered!\n",i +1);
@@ -61,7 +69,7 @@ void cpu_exec(uint64_t n) {
     }
     if(wp_trigger == true)
       nemu_state = NEMU_STOP;
-      */
+      
 #endif
 
 #ifdef HAS_IOE

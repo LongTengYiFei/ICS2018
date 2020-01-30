@@ -11,5 +11,4 @@ typedef struct watchpoint {
   char *expr;
 
 } WP;
-
 #endif
