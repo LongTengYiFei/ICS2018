@@ -61,7 +61,7 @@ void cpu_exec(uint64_t n) {
 
     bool wp_trigger = false;
     for(int i=0;i<= get_nr_wp()-1;i++){
-       if(get_expr(i) != 0 && strcmp(pre_value[i],pos_value[i]) != 0)
+       if(expresses[i] != 0 && strcmp(pre_value[i],pos_value[i]) != 0)
          {
 	    wp_trigger = true;	 
             printf("wp NO.%d has been triggered!\n",i +1);
