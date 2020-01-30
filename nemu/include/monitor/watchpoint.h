@@ -12,5 +12,5 @@ typedef struct watchpoint {
 
 } WP;
 
-
+extern char *expresses[];
 #endif

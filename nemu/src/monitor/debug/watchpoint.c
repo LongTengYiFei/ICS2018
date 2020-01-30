@@ -6,6 +6,7 @@
 
 static WP wp_pool[NR_WP];
 static WP *head, *free_;
+char * expresses[NR_WP] = {0};
 
 void init_wp_pool() {
   int i;
@@ -36,6 +37,11 @@ WP* new_wp(char * express){
 	wp_pool[i].expr = (char *)malloc((strlen(express)+1) * sizeof(char));
 	strcpy(wp_pool[i].expr,express);
 	wp_pool[i].expr[strlen(express)] = '\0';
+
+        expresses[i] = (char *)malloc(sizeof(char) * (strlen(express)+1));
+        strcpy(expresses[i],express);
+        expresses[i][strlen(express)] = '\0';
+
 	printf("The new address is %x\n",wp_pool[i].expr);
 	printf("wp_pool[%d].expr is :%s\n",i,wp_pool[i].expr);
         nr_free_wp --;
@@ -61,9 +67,8 @@ void free_wp(int N){
    
 }
 
-extern char * expresses[32] = {0};
 
-
+/*
 char * get_expr(int index){
    expresses[index] = (char *)malloc((strlen(wp_pool[index].expr)+1) * sizeof(char));
    strcpy(expresses[index],wp_pool[index].expr);
@@ -72,6 +77,7 @@ char * get_expr(int index){
    printf("address has been got:%x\n",expresses[index]);
    return expresses[index];
 }
+*/
 uint32_t get_nr_wp(){
   return NR_WP;
 }
