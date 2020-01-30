@@ -41,7 +41,7 @@ WP* new_wp(char * express){
 void free_wp(int N){
    int i=1;
    for(;i<=NR_WP;i++)
-      if(i == N)
+      if(i == N && wp_pool[i-1].expr != 0)
       {
 	 wp_pool[i-1].expr = 0;
 	 nr_free_wp ++;
