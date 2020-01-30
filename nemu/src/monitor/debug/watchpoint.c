@@ -60,6 +60,7 @@ void free_wp(int N){
 }
 
 char * get_expr(int index){
+   printf("expr has been got:%s\n",wp_pool[index].expr);
    return wp_pool[index].expr;
 }
 uint32_t get_nr_wp(){
