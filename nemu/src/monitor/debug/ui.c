@@ -56,7 +56,7 @@ static int cmd_info(char *args){
   printf("info excute\n");
   printf("args %s execute\n",args);
   if(args != NULL){
-    if(strcmp(args,"r") == 0)
+    if(strcmp(args,"r") == 0){
 	  printf("print register's value.\n");
           printf("EAX = %x\n",cpu.eax);
           printf("EDX = %x\n",cpu.edx);
@@ -66,8 +66,14 @@ static int cmd_info(char *args){
           printf("ESI = %x\n",cpu.esi);
           printf("EDI = %x\n",cpu.edi);
           printf("ESP = %x\n",cpu.esp);
-    if(strcmp(args,"w") == 0)
+    }
+    if(strcmp(args,"w") == 0){
 	  printf("print watchpoint's information.\n");
+          for(int i=0;i<=get_nr_wp()-1;i++)
+		 if(get_expr(i)!=0)
+			printf("NO. %d express is :%s\n",i+1 ,get_expr(i)); 
+    
+    }
   }
   return 0;
 }
