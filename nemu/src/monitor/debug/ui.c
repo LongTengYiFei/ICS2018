@@ -73,7 +73,7 @@ static int cmd_info(char *args){
 	 
           for(int i=0;i<=get_nr_wp()-1;i++)
 		 if(expresses[i]!=0)
-			printf("expr  is :%s\n" ,expresses[i]); 
+			printf("WP NO. %d is :%s\n" ,i +1,expresses[i]); 
     
     }
   }
