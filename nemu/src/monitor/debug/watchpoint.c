@@ -31,7 +31,9 @@ WP* new_wp(char * express){
  for(int i=0;i<=NR_WP -1;i++)
     if(wp_pool[i].expr == 0)
     {
-	wp_pool[i].expr = express;
+	
+	wp_pool[i].expr = (char *)malloc(strlen(express) * sizeof(char));
+	strcpy(wp_pool[i].expr,express);
         nr_free_wp --;
 	printf("The new wp is NO.%d\n",i+1);
 	return &wp_pool[i];
