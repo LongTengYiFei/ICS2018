@@ -33,7 +33,7 @@ WP* new_wp(char * express){
     if(wp_pool[i].expr == 0)
     {
 	
-	wp_pool[i].expr = (char *)malloc(strlen(express) * sizeof(char));
+	wp_pool[i].expr = (char *)malloc((strlen(express)+1) * sizeof(char));
 	strcpy(wp_pool[i].expr,express);
 	printf("wp_pool[%d].expr is :%s\n",i,wp_pool[i].expr);
         nr_free_wp --;
