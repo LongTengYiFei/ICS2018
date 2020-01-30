@@ -34,8 +34,8 @@ void cpu_exec(uint64_t n) {
   bool print_flag = n < MAX_INSTR_TO_PRINT;
 
    //main loop
-   uint32_t pre_value[get_nr_wp()];
-   uint32_t pos_value[get_nr_wp()];
+   int * pre_value = (int *)malloc(get_nr_wp() * sizeof(int));
+   int * pos_value = (int *)malloc(get_nr_wp() * sizeof(int));
     for(int i=0; i<=get_nr_wp()-1 ;i++)
 	    if(expresses[i] != 0)
 		    pre_value[i] = expr(expresses[i]);
