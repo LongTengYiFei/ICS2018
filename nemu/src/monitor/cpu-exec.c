@@ -37,8 +37,8 @@ void cpu_exec(uint64_t n) {
    uint32_t pre_value[get_nr_wp()];
    uint32_t pos_value[get_nr_wp()];
     for(int i=0; i<=get_nr_wp()-1 ;i++)
-	    if(get_expr(i) != 0)
-		    pre_value[i] = expr(get_expr(i));
+	    if(expresses[i] != 0)
+		    pre_value[i] = expr(expresses[i]);
             else 
 		    pre_value[i] = 0;//maybe not good
   for (; n > 0; n --) {
@@ -54,8 +54,8 @@ void cpu_exec(uint64_t n) {
     /* TODO: check watchpoints here. */
 
     for(int i=0;i<=get_nr_wp()-1;i++)
-	    if( get_expr(i) != 0 )
-		    pos_value[i] = expr(get_expr(i));
+	    if( expresses[i] != 0 )
+		    pos_value[i] = expr(expresses[i]);
             else 
 		    pos_value[i] = 0;//maybe not good
 
