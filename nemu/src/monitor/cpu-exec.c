@@ -58,13 +58,16 @@ void cpu_exec(uint64_t n) {
 
     for(int i=0;i<=get_nr_wp()-1;i++)
 	    if( expresses[i] != 0 )
+	    {
 		    pos_value[i] = expr(expresses[i]);
+		    printf("pos_value[%d] is %d\n",i,pos_value[i]);
+	    }
             else 
 		    pos_value[i] = 0;//maybe not good
 
     bool wp_trigger = false;
     for(int i=0;i<= get_nr_wp()-1;i++){
-       if(expresses[i] != 0 && strcmp(pre_value[i],pos_value[i]) != 0)
+       if(expresses[i] != 0 && pre_value[i] != pos_value[i])
          {
 	    wp_trigger = true;	 
             printf("wp NO.%d has been triggered!\n",i +1);
