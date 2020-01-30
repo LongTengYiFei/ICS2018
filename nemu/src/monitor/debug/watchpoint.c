@@ -61,13 +61,16 @@ void free_wp(int N){
    
 }
 
+extern char *expresses[NR_WP];
+
+
 char * get_expr(int index){
-   char *str = (char *)malloc((strlen(wp_pool[index].expr)+1) * sizeof(char));
-   strcpy(str,wp_pool[index].expr);
+   expresses[index] = (char *)malloc((strlen(wp_pool[index].expr)+1) * sizeof(char));
+   strcpy(expresses[index],wp_pool[index].expr);
    
-   printf("expr has been got:%s\n",str);
-   printf("address has been got:%x\n",str);
-   return str;
+   printf("expr has been got:%s\n",expresses[index]);
+   printf("address has been got:%x\n",expresses[index]);
+   return expresses[index];
 }
 uint32_t get_nr_wp(){
   return NR_WP;

@@ -73,7 +73,7 @@ static int cmd_info(char *args){
 	 
           for(int i=0;i<=get_nr_wp()-1;i++)
 		 if(get_expr(i)!=0)
-			printf("address  is :%s\n" ,get_expr(i)); 
+			printf("expr  is :%s\n" ,get_expr(i)); 
     
     }
   }
