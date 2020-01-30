@@ -61,7 +61,7 @@ void free_wp(int N){
    
 }
 
-extern char *expresses[NR_WP];
+extern char *expresses[NR_WP] = {0};
 
 
 char * get_expr(int index){
