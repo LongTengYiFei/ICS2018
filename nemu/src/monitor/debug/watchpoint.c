@@ -32,6 +32,7 @@ WP* new_wp(char * express){
     {
 	wp_pool[i].expr = express;
         nr_free_wp --;
+	printf("The new wp is NO.%d\n",i+1);
 	return &wp_pool[i];
     }
 
@@ -45,9 +46,10 @@ void free_wp(int N){
       {
 	 wp_pool[i-1].expr = 0;
 	 nr_free_wp ++;
+	 printf("wp [%d] was deleted\n",N);
 	 break;
       }
    if(i == NR_WP+1)
-	printf("There is no [%d] node",N);
+	printf("There is no [%d] wp\n",N);
    
 }
