@@ -59,8 +59,8 @@ void free_wp(int N){
       {
 	 wp_pool[i-1].expr = 0;
 
-	 free(expresses[i]);
-	 expresses[i] = 0;
+	 free(expresses[i-1]);
+	 expresses[i-1] = 0;
 
 	 nr_free_wp ++;
 	 printf("wp [%d] was deleted\n",N);
