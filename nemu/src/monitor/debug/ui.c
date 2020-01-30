@@ -72,6 +72,9 @@ static int cmd_info(char *args){
 	  printf("The NR_WP is %d\n",get_nr_wp());
           for(int i=0;i<=get_nr_wp()-1;i++)
 		 if(get_expr(i)!=0)
+			printf("%x\n",i+1 ,get_expr(i)); 
+          for(int i=0;i<=get_nr_wp()-1;i++)
+		 if(get_expr(i)!=0)
 			printf("NO. %d express is :%s\n",i+1 ,get_expr(i)); 
     
     }
