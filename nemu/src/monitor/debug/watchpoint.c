@@ -64,6 +64,8 @@ void free_wp(int N){
 char * get_expr(int index){
    char * str = wp_pool[index].expr;
    printf("expr has been got:%s\n",str);
+   printf("address has been got:%x\n",str);
+
    return str;
 }
 uint32_t get_nr_wp(){
