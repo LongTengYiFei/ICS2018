@@ -24,7 +24,7 @@ int nr_free_wp = NR_WP;
 
 WP* new_wp(char * express){
  if(nr_free_wp == 0){
-   printf("There is no free watchpoint.");
+   printf("There is no free watchpoint.\n");
    return 0;
  } 
  for(int i=0;i<=NR_WP -1;i++)
@@ -39,12 +39,15 @@ WP* new_wp(char * express){
 }
 
 void free_wp(int N){
-
-   for(int i=1;i<=NR_WP;i++)
+   int i=1;
+   for(;i<=NR_WP;i++)
       if(i == N)
       {
 	 wp_pool[i-1].expr = 0;
 	 nr_free_wp ++;
 	 break;
       }
+   if(i == NR_WP+1)
+	printf("There is no [%d] node",N);
+   
 }
