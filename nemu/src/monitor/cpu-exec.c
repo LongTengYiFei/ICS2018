@@ -38,7 +38,10 @@ void cpu_exec(uint64_t n) {
    int * pos_value = (int *)malloc(get_nr_wp() * sizeof(int));
     for(int i=0; i<=get_nr_wp()-1 ;i++)
 	    if(expresses[i] != 0)
+	    {
 		    pre_value[i] = expr(expresses[i]);
+		    printf("pre_value[%d] is %d\n",i,pre_value[i]);
+	    }
             else 
 		    pre_value[i] = 0;//maybe not good
   for (; n > 0; n --) {
