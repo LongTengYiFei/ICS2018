@@ -34,16 +34,34 @@ void cpu_exec(uint64_t n) {
 
    //main loop
   for (; n > 0; n --) {
+
     /* Execute one instruction, including
      * instruction fetch,
      * instruction decode,
      * actual execution. */
     exec_wrapper(print_flag);
     nr_guest_instr_add(1);
-
+  
 #ifdef DEBUG
     /* TODO: check watchpoints here. */
+/*
+    for(int i=0;i<=NR_WP-1;i++)
+	    if(wp_pool[i].expr!=0)
+		    pos_value[i] = expr(wp_pool[i].expr);
+            else 
+		    pos_value[i] = 0;//maybe not good
 
+    bool wp_trigger = false;
+    for(int i=0;i<=NR_WP-1;i++){
+       if(wp_pool[i].expr!=0&&pre_value[i]!=pos_value[i])
+         {
+	    wp_trigger = true;	 
+            printf("wp NO.%d has been triggered!\n",i +1);
+         }
+    }
+    if(wp_trigger == true)
+      nemu_state = NEMU_STOP;
+      */
 #endif
 
 #ifdef HAS_IOE
