@@ -61,7 +61,7 @@ void free_wp(int N){
    
 }
 
-char * expresses[32] = {0};
+extern char * expresses[32] = {0};
 
 
 char * get_expr(int index){
