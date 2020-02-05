@@ -26,6 +26,7 @@ static inline void idex(vaddr_t *eip, opcode_entry *e) {
   /* eip is pointing to the byte next to opcode */
   if (e->decode)
     e->decode(eip);
+  
   e->execute(eip);
 }
 
@@ -72,7 +73,11 @@ make_group(gp7,
 
 //my helper *-*-*-*-*-**-*-*-*-*
 make_EHelper(call){
- rtl_push(&cpu.eip);
+ rtl_li(&t0,decoding.seq_eip);
+ rtl_push(&t0);
+ decoding.is_jmp = 1;
+
+ print_asm("call %x\n",decoding.jmp_eip);
 }
 /* TODO: Add more instructions!!! */
 
