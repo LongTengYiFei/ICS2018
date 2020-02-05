@@ -71,14 +71,7 @@ make_group(gp7,
     EMPTY, EMPTY, EMPTY, EMPTY,
     EMPTY, EMPTY, EMPTY, EMPTY)
 
-//my helper *-*-*-*-*-**-*-*-*-*
-make_EHelper(call){
- rtl_li(&t0,decoding.seq_eip);
- rtl_push(&t0);
- decoding.is_jmp = 1;
 
- print_asm("call %x\n",decoding.jmp_eip);
-}
 /* TODO: Add more instructions!!! */
 
 opcode_entry opcode_table [512] = {
@@ -140,7 +133,7 @@ opcode_entry opcode_table [512] = {
   /* 0xdc */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xe0 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xe4 */	EMPTY, EMPTY, EMPTY, EMPTY,
-  /* 0xe8 */	IDEXW(J,call,4), EMPTY, EMPTY, EMPTY,
+  /* 0xe8 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xec */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xf0 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xf4 */	EMPTY, EMPTY, IDEXW(E, gp3, 1), IDEX(E, gp3),
