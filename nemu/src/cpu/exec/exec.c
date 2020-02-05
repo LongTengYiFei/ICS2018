@@ -7,6 +7,7 @@ typedef struct {
   int width;
 } opcode_entry;
 
+//concat means concatenate
 #define IDEXW(id, ex, w)   {concat(decode_, id), concat(exec_, ex), w}
 #define IDEX(id, ex)       IDEXW(id, ex, 0)
 #define EXW(ex, w)         {NULL, concat(exec_, ex), w}
@@ -69,6 +70,10 @@ make_group(gp7,
     EMPTY, EMPTY, EMPTY, EMPTY,
     EMPTY, EMPTY, EMPTY, EMPTY)
 
+//my helper *-*-*-*-*-**-*-*-*-*
+make_EHelper(call){
+ rtl_push(&cpu.eip);
+}
 /* TODO: Add more instructions!!! */
 
 opcode_entry opcode_table [512] = {
@@ -130,7 +135,7 @@ opcode_entry opcode_table [512] = {
   /* 0xdc */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xe0 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xe4 */	EMPTY, EMPTY, EMPTY, EMPTY,
-  /* 0xe8 */	EMPTY, EMPTY, EMPTY, EMPTY,
+  /* 0xe8 */	IDEXW(J,call,4), EMPTY, EMPTY, EMPTY,
   /* 0xec */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xf0 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xf4 */	EMPTY, EMPTY, IDEXW(E, gp3, 1), IDEX(E, gp3),
@@ -218,6 +223,7 @@ make_EHelper(real) {
   set_width(opcode_table[opcode].width);
   idex(eip, &opcode_table[opcode]);
 }
+
 
 static inline void update_eip(void) {
   if (decoding.is_jmp) { decoding.is_jmp = 0; }
