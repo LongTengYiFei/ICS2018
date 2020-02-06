@@ -29,6 +29,7 @@ static inline make_DopHelper(I) {
  * the one above from the view of implementation. So we use another helper
  * function to decode it.
  */
+
 /* sign immediate */
 static inline make_DopHelper(SI) {
   assert(op->width == 1 || op->width == 4);
