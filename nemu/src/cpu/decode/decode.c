@@ -51,7 +51,6 @@ static inline make_DopHelper(SI) {
 
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "$0x%x", op->simm);
-  printf("1");
 #endif
 }
 
