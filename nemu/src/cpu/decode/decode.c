@@ -32,6 +32,7 @@ static inline make_DopHelper(I) {
 
 /* sign immediate */
 static inline make_DopHelper(SI) {
+  printf("DopHelper! op->wwidth=0x%x\n",op->width);
   assert(op->width == 1 || op->width == 4);
 
   op->type = OP_TYPE_IMM;
