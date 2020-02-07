@@ -215,10 +215,13 @@ static make_EHelper(2byte_esc) {
   idex(eip, &opcode_table[opcode]);
 }
 
-make_EHelper(real) {
+make_EHelper(real) {//exec_real
+  printf("Come in exec_real! ");
   uint32_t opcode = instr_fetch(eip, 1);
+  printf("Get opcode 0x%x ",opcode);
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
+  printf("width=0x%x ");
   idex(eip, &opcode_table[opcode]);
 }
 
