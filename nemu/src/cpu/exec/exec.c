@@ -221,7 +221,7 @@ make_EHelper(real) {//exec_real
   printf("Get opcode 0x%x ",opcode);
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
-  printf("width=0x%x ");
+  printf("width=0x%x\n");
   idex(eip, &opcode_table[opcode]);
 }
 
