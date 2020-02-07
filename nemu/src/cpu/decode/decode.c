@@ -285,6 +285,9 @@ make_DHelper(a2O) {
 make_DHelper(J) {
   decode_op_SI(eip, id_dest, false);
   // the target address can be computed in the decode stage
+  printf("Come into DHelper J! ");
+  printf("id_dest->simm=0x%x ",id_dest->simm);
+  printf("*eip=0x%x\n",*eip);
   decoding.jmp_eip = id_dest->simm + *eip;
 }
 
