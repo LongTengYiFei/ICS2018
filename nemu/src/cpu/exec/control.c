@@ -31,7 +31,7 @@ make_EHelper(call) {
   printf("seq_eip=0x%x ",t0);
   rtl_push(&t0);
   rtl_j(decoding.jmp_eip);
-  decoding.is_jmp = 1;
+  //decoding.is_jmp = 1;
   printf("jmp_eip=0x%x\n", decoding.jmp_eip);
   print_asm("call %x", decoding.jmp_eip);
 }
