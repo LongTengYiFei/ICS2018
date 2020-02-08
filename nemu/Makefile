@@ -20,7 +20,7 @@ CC = gcc
 LD = gcc
 INCLUDES  = $(addprefix -I, $(INC_DIR))
 CFLAGS   += -O0 -MMD -Wall  -ggdb3 $(INCLUDES) -fomit-frame-pointer -mmanual-endbr -fcf-protection=none
-CFLAGS   += -DDIFF_TEST_QEMU
+CFLAGS   += -DDIFF_TEST_QEMU -mmanual-endbr -fcf-protection=none
 
 # Files to be compiled
 SRCS = $(shell find src/ -name "*.c")
