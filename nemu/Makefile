@@ -19,7 +19,7 @@ include Makefile.git
 CC = gcc
 LD = gcc
 INCLUDES  = $(addprefix -I, $(INC_DIR))
-CFLAGS   += -O0 -MMD -Wall  -ggdb3 $(INCLUDES) -fomit-frame-pointer -mmanual-endbr -fcf-protection=none
+CFLAGS   += -O0 -MMD -Wall  -ggdb3 $(INCLUDES) -fomit-frame-pointer  -fcf-protection=none
 CFLAGS   += -DDIFF_TEST_QEMU 
 
 # Files to be compiled
