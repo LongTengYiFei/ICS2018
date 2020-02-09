@@ -19,8 +19,8 @@ ASFLAGS  +=                -MMD $(INCLUDES) -D$(ISA_DEF)
 LDFLAGS  += -e _start
 
 ifeq ($(LINK), dynamic)
-  CFLAGS   += -fPIE -mmanual-endbr -fcf-protection=none
-  CXXFLAGS += -fPIE -mmanual-endbr -fcf-protection=none
+  CFLAGS   += -fPIE 
+  CXXFLAGS += -fPIE 
   LDFLAGS  += -fpie -shared
 else
   LDFLAGS += -Ttext 0x4000000
@@ -28,8 +28,8 @@ endif
 
 ifeq ($(ISA), mips32)
   CXX = $(CROSS_COMPILE)g++-5
-  CFLAGS   += -fno-strict-aliasing -fno-builtin -fno-stack-protector -fno-delayed-branch -march=mips32 -mno-check-zero-division -EL -mno-llsc -mno-imadd -mno-mad -mmanual-endbr -fcf-protection=none
-  CXXFLAGS += $(CFLAGS_COMMON) -fno-strict-aliasing -fno-builtin -fno-stack-protector -fno-delayed-branch -march=mips32 -mno-check-zero-division -EL -mno-llsc -mno-imadd -mno-mad -ffreestanding -fno-rtti -fno-exceptions -mmanual-endbr -fcf-protection=none
+  CFLAGS   += -fno-strict-aliasing -fno-builtin -fno-stack-protector -fno-delayed-branch -march=mips32 -mno-check-zero-division -EL -mno-llsc -mno-imadd -mno-mad 
+  CXXFLAGS += $(CFLAGS_COMMON) -fno-strict-aliasing -fno-builtin -fno-stack-protector -fno-delayed-branch -march=mips32 -mno-check-zero-division -EL -mno-llsc -mno-imadd -mno-mad -ffreestanding -fno-rtti -fno-exceptions 
   ASFLAGS  += -march=mips32 -EL
   LDFLAGS  += -EL
 endif
@@ -37,16 +37,16 @@ endif
 ifeq ($(ISA), x86)
   CFLAGS_NEWLIB = -DNO_FLOATING_POINT
   CFLAGS_COMMON = -m32 -fno-pic -fno-builtin -fno-stack-protector -fno-omit-frame-pointer -march=i386 -mstringop-strategy=unrolled_loop -fno-reorder-functions $(CFLAGS_NEWLIB)
-  CFLAGS   += $(CFLAGS_COMMON) -mmanual-endbr -fcf-protection=none
-  CXXFLAGS += $(CFLAGS_COMMON) -ffreestanding -fno-rtti -fno-exceptions -mmanual-endbr -fcf-protection=none
+  CFLAGS   += $(CFLAGS_COMMON) 
+  CXXFLAGS += $(CFLAGS_COMMON) -ffreestanding -fno-rtti -fno-exceptions 
   ASFLAGS  += -m32
   LDFLAGS  += -melf_i386
 endif
 
 ifeq ($(ISA), am_native)
   CFLAGS_COMMON = -fno-builtin -fno-stack-protector -fno-omit-frame-pointer  -mstringop-strategy=unrolled_loop -ggdb3 -fno-reorder-functions
-  CFLAGS   += $(CFLAGS_COMMON) -mmanual-endbr -fcf-protection=none
-  CXXFLAGS += $(CFLAGS_COMMON) -ffreestanding -fno-rtti -fno-exceptions -mmanual-endbr -fcf-protection=none
+  CFLAGS   += $(CFLAGS_COMMON) 
+  CXXFLAGS += $(CFLAGS_COMMON) -ffreestanding -fno-rtti -fno-exceptions 
 endif
 
 # Files to be compiled

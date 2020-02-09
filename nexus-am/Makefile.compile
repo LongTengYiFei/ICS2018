@@ -25,22 +25,22 @@ ASFLAGS  +=                -MMD                     $(INCLUDES) -D$(ISA_DEF)
 
 ifeq ($(ISA), native)
 CFLAGS_COMMON = -fpie
-CFLAGS   += $(CFLAGS_COMMON) -mmanual-endbr -fcf-protection=none
-CXXFLAGS += $(CFLAGS_COMMON) -mmanual-endbr -fcf-protection=none
+CFLAGS   += $(CFLAGS_COMMON) 
+CXXFLAGS += $(CFLAGS_COMMON) 
 ASFLAGS  += -fpie -pie
 endif
 
 ifeq ($(ISA), x86)
 CFLAGS_COMMON = -m32 -fno-pic -fno-builtin -fno-stack-protector -fno-omit-frame-pointer -march=i386 -mstringop-strategy=unrolled_loop
-CFLAGS   += $(CFLAGS_COMMON) -mmanual-endbr -fcf-protection=none
-CXXFLAGS += $(CFLAGS_COMMON) -ffreestanding -fno-rtti -fno-exceptions -mmanual-endbr -fcf-protection=none
+CFLAGS   += $(CFLAGS_COMMON) 
+CXXFLAGS += $(CFLAGS_COMMON) -ffreestanding -fno-rtti -fno-exceptions 
 ASFLAGS  += -m32
 endif
 
 ifeq ($(ISA), am_native)
 CFLAGS_COMMON = -fno-builtin -fno-stack-protector -fno-omit-frame-pointer -fno-reorder-functions
-CFLAGS   += $(CFLAGS_COMMON) -mmanual-endbr -fcf-protection=none
-CXXFLAGS += $(CFLAGS_COMMON) -ffreestanding -fno-rtti -fno-exceptions -mmanual-endbr -fcf-protection=none
+CFLAGS   += $(CFLAGS_COMMON) 
+CXXFLAGS += $(CFLAGS_COMMON) -ffreestanding -fno-rtti -fno-exceptions 
 endif
 
 # Files to be compiled
