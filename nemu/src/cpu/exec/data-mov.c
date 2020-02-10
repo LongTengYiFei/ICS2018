@@ -7,9 +7,15 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
-  TODO();
-
+  printf("Come into EHelper(push)!\n");
+  printf("id_dest->width = %d\n",id_dest->width);
+  if(id_dest->width == 4){
+  
+   ;
+  }
+  else assert(0);  
   print_asm_template1(push);
+  printf("EHelper(push) over\n");
 }
 
 make_EHelper(pop) {

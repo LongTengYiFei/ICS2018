@@ -72,6 +72,9 @@ static inline make_DopHelper(a) {
  * eXX: eAX, eCX, eDX, eBX, eSP, eBP, eSI, eDI
  */
 static inline make_DopHelper(r) {
+  //this op is id_dest
+  //id_dest is a macro
+  //dest is a oprand in decoding
   printf("DopHelper(r) begin!\n");
   op->type = OP_TYPE_REG;
   printf("op->type = %x\n",op->type);
