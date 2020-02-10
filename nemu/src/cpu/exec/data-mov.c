@@ -8,14 +8,11 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   printf("Come into EHelper(push)!\n");
- // printf("id_dest->width = %d\n",id_dest->width);
-  printf("id_dest->val = 0x%x\n",id_dest->val);
-  printf("cpu.ebp = 0x%x\n",cpu.ebp);
-  if(id_dest->width == 4){
-  
-   ;
-  }
-  else assert(0);  
+
+  if(id_dest->width == 4)
+    rtl_push(&id_dest->val);
+  else assert(0);
+
   print_asm_template1(push);
   printf("EHelper(push) over\n");
 }
