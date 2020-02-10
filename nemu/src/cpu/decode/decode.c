@@ -32,7 +32,6 @@ static inline make_DopHelper(I) {
 
 /* sign immediate */
 static inline make_DopHelper(SI) {
-  printf("DopHelper! op->wwidth=0x%x\n",op->width);
   assert(op->width == 1 || op->width == 4);
 
   op->type = OP_TYPE_IMM;
@@ -43,7 +42,6 @@ static inline make_DopHelper(SI) {
    *
    op->simm = ???
    */
-  printf("instr_fetch eip 0x%x\n",eip);
   op->simm = instr_fetch(eip, op->width);
   op->simm = ((op->simm << (8 * (4 - op->width))) >> (8* (4 - op->width)));
   rtl_li(&op->val, op->simm);
@@ -285,9 +283,6 @@ make_DHelper(a2O) {
 make_DHelper(J) {
   decode_op_SI(eip, id_dest, false);
   // the target address can be computed in the decode stage
-  printf("Come into DHelper J! ");
-  printf("id_dest->simm=0x%x ",id_dest->simm);
-  printf("*eip=0x%x\n",*eip);
   decoding.jmp_eip = id_dest->simm + *eip;
 }
 
