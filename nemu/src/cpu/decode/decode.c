@@ -72,8 +72,12 @@ static inline make_DopHelper(a) {
  * eXX: eAX, eCX, eDX, eBX, eSP, eBP, eSI, eDI
  */
 static inline make_DopHelper(r) {
+  printf("DopHelper(r) begin!\n");
   op->type = OP_TYPE_REG;
+  printf("op->type = %x\n",op->type);
   op->reg = decoding.opcode & 0x7;
+  printf("op->reg = %x\n",op->reg);
+  
   if (load_val) {
     rtl_lr(&op->val, op->reg, op->width);
   }
@@ -81,6 +85,7 @@ static inline make_DopHelper(r) {
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "%%%s", reg_name(op->reg, op->width));
 #endif
+  printf("DopHelper(r) over.\n");
 }
 
 /* I386 manual does not contain this abbreviation.
