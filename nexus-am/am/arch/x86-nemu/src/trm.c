@@ -24,7 +24,7 @@ void _halt(int code) {
   while (1);
 }
 
-void _trm_init() {
+int _trm_init() {
   int ret = main();
   _halt(ret);
 }
