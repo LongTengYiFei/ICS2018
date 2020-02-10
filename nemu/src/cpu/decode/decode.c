@@ -75,7 +75,7 @@ static inline make_DopHelper(r) {
   printf("DopHelper(r) begin!\n");
   op->type = OP_TYPE_REG;
   printf("op->type = %x\n",op->type);
-  op->reg = decoding.opcode & 0x7;
+  op->reg = decoding.opcode & 0x07;
   printf("op->reg = %x\n",op->reg);
   
   if (load_val) {
