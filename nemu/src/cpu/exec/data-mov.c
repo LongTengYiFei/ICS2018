@@ -1,8 +1,7 @@
 #include "cpu/exec.h"
 
 make_EHelper(mov) {
-  printf("EHelper mov :") ;
-  printf("seq_eip=0x%x\n", decoding.seq_eip);
+
   operand_write(id_dest, &id_src->val);
   print_asm_template2(mov);
 }
