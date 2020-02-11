@@ -88,7 +88,7 @@ static inline make_DopHelper(r) {
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "%%%s", reg_name(op->reg, op->width));
 #endif
-  printf("DopHelper(r) over.\n");
+  //printf("DopHelper(r) over.\n");
 }
 
 /* I386 manual does not contain this abbreviation.
