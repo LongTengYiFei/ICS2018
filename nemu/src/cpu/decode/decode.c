@@ -75,11 +75,11 @@ static inline make_DopHelper(r) {
   //this op is id_dest
   //id_dest is a macro
   //dest is a oprand in decoding
-  printf("DopHelper(r) begin!\n");
+  //printf("DopHelper(r) begin!\n");
   op->type = OP_TYPE_REG;
-  printf("op->type = %x\n",op->type);
+  //printf("op->type = %x\n",op->type);
   op->reg = decoding.opcode & 0x07;
-  printf("op->reg = %x\n",op->reg);
+  //printf("op->reg = %x\n",op->reg);
   
   if (load_val) {
     rtl_lr(&op->val, op->reg, op->width);

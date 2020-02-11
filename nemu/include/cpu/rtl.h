@@ -157,23 +157,23 @@ static inline void rtl_sext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // dest <- signext(src1[(width * 8 - 1) .. 0])
   
   // sign extended
-  printf("come into sext!\n");
+  //printf("come into sext!\n");
   if(width == 4){
     *dest = *src1;
-    printf("detected width =4,the sizeof(*dest) =%d\n",sizeof(*dest));
+    //printf("detected width =4,the sizeof(*dest) =%d\n",sizeof(*dest));
   }
   else if(width == 2){
     uint16_t result = *src1 ;
     int16_t tmp = result;
     *dest = tmp;
-    printf("detected width =2,the sizeof(*dest) =%d\n",sizeof(*dest));
+    //printf("detected width =2,the sizeof(*dest) =%d\n",sizeof(*dest));
   }else if(width == 1){
     uint8_t result = *src1 ;
     int8_t tmp = result;
     *dest = tmp;
-    printf("detected width =1,the sizeof(*dest) =%d\n",sizeof(*dest));
+  //printf("detected width =1,the sizeof(*dest) =%d\n",sizeof(*dest));
   }
-  printf("sext over!\n");
+  //printf("sext over!\n");
   
 }
 
