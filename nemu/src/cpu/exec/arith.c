@@ -9,8 +9,8 @@ make_EHelper(add) {
 make_EHelper(sub) {
   printf("EHelper(sub) begin!\n");
   printf("id_dest->val=0x%x ",id_dest->val);
-  printf("id_src->val=0x%x",id_src->val);
-  printf("cpu.esp=0x%x",cpu.esp);
+  printf("id_src->val=0x%x ",id_src->val);
+  printf("cpu.esp=0x%x\n",cpu.esp);
   printf("EHelper(sub) over!\n");
 
   print_asm_template2(sub);
