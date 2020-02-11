@@ -19,11 +19,14 @@ make_EHelper(sub) {
   rtl_sext(&t2, &id_src->val, id_src->width);
   printf("sizeof(t2)=%d \n",sizeof(t2));
   printf("EHelper(sub) over!\n");
-
+  //t0 result, t1 reg, t2 imm
   rtl_sub(&t0, &t1, &t2);
   printf("t0 = 0x%x ",t0);
   printf("t1 = 0x%x ",t1);
   printf("t2 = 0x%x\n",t2);
+
+  
+  printf("EHelper(sub) over!\n");
   print_asm_template2(sub);
 }
 
