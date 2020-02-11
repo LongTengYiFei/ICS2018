@@ -10,6 +10,8 @@ make_EHelper(sub) {
   printf("EHelper(sub) begin!\n");
   printf("id_dest->val=0x%x ",id_dest->val);
   printf("id_src->val=0x%x ",id_src->val);
+  printf("id_dest->width=0x%x ",id_dest->width);
+  printf("id_src->width=0x%x ",id_src->width);
   printf("cpu.esp=0x%x\n",cpu.esp);
   printf("EHelper(sub) over!\n");
 
