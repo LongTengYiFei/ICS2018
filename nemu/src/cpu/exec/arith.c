@@ -15,8 +15,10 @@ make_EHelper(sub) {
   printf("id_src->width=0x%x\n",id_src->width);
   // of,sf,zf,af,pf,cf
   //
-  
+  rtl_sext(&t1, &id_dest->val, id_dest->width);
+  printf("sizeof(t1)=%d ",sizeof(t1));
   rtl_sext(&t2, &id_src->val, id_src->width);
+  printf("sizeof(t2)=%d \n",sizeof(t2));
   printf("EHelper(sub) over!\n");
 
   print_asm_template2(sub);
