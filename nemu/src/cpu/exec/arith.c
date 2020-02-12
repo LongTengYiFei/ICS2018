@@ -25,7 +25,8 @@ make_EHelper(sub) {
   printf("t1 = 0x%x ",t1);
   printf("t2 = 0x%x\n",t2);
 
-  
+  //set flags of sf zf af pf cf
+  ; 
   printf("EHelper(sub) over!\n");
   print_asm_template2(sub);
 }
