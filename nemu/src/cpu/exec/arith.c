@@ -36,7 +36,7 @@ make_EHelper(sub) {
   //ZF SF
   rtl_update_ZFSF(&t0, 4);
   //write back
-  oprand_write(id_dest, &t0);
+  operand_write(id_dest, &t0);
   printf("EHelper(sub) over!\n");
   print_asm_template2(sub);
 }
