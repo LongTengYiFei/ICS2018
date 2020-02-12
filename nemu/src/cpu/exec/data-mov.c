@@ -18,15 +18,15 @@ make_EHelper(push) {
 }
 
 make_EHelper(pop) {
- printf("Come into EHelper(pop)!\n");
+  //printf("Come into EHelper(pop)!\n");
   rtl_pop(&t0);
   if(id_dest->width == 4)
     id_dest->val = t0;
   else assert(0);
-  printf("id_dest->reg = %d\n",id_dest->reg);//id_dest->reg is which reg
+  //printf("id_dest->reg = %d\n",id_dest->reg);//id_dest->reg is which reg
   operand_write(id_dest, &id_dest->val);
   print_asm_template1(pop);
- printf("EHelper(pop) over!\n");
+  //printf("EHelper(pop) over!\n");
 }
 
 make_EHelper(pusha) {
