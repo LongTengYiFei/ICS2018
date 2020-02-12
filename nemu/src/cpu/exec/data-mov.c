@@ -22,7 +22,7 @@ make_EHelper(pop) {
   rtl_pop(&t0);
   if(id_dest->width == 4)
     id_dest->val = t0;
-  else assrt(0);
+  else assert(0);
   printf("id_dest = %d\n",id_dest);//id_dest is which reg
   operand_write(id_dest, &id_dest->val);
   print_asm_template1(pop);
