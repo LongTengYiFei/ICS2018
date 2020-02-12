@@ -26,7 +26,17 @@ make_EHelper(sub) {
   printf("t2 = 0x%x\n",t2);
 
   //set flags of sf zf af pf cf
-  ; 
+  //CF
+  t3 = (t0 > t1); 
+  rtl_set_CF(&t3);
+
+  //OF
+  t3 = ((((int32_t)(t1) < 0) == (((int32_t)(t2) >> 31) == 0)) &&(((int32_t)(t0) < 0) !=((int32_t)(t1) <0)));  
+  rtl_set_OF(&t3);
+  //ZF SF
+  rtl_update_ZFSF(&t0, 4);
+  //write back
+  oprand_write(id_dest, &t0);
   printf("EHelper(sub) over!\n");
   print_asm_template2(sub);
 }
