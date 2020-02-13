@@ -8,7 +8,12 @@ make_EHelper(test) {
 }
 
 make_EHelper(and) {
-  TODO();
+  printf("begin and!");
+
+
+
+
+  printf("and over!");
 
   print_asm_template2(and);
 }

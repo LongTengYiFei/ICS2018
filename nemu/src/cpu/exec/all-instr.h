@@ -19,3 +19,7 @@ make_EHelper(lea);
 //arith.c
 make_EHelper(sub);
 
+
+//logic.c
+make_EHelper(and);
+
