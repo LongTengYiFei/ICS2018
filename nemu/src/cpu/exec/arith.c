@@ -43,8 +43,9 @@ make_EHelper(sub) {
 
 make_EHelper(cmp) {
   printf("cmp begin!\n");
-
-
+  printf("id_dest->width =%d ",id_dest->width);
+  printf("id_src->width =%d\n",id_src->width);
+  
   printf("cmp over!\n");
 
   print_asm_template2(cmp);
