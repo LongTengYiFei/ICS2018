@@ -42,7 +42,10 @@ make_EHelper(sub) {
 }
 
 make_EHelper(cmp) {
-  TODO();
+  printf("cmp begin!\n");
+
+
+  printf("cmp over!\n");
 
   print_asm_template2(cmp);
 }
