@@ -82,7 +82,7 @@ make_EHelper(movzx) {
   print_asm_template2(movzx);
 }
 
-make_EHelper(lea) {
+make_EHelper(lea) {//load effective address
   operand_write(id_dest, &id_src->addr);
   print_asm_template2(lea);
 }
