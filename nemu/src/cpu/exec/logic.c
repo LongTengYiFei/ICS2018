@@ -9,6 +9,7 @@ make_EHelper(test) {
 
 make_EHelper(and) {
   printf("begin and!\n");
+  //cf =0,sf =0
   t0 = 0;
   rtl_set_CF(&t0);
   rtl_set_OF(&t0);
@@ -16,10 +17,11 @@ make_EHelper(and) {
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("cpu.esp = 0x%x\n",cpu.esp);
+  //opration and
   rtl_and(&t1, &id_dest->val, &id_src->val);
   printf("t1 = 0x%x\n",t1);
-  
-
+  //zf sf  
+  rtl_update_ZFSF(&t1, id_dest->width);
   //write back
   operand_write(id_dest, &t1);
   printf("write back ,cpu.esp  = 0x%x\n",cpu.esp);
