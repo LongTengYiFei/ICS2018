@@ -15,10 +15,14 @@ make_EHelper(and) {
 
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
-  //printf("cpu.esp = 0x%x\n",cpu.esp);
+  printf("cpu.esp = 0x%x\n",cpu.esp);
   rtl_and(&t1, &id_dest->val, &id_src->val);
   printf("t1 = 0x%x\n",t1);
+  
 
+  //write back
+  operand_write(id_dest, &t1);
+  printf("write back ,cpu.esp  = 0x%x\n",cpu.esp);
   printf("and over!\n");
 
   print_asm_template2(and);
