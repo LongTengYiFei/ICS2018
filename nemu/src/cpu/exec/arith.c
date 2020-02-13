@@ -45,6 +45,7 @@ make_EHelper(cmp) {
   printf("cmp begin!\n");
   printf("id_dest->width =%d ",id_dest->width);
   printf("id_src->width =%d\n",id_src->width);
+  printf("id_src->val =%d\n",id_src->val);
   
   printf("cmp over!\n");
 
