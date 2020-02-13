@@ -7,23 +7,23 @@ make_EHelper(add) {
 }
 
 make_EHelper(sub) {
-  printf("EHelper(sub) begin!\n");
+  //printf("EHelper(sub) begin!\n");
 
-  printf("id_dest->val=0x%x ",id_dest->val);
-  printf("id_src->val=0x%x ",id_src->val);
-  printf("id_dest->width=0x%x ",id_dest->width);
-  printf("id_src->width=0x%x\n",id_src->width);
+  //printf("id_dest->val=0x%x ",id_dest->val);
+  //printf("id_src->val=0x%x ",id_src->val);
+  //printf("id_dest->width=0x%x ",id_dest->width);
+  //printf("id_src->width=0x%x\n",id_src->width);
   
   rtl_sext(&t1, &id_dest->val, id_dest->width);
-  printf("sizeof(t1)=%ld ",sizeof(t1));
+  //printf("sizeof(t1)=%ld ",sizeof(t1));
   rtl_sext(&t2, &id_src->val, id_src->width);
-  printf("sizeof(t2)=%ld \n",sizeof(t2));
-  printf("EHelper(sub) over!\n");
+  //printf("sizeof(t2)=%ld \n",sizeof(t2));
+  //printf("EHelper(sub) over!\n");
   //t0 result, t1 reg, t2 imm
   rtl_sub(&t0, &t1, &t2);
-  printf("t0 = 0x%x ",t0);
-  printf("t1 = 0x%x ",t1);
-  printf("t2 = 0x%x\n",t2);
+  //printf("t0 = 0x%x ",t0);
+  //printf("t1 = 0x%x ",t1);
+  //printf("t2 = 0x%x\n",t2);
 
   //set flags of sf zf af pf cf
   //CF
@@ -37,7 +37,7 @@ make_EHelper(sub) {
   rtl_update_ZFSF(&t0, 4);
   //write back
   operand_write(id_dest, &t0);
-  printf("EHelper(sub) over!\n");
+  //printf("EHelper(sub) over!\n");
   print_asm_template2(sub);
 }
 
