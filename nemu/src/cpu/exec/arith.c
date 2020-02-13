@@ -62,6 +62,7 @@ make_EHelper(cmp) {
   printf("OF =%d\n",t3);
   
   rtl_update_ZFSF(&t0, 4);
+  printf("ZF =%d\n",cpu.eflags.ZF);
   printf("cmp over!\n");
   print_asm_template2(cmp);
 }
