@@ -10,6 +10,9 @@ make_EHelper(add) {
   rtl_sext(&t2, &id_src->val, id_src->width);
 
   rtl_add(&t0, &t1, &t2);
+  printf("t0 = result = 0x%x ",t0);
+  printf("t1 = dest = 0x%x ",t1);
+  printf("t2 = src = 0x%x\n",t2);
   if(t0 < t1)
      t3 = 1;
   rtl_set_CF(&t3);
