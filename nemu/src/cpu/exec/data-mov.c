@@ -43,7 +43,10 @@ make_EHelper(popa) {
 
 make_EHelper(leave) {
   printf("leave begin!\n");
-
+  printf("EBP = 0x%x ",cpu.ebp);
+  //printf("BP = 0x%x\n",cpu.bp);
+  printf("ESP = 0x%x ",cpu.esp);
+  //printf("SP = 0x%x\n",cpu.sp);
 
 
   printf("leave over!\n");
