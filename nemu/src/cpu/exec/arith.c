@@ -2,8 +2,8 @@
 
 make_EHelper(add) {
   printf("add begin!\n");
-  printf("id_dest = %d ",id_dest);
-  printf("id_src = %d\n",id_src);
+  printf("id_dest->reg = %d ",id_dest->reg);
+  printf("id_src->reg = %d\n",id_src->reg);
   printf("add over!\n");
   print_asm_template2(add);
 }
