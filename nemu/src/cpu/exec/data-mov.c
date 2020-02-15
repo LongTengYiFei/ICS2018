@@ -49,6 +49,7 @@ make_EHelper(leave) {
   //set esp to ebp,then pop ebp
   printf("set esp to ebp\n");
   rtl_mv(&cpu.esp, &cpu.ebp);
+  printf("EBP = 0x%x\n",cpu.ebp);
   printf("pop ebp\n");
   rtl_pop(&cpu.ebp);
   printf("EBP = 0x%x\n",cpu.ebp);
