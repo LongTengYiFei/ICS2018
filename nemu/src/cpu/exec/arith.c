@@ -4,8 +4,8 @@ make_EHelper(add) {
   printf("add begin!\n");
   printf("id_dest->type = %d ",id_dest->type);
   printf("id_src->type = %d\n",id_src->type);
-  printf("id_dest->val = %d ",id_dest->val);
-  printf("id_src->val = %d\n",id_src->val);
+  printf("id_dest->val = 0x%x ",id_dest->val);
+  printf("id_src->val = 0x%x\n",id_src->val);
 
   //sign extend
   rtl_sext(&t1, &id_dest->val, id_dest->width);
