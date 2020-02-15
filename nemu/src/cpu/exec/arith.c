@@ -27,6 +27,9 @@ make_EHelper(add) {
   rtl_update_ZFSF(&t0, 4);
   //write back
   operand_write(id_dest, &t0);
+
+  printf("write back,id_dest->val =0x%x\n",id_dest->val);
+  printf("cpu.esp = 0x%x",cpu.esp);
   printf("add over!\n");
   print_asm_template2(add);
 }
