@@ -72,7 +72,7 @@ make_EHelper(setcc) {
   rtl_setcc(&t2, cc);
   //printf("t2 = 0x%x\n",t2);
   operand_write(id_dest, &t2);
-  printf("cpu.al= 0x%x\n",cpu.gpr[0]._8[0]);
+  //printf("cpu.al= 0x%x\n",cpu.gpr[0]._8[0]);
   //printf("setcc over!\n");
   print_asm("set%s %s", get_cc_name(cc), id_dest->str);
 }
