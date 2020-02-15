@@ -69,6 +69,7 @@ make_EHelper(setcc) {
   printf("id_dest->type = %d\n",id_dest->type);
   printf("id_dest->reg = %d\n",id_dest->reg);
   rtl_setcc(&t2, cc);
+  printf("t2 = 0x%x\n",t2);
   operand_write(id_dest, &t2);
 
   printf("setcc over!\n");
