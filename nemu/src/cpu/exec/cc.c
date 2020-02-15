@@ -3,7 +3,7 @@
 /* Condition Code */
 
 void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
-  printf("cc come in!\n");
+  //printf("cc come in!\n");
   bool invert = subcode & 0x1;
   enum {
     CC_O, CC_NO, CC_B,  CC_NB,
@@ -33,5 +33,5 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
   if (invert != 0) {
     rtl_xori(dest, dest, 0x1);
   }
-  printf("cc over!\n");
+  //printf("cc over!\n");
 }

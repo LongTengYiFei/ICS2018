@@ -42,8 +42,11 @@ make_EHelper(popa) {
 }
 
 make_EHelper(leave) {
-  TODO();
+  printf("leave begin!\n");
 
+
+
+  printf("leave over!\n");
   print_asm("leave");
 }
 

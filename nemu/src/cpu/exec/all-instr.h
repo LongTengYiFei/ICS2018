@@ -17,6 +17,7 @@ make_EHelper(jcc);
 make_EHelper(push);
 make_EHelper(pop);
 make_EHelper(lea);
+make_EHelper(leave);
 
 //arith.c
 make_EHelper(sub);
