@@ -1,8 +1,10 @@
 #include "cpu/exec.h"
 
 make_EHelper(add) {
-  TODO();
-
+  printf("add begin!\n");
+  printf("id_dest = %d ",id_dest);
+  printf("id_src = %d\n",id_src);
+  printf("add over!\n");
   print_asm_template2(add);
 }
 

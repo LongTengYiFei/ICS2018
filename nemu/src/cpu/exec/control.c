@@ -16,7 +16,7 @@ make_EHelper(jcc) {
   rtl_setcc(&t0, cc);
   rtl_li(&t1, 0);
   rtl_jrelop(RELOP_NE, &t0, &t1, decoding.jmp_eip);
-  printf("over jcc!\n");
+  printf("jcc over!\n");
   print_asm("j%s %x", get_cc_name(cc), decoding.jmp_eip);
 }
 
