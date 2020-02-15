@@ -64,15 +64,16 @@ make_EHelper(shr) {
 }
 
 make_EHelper(setcc) {
-  printf("setcc begin!\n");
+  //ben lai jiu xie hao de  dai ma
+  //printf("setcc begin!\n");
   uint32_t cc = decoding.opcode & 0xf;
-  printf("id_dest->type = %d\n",id_dest->type);
-  printf("id_dest->reg = %d\n",id_dest->reg);
+  //printf("id_dest->type = %d\n",id_dest->type);
+  //printf("id_dest->reg = %d\n",id_dest->reg);
   rtl_setcc(&t2, cc);
-  printf("t2 = 0x%x\n",t2);
+  //printf("t2 = 0x%x\n",t2);
   operand_write(id_dest, &t2);
-
-  printf("setcc over!\n");
+  printf("cpu.al= 0x%x\n",cpu.gpr[0]._8[0]);
+  //printf("setcc over!\n");
   print_asm("set%s %s", get_cc_name(cc), id_dest->str);
 }
 
