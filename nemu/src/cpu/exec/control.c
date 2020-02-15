@@ -12,7 +12,7 @@ make_EHelper(jcc) {
   // the target address is calculated at the decode stage
   uint32_t cc = decoding.opcode & 0xf;
   printf("jcc begin!\n");
-  printf("cc = opcode & 0xff = 0x%x\n",cc);
+  printf("cc == subcode = opcode & 0xf = 0x%x\n",cc);
   rtl_setcc(&t0, cc);
   rtl_li(&t1, 0);
   rtl_jrelop(RELOP_NE, &t0, &t1, decoding.jmp_eip);
