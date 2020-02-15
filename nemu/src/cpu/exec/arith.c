@@ -1,25 +1,25 @@
 #include "cpu/exec.h"
 
 make_EHelper(add) {
-  printf("add begin!\n");
-  printf("id_dest->type = %d ",id_dest->type);
-  printf("id_src->type = %d\n",id_src->type);
-  printf("id_dest->val = 0x%x ",id_dest->val);
-  printf("id_src->val = 0x%x\n",id_src->val);
+  //printf("add begin!\n");
+  //printf("id_dest->type = %d ",id_dest->type);
+  //printf("id_src->type = %d\n",id_src->type);
+  //printf("id_dest->val = 0x%x ",id_dest->val);
+  //printf("id_src->val = 0x%x\n",id_src->val);
 
   //sign extend
   rtl_sext(&t1, &id_dest->val, id_dest->width);
   rtl_sext(&t2, &id_src->val, id_src->width);
 
   rtl_add(&t0, &t1, &t2);
-  printf("t0 = result = 0x%x ",t0);
-  printf("t1 = dest = 0x%x ",t1);
-  printf("t2 = src = 0x%x\n",t2);
+  //printf("t0 = result = 0x%x ",t0);
+  //printf("t1 = dest = 0x%x ",t1);
+  //printf("t2 = src = 0x%x\n",t2);
   //CF
   if(t0 < t1)
      t3 = 1;
   rtl_set_CF(&t3);
-  printf("cpu.eflags.CF = %d\n",cpu.eflags.CF);
+  //printf("cpu.eflags.CF = %d\n",cpu.eflags.CF);
   //OF why?
   t3 = ((((int32_t)(t1) >= 0) ^(((int32_t)(t2) >= 0))) && (((int32_t)(t0) < 0) ^(((int32_t)(t2) >=0))));
   rtl_set_OF(&t3);
@@ -28,9 +28,8 @@ make_EHelper(add) {
   //write back
   operand_write(id_dest, &t0);
 
-  printf("write back,id_dest->val =0x%x\n",id_dest->val);
-  printf("cpu.esp = 0x%x\n",cpu.esp);
-  printf("add over!\n");
+  //printf("cpu.esp = 0x%x\n",cpu.esp);
+  //printf("add over!\n");
   print_asm_template2(add);
 }
 
