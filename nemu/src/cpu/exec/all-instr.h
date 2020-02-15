@@ -27,4 +27,5 @@ make_EHelper(add);
 
 //logic.c
 make_EHelper(and);
+make_EHelper(setcc);
 
