@@ -75,7 +75,7 @@ make_EHelper(cmp) {
   printf("id_dest->val =%d ",id_dest->val);
   printf("id_src->val =%d\n",id_src->val);
   printf("cpu.eax =%d\n",cpu.eax);
-  printf("cpu.ecx =%d\n",cpu.ecx);
+  printf("cpu.edx =%d\n",cpu.edx);
 
  
   //sign extent
