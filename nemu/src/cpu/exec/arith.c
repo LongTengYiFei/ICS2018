@@ -15,11 +15,18 @@ make_EHelper(add) {
   printf("t0 = result = 0x%x ",t0);
   printf("t1 = dest = 0x%x ",t1);
   printf("t2 = src = 0x%x\n",t2);
+  //CF
   if(t0 < t1)
      t3 = 1;
   rtl_set_CF(&t3);
   printf("cpu.eflags.CF = %d\n",cpu.eflags.CF);
-
+  //OF why?
+  t3 = ((((int32_t)(t1) >= 0) ^(((int32_t)(t2) >= 0))) && (((int32_t)(t0) < 0) ^(((int32_t)(t2) >=0))));
+  rtl_set_OF(&t3);
+  //ZF SF
+  rtl_update_ZFSF(&t0, 4);
+  //write back
+  operand_write(id_dest, &t0);
   printf("add over!\n");
   print_asm_template2(add);
 }
