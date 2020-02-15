@@ -4,6 +4,17 @@ make_EHelper(add) {
   printf("add begin!\n");
   printf("id_dest->reg = %d ",id_dest->reg);
   printf("id_src->reg = %d\n",id_src->reg);
+
+  //sign extend
+  rtl_sext(&t1, &id_dest->val, id_dest->width);
+  rtl_sext(&t2, &id_src->val, id_src->width);
+
+  rtl_add(&t0, &t1, &t2);
+  if(t0 < t1)
+     t3 = 1;
+  rtl_set_CF(&t3);
+  printf("cpu.eflags.CF = %d\n",cpu.eflags.CF);
+
   printf("add over!\n");
   print_asm_template2(add);
 }
