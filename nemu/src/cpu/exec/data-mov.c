@@ -42,18 +42,18 @@ make_EHelper(popa) {
 }
 
 make_EHelper(leave) {
-  printf("leave begin!\n");
-  printf("EBP = 0x%x ",cpu.ebp);
-  printf("ESP = 0x%x\n",cpu.esp);
-  printf("i default the size is 32\n");
+  //printf("leave begin!\n");
+  //printf("EBP = 0x%x ",cpu.ebp);
+  //printf("ESP = 0x%x\n",cpu.esp);
+  //printf("i default the size is 32\n");
   //set esp to ebp,then pop ebp
-  printf("set esp to ebp\n");
+  //printf("set esp to ebp\n");
   rtl_mv(&cpu.esp, &cpu.ebp);
-  printf("EBP = 0x%x\n",cpu.ebp);
-  printf("pop ebp\n");
+  //printf("EBP = 0x%x\n",cpu.ebp);
+  //printf("pop ebp\n");
   rtl_pop(&cpu.ebp);
-  printf("EBP = 0x%x\n",cpu.ebp);
-  printf("leave over!\n");
+  //printf("EBP = 0x%x\n",cpu.ebp);
+  //printf("leave over!\n");
   print_asm("leave");
 }
 
