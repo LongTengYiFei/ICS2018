@@ -99,7 +99,16 @@ make_EHelper(cmp) {
 }
 
 make_EHelper(inc) {
-  TODO();
+  //adds 1 to oprand, it dose not change the carry flag
+  printf("inc come in!\n");
+  printf("id_dest->type = %d ",id_dest->type);
+  printf("id_dest->reg = %d\n",id_dest->reg);
+  printf("id_dest->val = 0x%x\n",id_dest->val);
+  id_dest->val += 1;
+  printf("after inc , id_dest->val = 0x%x\n",id_dest->val);
+
+  operand_write(id_dest, &id_dest->val);
+  printf("inc over!\n");
 
   print_asm_template1(inc);
 }

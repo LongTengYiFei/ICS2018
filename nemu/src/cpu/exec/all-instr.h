@@ -24,6 +24,7 @@ make_EHelper(movzx);
 make_EHelper(sub);
 make_EHelper(cmp);
 make_EHelper(add);
+make_EHelper(inc);
 
 
 //logic.c
