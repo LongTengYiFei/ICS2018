@@ -102,13 +102,22 @@ make_EHelper(inc) {
   //adds 1 to oprand, it dose not change the carry flag
   printf("inc come in!\n");
   printf("id_dest->type = %d ",id_dest->type);
-  printf("id_dest->reg = %d\n",id_dest->reg);
-  printf("id_dest->addr = %d\n",id_dest->addr);
+  //printf("id_dest->reg = %d\n",id_dest->reg);
+  //printf("id_dest->addr = %d\n",id_dest->addr);
   printf("id_dest->val = 0x%x\n",id_dest->val);
-  id_dest->val += 1;
-  printf("after inc , id_dest->val = 0x%x\n",id_dest->val);
+  rtl_addi(&t2, &id_dest->val, 1);
+  printf("after inc , t2 = 0x%x\n",t2);
+  operand_write(id_dest, &t2);
+  //ZF,SF
+  rtl_update_ZFSF(&t2, id_dest->width);
+  //OF
+  rtl_xor(&t0, &id_dest->val, &id_src->val);
+  rtl_not(&t0, &t0);
+  rtl_xor(&t1, &id_dest->val, &t2);
+  rtl_and(&t0, &t0, &t1);
+  rtl_msb(&t0, &t0, id_dest->width);
+  rtl_set_OF(&t0);
 
-  operand_write(id_dest, &id_dest->val);
   printf("inc over!\n");
 
   print_asm_template1(inc);
