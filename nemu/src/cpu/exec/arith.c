@@ -103,6 +103,7 @@ make_EHelper(inc) {
   printf("inc come in!\n");
   printf("id_dest->type = %d ",id_dest->type);
   printf("id_dest->reg = %d\n",id_dest->reg);
+  printf("id_dest->addr = %d\n",id_dest->addr);
   printf("id_dest->val = 0x%x\n",id_dest->val);
   id_dest->val += 1;
   printf("after inc , id_dest->val = 0x%x\n",id_dest->val);
