@@ -100,11 +100,11 @@ make_EHelper(cmp) {
 
 make_EHelper(inc) {
   //adds 1 to oprand, it dose not change the carry flag
-  printf("inc come in!\n");
-  printf("id_dest->type = %d ",id_dest->type);
+  //printf("inc come in!\n");
+  //printf("id_dest->type = %d ",id_dest->type);
   //printf("id_dest->reg = %d\n",id_dest->reg);
   //printf("id_dest->addr = %d\n",id_dest->addr);
-  printf("id_dest->val = 0x%x\n",id_dest->val);
+  //printf("id_dest->val = 0x%x\n",id_dest->val);
   rtl_addi(&t2, &id_dest->val, 1);
   printf("after inc , t2 = 0x%x\n",t2);
   operand_write(id_dest, &t2);
@@ -118,7 +118,7 @@ make_EHelper(inc) {
   rtl_msb(&t0, &t0, id_dest->width);
   rtl_set_OF(&t0);
 
-  printf("inc over!\n");
+  //printf("inc over!\n");
 
   print_asm_template1(inc);
 }
