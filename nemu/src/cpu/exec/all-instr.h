@@ -29,4 +29,6 @@ make_EHelper(add);
 //logic.c
 make_EHelper(and);
 make_EHelper(setcc);
+//special.c
+make_EHelper(nop);
 
