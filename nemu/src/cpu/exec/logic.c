@@ -32,8 +32,8 @@ make_EHelper(and) {
 
 make_EHelper(xor) {
   printf("xor come in!\n");
-  printf("id_dest->width = 0x%x ",id_dest->val);
-  printf("id_src->width = 0x%x ",id_dest->val);
+  printf("id_dest->width = 0x%x ",id_dest->width);
+  printf("id_src->width = 0x%x\n",id_dest->width);
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("xor over!\n");
