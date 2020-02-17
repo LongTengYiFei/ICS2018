@@ -38,6 +38,16 @@ make_EHelper(xor) {
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->reg = %d\n",id_dest->reg);
   printf("id_src->reg = %d\n",id_src->reg);
+
+  rtl_xor(&t1, &id_dest->val, &id_src->val);
+  rtl_update_ZFSF(&t1, id_dest->width);
+
+  t0 = 0;
+  rtl_set_CF(&t0);
+  rtl_set_OF(&t0);
+
+  operand_write(id_dest, &t1);
+  printf("t1 = result = 0x%x\n",t1);
   printf("xor over!\n");
 
   print_asm_template2(xor);
