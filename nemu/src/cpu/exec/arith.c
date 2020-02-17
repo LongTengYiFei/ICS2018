@@ -136,8 +136,8 @@ make_EHelper(neg) {
 }
 
 make_EHelper(adc) {
-  printf("come in to adc\n");
-  printf("id_dest->width = %d",id_dest->width);
+  //printf("come in to adc\n");
+  //printf("id_dest->width = %d\n",id_dest->width);
   rtl_add(&t2, &id_dest->val, &id_src->val);
   rtl_setrelop(RELOP_LTU, &t3, &t2, &id_dest->val);
   rtl_get_CF(&t1);
