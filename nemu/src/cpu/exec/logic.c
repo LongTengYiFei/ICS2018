@@ -37,6 +37,7 @@ make_EHelper(xor) {
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->reg = %d\n",id_dest->reg);
+  printf("id_src->reg = %d\n",id_src->reg);
   printf("xor over!\n");
 
   print_asm_template2(xor);
