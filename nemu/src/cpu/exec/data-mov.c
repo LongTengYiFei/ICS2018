@@ -59,12 +59,16 @@ make_EHelper(leave) {
   //printf("i default the size is 32\n");
   //set esp to ebp,then pop ebp
   //printf("set esp to ebp\n");
-  rtl_mv(&cpu.esp, &cpu.ebp);
+  //rtl_mv(&cpu.esp, &cpu.ebp);
   //printf("EBP = 0x%x\n",cpu.ebp);
   //printf("pop ebp\n");
-  rtl_pop(&cpu.ebp);
+  //rtl_pop(&cpu.ebp);
   //printf("EBP = 0x%x\n",cpu.ebp);
   //printf("leave over!\n");
+  //-----------------------------------------
+  reg_l(4) = reg_l(5);
+  rtl_pop(&t0);
+  reg_w(5) = t0;
   print_asm("leave");
 }
 
