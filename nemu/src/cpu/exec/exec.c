@@ -216,14 +216,14 @@ static make_EHelper(2byte_esc) {
 }
 
 make_EHelper(real) {//exec_real
-  printf("Come in exec_real! ");
+  //printf("Come in exec_real! ");
   uint32_t opcode = instr_fetch(eip, 1);
-  printf("Get opcode 0x%x ",opcode);
+  //printf("Get opcode 0x%x ",opcode);
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
-  printf("width=0x%x\n",opcode_table[opcode].width);
+  //printf("width=0x%x\n",opcode_table[opcode].width);
   //printf("cpu.eax = 0x%x ",cpu.eax);
-  printf("exec_real over!\n");
+  //printf("exec_real over!\n");
 
   idex(eip, &opcode_table[opcode]);
 }
