@@ -101,7 +101,6 @@ if(id_dest->width == 2)
   printf("t2 = result = 0x%x\n",t2);
   operand_write(id_dest, &t2);
   rtl_update_ZFSF(&t2, id_dest->width);
-  TODO();
   // unnecessary to update CF and OF in NEMU
   printf("sar over\n");
   print_asm_template2(sar);
