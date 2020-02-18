@@ -34,6 +34,7 @@ make_EHelper(xor);
 make_EHelper(or);
 make_EHelper(setcc);
 make_EHelper(test);
+make_EHelper(sar);
 
 //special.c
 make_EHelper(nop);
