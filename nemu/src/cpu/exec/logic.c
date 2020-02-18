@@ -86,7 +86,11 @@ make_EHelper(or) {
 }
 
 make_EHelper(sar) {
+  //shift arith right
   printf("sar come in!\n");
+  printf("id_dest->val = 0x%x ",id_dest->val);
+  printf("id_src->val = 0x%x\n",id_src->val);
+  printf("id_dest->width = %d\n",id_dest->width);
   TODO();
   // unnecessary to update CF and OF in NEMU
   printf("sar over\n");
