@@ -16,24 +16,24 @@ make_EHelper(test) {
 }
 
 make_EHelper(and) {
-  printf("begin and!\n");
+  //printf("begin and!\n");
   //cf =0,sf =0
   t0 = 0;
   rtl_set_CF(&t0);
   rtl_set_OF(&t0);
-
+/*
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->width = %d ",id_dest->width);
-  printf("id_src->width = %d\n",id_src->width);
+  printf("id_src->width = %d\n",id_src->width);*/
   //opration and
   rtl_and(&t1, &id_dest->val, &id_src->val);
-  printf("t1 = 0x%x\n",t1);
+  //printf("t1 = 0x%x\n",t1);
   //zf sf  
   rtl_update_ZFSF(&t1, id_dest->width);
   //write back
   operand_write(id_dest, &t1);
-  printf("and over!\n");
+  //printf("and over!\n");
 
   print_asm_template2(and);
 }
@@ -87,22 +87,23 @@ make_EHelper(or) {
 
 make_EHelper(sar) {
   //shift arith right
+  /*
   printf("sar come in!\n");
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->width = %d\n",id_dest->width);
-
+*/
 if(id_dest->width == 1)
 	id_dest->val = (int8_t)id_dest->val;
 if(id_dest->width == 2)
 	id_dest->val = (int16_t)id_dest->val;
 
   rtl_sar(&t2, &id_dest->val, &id_src->val);
-  printf("t2 = result = 0x%x\n",t2);
+  //printf("t2 = result = 0x%x\n",t2);
   operand_write(id_dest, &t2);
   rtl_update_ZFSF(&t2, id_dest->width);
   // unnecessary to update CF and OF in NEMU
-  printf("sar over\n");
+  //printf("sar over\n");
   print_asm_template2(sar);
 }
 
