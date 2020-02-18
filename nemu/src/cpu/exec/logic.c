@@ -55,6 +55,7 @@ make_EHelper(xor) {
 }
 
 make_EHelper(or) {
+	/*
   printf("or come in!\n");
   printf("id_dest->width = 0x%x ",id_dest->width);
   printf("id_src->width = 0x%x\n",id_dest->width);
@@ -62,7 +63,7 @@ make_EHelper(or) {
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->reg = %d\n",id_dest->reg);
   printf("id_src->reg = %d\n",id_src->reg);
-
+*/
   rtl_or(&t1, &id_dest->val, &id_src->val);
   rtl_update_ZFSF(&t1, id_dest->width);
 
@@ -71,8 +72,8 @@ make_EHelper(or) {
   rtl_set_OF(&t0);
 
   operand_write(id_dest, &t1);
-  printf("t1 = result = 0x%x\n",t1);
-  printf("or over!\n");
+  //printf("t1 = result = 0x%x\n",t1);
+  //printf("or over!\n");
   print_asm_template2(or);
 }
 
