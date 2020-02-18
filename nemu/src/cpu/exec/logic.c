@@ -152,15 +152,15 @@ make_EHelper(setcc) {
   print_asm("set%s %s", get_cc_name(cc), id_dest->str);
 }
 
-make_EHelper(not) {
+make_EHelper(not) {/*
   printf("not come in!\n");
   printf("id_dest->width = %d\n",id_dest->width);
-  printf("id_dest->val =0x%x\n",id_dest->val);
+  printf("id_dest->val =0x%x\n",id_dest->val);*/
   rtl_not(&t2, &id_dest->val);
   operand_write(id_dest, &t2);
-  printf("t2 = result = 0x%x\n",t2);  
-  printf("not over!\n");
-  TODO();
+  //printf("t2 = result = 0x%x\n",t2);  
+  //printf("not over!\n");
+  //TODO();
 
   print_asm_template1(not);
 }
