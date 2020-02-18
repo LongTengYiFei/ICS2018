@@ -183,6 +183,7 @@ static inline void rtl_push(const rtlreg_t* src1) {
   cpu.esp -= 4;
   vaddr_write(cpu.esp, *src1, 4);
   printf("rtl push, *src1 = 0x%x\n",*src1);
+  printf("after push,cpu.esp = 0x%x\n",cpu.esp);
 }
 
 static inline void rtl_pop(rtlreg_t* dest) {
@@ -191,6 +192,7 @@ static inline void rtl_pop(rtlreg_t* dest) {
   rtl_lm(dest ,&cpu.esp ,4);
   printf("rtl pop, *dest = 0x%x\n",*dest);
   cpu.esp = cpu.esp + 4;
+  printf("after pop,cpu.esp = 0x%x\n",cpu.esp);
 }
 
 static inline void rtl_setrelopi(uint32_t relop, rtlreg_t *dest,
