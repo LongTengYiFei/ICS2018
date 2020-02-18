@@ -217,8 +217,8 @@ static make_EHelper(2byte_esc) {
 
 make_EHelper(real) {//exec_real
   //printf("Come in exec_real! ");
-  uint32_t opcode = instr_fetch(eip, 1);
   printf("*eip = 0x%x ",*eip);
+  uint32_t opcode = instr_fetch(eip, 1);
   printf("Get opcode 0x%x\n",opcode);
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
