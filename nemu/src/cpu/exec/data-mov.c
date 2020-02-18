@@ -9,9 +9,13 @@ make_EHelper(mov) {
 make_EHelper(push) {
  //printf("Come into EHelper(push)!\n");
  //printf("id_dest->width=%d\n",id_dest->width);
-  if(id_dest->width == 4)
-    rtl_push(&id_dest->val);
-  else assert(0);
+  if(id_dest->width == 1)
+  {
+    uint8_t utmp = id_dest->val;
+    int8_t tmp = utmp;
+    id_dest->val = tmp;
+  }
+  else rtl_push(&id_dest->val);
 
   print_asm_template1(push);
   //printf("EHelper(push) over\n");
