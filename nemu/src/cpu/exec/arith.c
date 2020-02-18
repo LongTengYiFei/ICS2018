@@ -106,7 +106,7 @@ make_EHelper(inc) {
   //printf("id_dest->addr = %d\n",id_dest->addr);
   //printf("id_dest->val = 0x%x\n",id_dest->val);
   rtl_addi(&t2, &id_dest->val, 1);
-  printf("after inc , t2 = 0x%x\n",t2);
+  //printf("after inc , t2 = 0x%x\n",t2);
   operand_write(id_dest, &t2);
   //ZF,SF
   rtl_update_ZFSF(&t2, id_dest->width);
