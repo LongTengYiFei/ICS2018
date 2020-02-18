@@ -24,6 +24,8 @@ make_EHelper(and) {
 
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
+  printf("id_dest->width = %d ",id_dest->width);
+  printf("id_src->width = %d\n",id_src->width);
   //opration and
   rtl_and(&t1, &id_dest->val, &id_src->val);
   printf("t1 = 0x%x\n",t1);
