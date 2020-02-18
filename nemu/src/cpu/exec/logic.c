@@ -91,6 +91,16 @@ make_EHelper(sar) {
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->width = %d\n",id_dest->width);
+
+if(id_dest->width == 1)
+	id_dest->val = (int8_t)id_dest->val;
+if(id_dest->width == 2)
+	id_dest->val = (int16_t)id_dest->val;
+
+  rtl_sar(&t2, &id_dest->val, &id_src->val);
+  printf("t2 = result = 0x%x\n",t2);
+  operand_write(id_dest, &t2);
+  rtl_update_ZFSF(&t2, id_dest->width);
   TODO();
   // unnecessary to update CF and OF in NEMU
   printf("sar over\n");
