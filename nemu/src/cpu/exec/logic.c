@@ -2,7 +2,8 @@
 #include "cpu/cc.h"
 
 make_EHelper(test) {
-  TODO();
+  printf("test come in!\n");
+  printf("test over!\n");
 
   print_asm_template2(test);
 }
