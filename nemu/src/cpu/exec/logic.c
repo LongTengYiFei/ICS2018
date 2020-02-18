@@ -2,7 +2,7 @@
 #include "cpu/cc.h"
 
 make_EHelper(test) {
-  printf("test come in!\n");
+  //printf("test come in!\n");
   rtl_and(&t1, &id_dest->val, &id_src->val);
   rtl_update_ZFSF(&t1, id_dest->width);
 
@@ -10,7 +10,7 @@ make_EHelper(test) {
   rtl_set_CF(&t0);
   rtl_set_OF(&t0);
 
-  printf("test over!\n");
+  //printf("test over!\n");
 
   print_asm_template2(test);
 }
