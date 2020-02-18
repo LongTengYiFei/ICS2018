@@ -97,8 +97,8 @@ opcode_entry opcode_table [512] = {
   /* 0x4c */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x50 */	IDEXW(r, push, 0), IDEXW(r, push, 0), IDEXW(r, push, 0), IDEXW(r, push, 0),
   /* 0x54 */	IDEXW(r, push, 0), IDEXW(r, push, 0), IDEXW(r, push, 0), IDEXW(r, push, 0),
-  /* 0x58 */	IDEXW(r, pop, 4), IDEXW(r, pop, 4), IDEXW(r, pop, 4), IDEXW(r, pop, 4),
-  /* 0x5c */	IDEXW(r, pop, 4), IDEXW(r, pop, 4), IDEXW(r, pop, 4), IDEXW(r, pop, 4),
+  /* 0x58 */	IDEXW(r, pop, 0), IDEXW(r, pop, 0), IDEXW(r, pop, 0), IDEXW(r, pop, 0),
+  /* 0x5c */	IDEXW(r, pop, 0), IDEXW(r, pop, 0), IDEXW(r, pop, 0), IDEXW(r, pop, 0),
   /* 0x60 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x64 */	EMPTY, EMPTY, EX(operand_size), EMPTY,
   /* 0x68 */	EMPTY, EMPTY, IDEXW(push_SI, push, 1), EMPTY,
@@ -216,12 +216,12 @@ static make_EHelper(2byte_esc) {
 }
 extern int sum_step = 0;
 make_EHelper(real) {//exec_real
-  sum_step ++;
+  //sum_step ++;
   //printf("Come in exec_real! ");
-  printf("sum_step = %d ",sum_step);
-  printf("*eip = 0x%x ",*eip);
+  //printf("sum_step = %d ",sum_step);
+  //printf("*eip = 0x%x ",*eip);
   uint32_t opcode = instr_fetch(eip, 1);
-  printf("Get opcode 0x%x\n",opcode);
+  //printf("Get opcode 0x%x\n",opcode);
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
   //printf("width=0x%x\n",opcode_table[opcode].width);
