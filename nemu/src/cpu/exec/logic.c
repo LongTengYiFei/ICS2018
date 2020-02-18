@@ -86,9 +86,10 @@ make_EHelper(or) {
 }
 
 make_EHelper(sar) {
+  printf("sar come in!\n");
   TODO();
   // unnecessary to update CF and OF in NEMU
-
+  printf("sar over\n");
   print_asm_template2(sar);
 }
 
