@@ -24,9 +24,16 @@ make_EHelper(push) {
 make_EHelper(pop) {
   //printf("Come into EHelper(pop)!\n");
   rtl_pop(&t0);
-  if(id_dest->width == 4)
-    id_dest->val = t0;
-  else assert(0);
+  
+  if(id_dest->width == 1){
+     uint8_t utmp = t0;
+     int8_t tmp = utmp;
+     id_dest->val = tmp;  
+  
+  }else 
+     id_dest->val = t0;
+
+
   //printf("id_dest->reg = %d\n",id_dest->reg);//id_dest->reg is which reg
   operand_write(id_dest, &id_dest->val);
   print_asm_template1(pop);
