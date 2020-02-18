@@ -153,6 +153,13 @@ make_EHelper(setcc) {
 }
 
 make_EHelper(not) {
+  printf("not come in!\n");
+  printf("id_dest->width = %d\n",id_dest->width);
+  printf("id_dest->val =0x%x\n",id_dest->val);
+  rtl_not(&t2, &id_dest->val);
+  operand_write(id_dest, &t2);
+  printf("t2 = result = 0x%x\n",t2);  
+  printf("not over!\n");
   TODO();
 
   print_asm_template1(not);
