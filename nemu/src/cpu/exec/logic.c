@@ -106,7 +106,12 @@ if(id_dest->width == 2)
   print_asm_template2(sar);
 }
 
-make_EHelper(shl) {
+make_EHelper(shl) {  
+  printf("shl come in!\n");
+  printf("id_dest->val = 0x%x ",id_dest->val);
+  printf("id_src->val = 0x%x\n",id_src->val);
+  printf("id_dest->width = %d\n",id_dest->width);
+  printf("shl over\n");
   TODO();
   // unnecessary to update CF and OF in NEMU
 
