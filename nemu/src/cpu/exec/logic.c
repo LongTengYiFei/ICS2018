@@ -122,7 +122,7 @@ make_EHelper(shl) {
   print_asm_template2(shl);
 }
 
-make_EHelper(shr) {
+make_EHelper(shr) {/*
   printf("shr come in!\n");
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
@@ -131,7 +131,7 @@ make_EHelper(shr) {
   operand_write(id_dest, &t2);
   printf("t2 = result = 0x%x\n",t2);
   rtl_update_ZFSF(&t2, id_dest->width);
-  printf("shr over\n");
+  printf("shr over\n");*/
   TODO();
   // unnecessary to update CF and OF in NEMU
 
