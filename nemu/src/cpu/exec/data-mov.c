@@ -7,8 +7,8 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
- //printf("Come into EHelper(push)!\n");
- //printf("id_dest->width=%d\n",id_dest->width);
+ printf("Come into EHelper(push)!\n");
+ printf("id_dest->width=%d\n",id_dest->width);
   if(id_dest->width == 1)
   {
     uint8_t utmp = id_dest->val;
@@ -18,7 +18,7 @@ make_EHelper(push) {
   else rtl_push(&id_dest->val);
 
   print_asm_template1(push);
-  //printf("EHelper(push) over\n");
+  printf("EHelper(push) over\n");
 }
 
 make_EHelper(pop) {
@@ -108,8 +108,8 @@ make_EHelper(movzx) {
 }
 
 make_EHelper(lea) {//load effective address
-  printf("lea come in\n");
+  //printf("lea come in\n");
   operand_write(id_dest, &id_src->addr);
-  printf("lea over\n");
+  //printf("lea over\n");
   print_asm_template2(lea);
 }
