@@ -108,6 +108,8 @@ make_EHelper(movzx) {
 }
 
 make_EHelper(lea) {//load effective address
+  printf("lea come in\n");
   operand_write(id_dest, &id_src->addr);
+  printf("lea over\n");
   print_asm_template2(lea);
 }
