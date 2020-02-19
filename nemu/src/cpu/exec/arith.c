@@ -16,8 +16,7 @@ make_EHelper(add) {
   //printf("t1 = dest = 0x%x ",t1);
   //printf("t2 = src = 0x%x\n",t2);
   //CF
-  if(t0 < t1)
-     t3 = 1;
+  t3 = (t0 < t1);
   rtl_set_CF(&t3);
   //printf("cpu.eflags.CF = %d\n",cpu.eflags.CF);
   //OF why?
