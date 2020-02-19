@@ -24,8 +24,8 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 }
 
 void vaddr_write(vaddr_t addr, uint32_t data, int len) {
-  if(addr == 0x27b00)
-	  assert(0);
+  printf("vaddr_write, addr = 0x%x\n",addr);
+  printf("vaddr_write, data = 0x%x\n",data);
   paddr_write(addr, data, len);
   //*****
 }
