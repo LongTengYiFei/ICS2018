@@ -41,18 +41,18 @@ static int cmd_help(char *args);
 
 //My Commands Start-------------------------
 static int cmd_si(char *args){
-  printf("si execute\n");
-  printf("args %s execute\n",args);
+  //printf("si execute\n");
+  //printf("args %s execute\n",args);
   int step_count = atoi(args);
-  printf("step_count is %d\n",step_count);
+  //printf("step_count is %d\n",step_count);
 
  //we need check the step_count's validation later
    cpu_exec(step_count); 
  return 0;
 }
 static int cmd_info(char *args){
-  printf("info excute\n");
-  printf("args %s execute\n",args);
+  //printf("info excute\n");
+  //printf("args %s execute\n",args);
   if(args != NULL){
     if(strcmp(args,"r") == 0){
 	  printf("print register's value.\n");
@@ -79,12 +79,12 @@ static int cmd_info(char *args){
 }
 
 static int cmd_x(char *args){
-  printf("x execute\n");
-  printf("args \"%s\" excute \n",args);
+  //printf("x execute\n");
+  //printf("args \"%s\" excute \n",args);
   char * arg0 = strtok(args," ");
   char * arg1 = strtok(NULL," "); 
-  printf("arg0 \"%s\" excute \n",arg0);
-  printf("arg1 \"%s\" excute \n",arg1);
+  //printf("arg0 \"%s\" excute \n",arg0);
+  //printf("arg1 \"%s\" excute \n",arg1);
 
   int  N = atoi(arg0);//N
   char *rest;
