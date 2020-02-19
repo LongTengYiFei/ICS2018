@@ -1,11 +1,11 @@
 #include "cpu/exec.h"
 
 make_EHelper(add) {
-  //printf("add begin!\n");
+  printf("add begin!\n");
   //printf("id_dest->type = %d ",id_dest->type);
   //printf("id_src->type = %d\n",id_src->type);
-  //printf("id_dest->val = 0x%x ",id_dest->val);
-  //printf("id_src->val = 0x%x\n",id_src->val);
+  printf("id_dest->val = 0x%x ",id_dest->val);
+  printf("id_src->val = 0x%x\n",id_src->val);
 
   //sign extend
   rtl_sext(&t1, &id_dest->val, id_dest->width);
@@ -27,8 +27,8 @@ make_EHelper(add) {
   //write back
   operand_write(id_dest, &t0);
 
-  //printf("cpu.esp = 0x%x\n",cpu.esp);
-  //printf("add over!\n");
+  printf("cpu.esp = 0x%x\n",cpu.esp);
+  printf("add over!\n");
   print_asm_template2(add);
 }
 
