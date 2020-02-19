@@ -33,6 +33,7 @@ make_EHelper(and) {
   rtl_update_ZFSF(&t1, id_dest->width);
   //write back
   operand_write(id_dest, &t1);
+  printf("result = t1 = 0x%x\n",t1);
   printf("and over!\n");
 
   print_asm_template2(and);
