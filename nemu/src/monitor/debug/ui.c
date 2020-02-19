@@ -187,13 +187,13 @@ void ui_mainloop(int is_batch_mode) {
   for (char *str; (str = rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
     
-    printf("str is %s\n",str);
+    //printf("str is %s\n",str);
 
     /* extract the first token as the command */
     char *cmd = strtok(str, " ");
     if (cmd == NULL) { continue; }
     
-    printf("cmd is %s\n",cmd);
+    //printf("cmd is %s\n",cmd);
     /* treat the remaining string as the arguments,
      * which may need further parsing
      */
@@ -202,7 +202,7 @@ void ui_mainloop(int is_batch_mode) {
       args = NULL;
     }
 
-    printf("args is %s\n",args);
+    //printf("args is %s\n",args);
 #ifdef HAS_IOE
     extern void sdl_clear_event_queue(void);
     sdl_clear_event_queue();
