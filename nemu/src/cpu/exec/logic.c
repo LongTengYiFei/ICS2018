@@ -87,23 +87,24 @@ make_EHelper(or) {
 
 make_EHelper(sar) {
   //shift arith right
-  /*
+
   printf("sar come in!\n");
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
-  printf("id_dest->width = %d\n",id_dest->width);
-*/
+  printf("id_dest->width = %d ",id_dest->width);
+  printf("id_src->width = %d\n",id_src->width);
+
 if(id_dest->width == 1)
 	id_dest->val = (int8_t)id_dest->val;
 if(id_dest->width == 2)
 	id_dest->val = (int16_t)id_dest->val;
 
   rtl_sar(&t2, &id_dest->val, &id_src->val);
-  //printf("t2 = result = 0x%x\n",t2);
+  printf("t2 = result = 0x%x\n",t2);
   operand_write(id_dest, &t2);
   rtl_update_ZFSF(&t2, id_dest->width);
   // unnecessary to update CF and OF in NEMU
-  //printf("sar over\n");
+  printf("sar over\n");
   print_asm_template2(sar);
 }
 
