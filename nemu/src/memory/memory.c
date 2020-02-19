@@ -25,4 +25,7 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 
 void vaddr_write(vaddr_t addr, uint32_t data, int len) {
   paddr_write(addr, data, len);
+  //*****
+  if(addr == 0x27b00)
+	  assert(0);
 }
