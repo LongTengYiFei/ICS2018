@@ -7,8 +7,8 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
- printf("Come into EHelper(push)!\n");
- printf("id_dest->width=%d\n",id_dest->width);
+ //printf("Come into EHelper(push)!\n");
+ //printf("id_dest->width=%d\n",id_dest->width);
   if(id_dest->width == 1)
   {
     uint8_t utmp = id_dest->val;
@@ -18,7 +18,7 @@ make_EHelper(push) {
   else rtl_push(&id_dest->val);
 
   print_asm_template1(push);
-  printf("EHelper(push) over\n");
+  //printf("EHelper(push) over\n");
 }
 
 make_EHelper(pop) {
@@ -52,18 +52,18 @@ make_EHelper(popa) {
   print_asm("popa");
 }
 
-make_EHelper(leave) {
+make_EHelper(leave) {/*
   printf("leave begin!\n");
   printf("EBP = 0x%x ",cpu.ebp);
   printf("ESP = 0x%x\n",cpu.esp);
   printf("i default the size is 32\n");
-  
+  */
   rtl_mv(&cpu.esp, &cpu.ebp);
-  printf("EBP = 0x%x\n",cpu.ebp);
-  printf("pop ebp\n");
+  //printf("EBP = 0x%x\n",cpu.ebp);
+  //printf("pop ebp\n");
   rtl_pop(&cpu.ebp);
-  printf("EBP = 0x%x\n",cpu.ebp);
-  printf("leave over!\n");
+  //printf("EBP = 0x%x\n",cpu.ebp);
+  //printf("leave over!\n");
   //-----------------------------------------
   /*
   reg_l(4) = reg_l(5);
