@@ -1,7 +1,7 @@
 #include "cpu/exec.h"
 
 make_EHelper(add) {
-  printf("add begin!\n");
+  //printf("add begin!\n");
   //printf("id_dest->type = %d ",id_dest->type);
   //printf("id_src->type = %d\n",id_src->type);
   //printf("id_dest->val = 0x%x ",id_dest->val);
