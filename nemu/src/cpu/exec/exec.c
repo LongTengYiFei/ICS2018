@@ -216,9 +216,9 @@ static make_EHelper(2byte_esc) {
 }
 extern int sum_step = 0;
 make_EHelper(real) {//exec_real
-  //sum_step ++;
+  sum_step ++;
   //printf("Come in exec_real! ");
-  //printf("sum_step = %d ",sum_step);
+  printf("sum_step = %d ",sum_step);
   //printf("*eip = 0x%x ",*eip);
   uint32_t opcode = instr_fetch(eip, 1);
   //printf("Get opcode 0x%x\n",opcode);
