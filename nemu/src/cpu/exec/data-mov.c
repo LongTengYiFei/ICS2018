@@ -14,6 +14,8 @@ make_EHelper(push) {
     uint8_t utmp = id_dest->val;
     int8_t tmp = utmp;
     id_dest->val = tmp;
+
+    rtl_push(&id_dest->val);
   }
   else rtl_push(&id_dest->val);
 
