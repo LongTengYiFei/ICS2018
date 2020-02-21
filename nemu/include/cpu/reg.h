@@ -30,6 +30,7 @@ typedef struct {
   /* In NEMU, rtlreg_t is exactly uint32_t. This makes RTL instructions
    * in PA2 able to directly access these registers.
    */
+  vaddr_t eip;//uint32
   union{
    struct{
      uint32_t CF : 1;
@@ -46,7 +47,6 @@ typedef struct {
    rtlreg_t value;
   }eflags;
 
-  vaddr_t eip;//uint32
 
 } CPU_state;
 /*
