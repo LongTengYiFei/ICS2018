@@ -74,5 +74,13 @@ void difftest_step(uint32_t eip) {
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
   //
   printf("ref_r.eax = 0x%x\n",ref_r.eax);
+  printf("ref_r.ecx = 0x%x\n",ref_r.ecx);
+  printf("ref_r.edx = 0x%x\n",ref_r.edx);
+  printf("ref_r.ebx = 0x%x\n",ref_r.ebx);
+  printf("ref_r.esp = 0x%x\n",ref_r.esp);
+  printf("ref_r.ebp = 0x%x\n",ref_r.ebp);
+  printf("ref_r.esi = 0x%x\n",ref_r.esi);
+  printf("ref_r.edi = 0x%x\n",ref_r.edi);
+  printf("ref_r.eip = 0x%x\n",ref_r.eip);
   TODO();
 }
