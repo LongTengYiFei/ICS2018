@@ -29,7 +29,7 @@ void reg_test() {
 
     assert(reg_w(i) == (sample[i] & 0xffff));//--
   }
-//printf("cpu.eip = 0x%x\n",cpu.eip);
+  printf("cpu.eip = 0x%x\n",cpu.eip);
   assert(reg_b(R_AL) == (sample[R_EAX] & 0xff));
   assert(reg_b(R_AH) == ((sample[R_EAX] >> 8) & 0xff));
   assert(reg_b(R_BL) == (sample[R_EBX] & 0xff));
