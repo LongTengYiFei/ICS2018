@@ -39,12 +39,12 @@ void reg_test() {
   assert(reg_b(R_DL) == (sample[R_EDX] & 0xff));
   assert(reg_b(R_DH) == ((sample[R_EDX] >> 8) & 0xff));
 
-
+/*
   printf("sample[R_EAX]=%x",sample[R_EAX]);
   printf(" ");
   printf("cpu.eax=%x",cpu.eax);
   printf("\n");
-
+*/
   assert(sample[R_EAX] == cpu.eax);
   assert(sample[R_ECX] == cpu.ecx);
   assert(sample[R_EDX] == cpu.edx);
