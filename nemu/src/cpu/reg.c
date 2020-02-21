@@ -18,7 +18,7 @@ void reg_test() {
   for (i = R_EAX; i <= R_EDI; i ++) {
     sample[i] = rand();
     reg_l(i) = sample[i];// directly give value to _32
-    /*
+    
     printf("reg_l(i)=%x",reg_l(i));
     printf(" ");
     printf("i=%d ",i);
@@ -26,7 +26,7 @@ void reg_test() {
     printf("  ");
     printf("sample[i]=%x",sample[i]);
     printf("\n");
-*/
+
     assert(reg_w(i) == (sample[i] & 0xffff));//--
   }
 //printf("cpu.eip = 0x%x\n",cpu.eip);
