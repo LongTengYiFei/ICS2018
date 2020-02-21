@@ -52,7 +52,7 @@ void init_difftest(char *ref_so_file, long img_size) {
 }
 
 void difftest_step(uint32_t eip) {
-  printf("DiffTest_step Come in!!");
+  printf("DiffTest_step Come in!!\n");
   CPU_state ref_r;
 
   if (is_skip_dut) {
@@ -72,5 +72,7 @@ void difftest_step(uint32_t eip) {
 
   // TODO: Check the registers state with the reference design.
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
+  //
+  printf("ref_r.eax = 0x%x\n",ref_r.eax);
   TODO();
 }
