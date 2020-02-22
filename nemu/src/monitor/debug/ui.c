@@ -64,6 +64,9 @@ static int cmd_info(char *args){
           printf("ESI = %x\n",cpu.esi);
           printf("EDI = %x\n",cpu.edi);
           printf("ESP = %x\n",cpu.esp);
+ 
+          printf("SF = %x\n",cpu.eflags.SF);
+          printf("ZF = %x\n",cpu.eflags.ZF);
     }
     if(strcmp(args,"w") == 0){
 	  printf("print watchpoint's information.\n");
