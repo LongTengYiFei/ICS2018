@@ -229,7 +229,10 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
   // eflags.SF <- is_sign(result[width * 8 - 1 .. 0])
   //signal flag,set equal to high-order bit of result(0 is postive , 1 is negtive)
-  cpu.eflags.SF = (((*result &(0xFFFFFFFF >> ((4 -width) * 8))) &(1 << (width * 8 -1))) != 0);
+  //cpu.eflags.SF = (((*result &(0xFFFFFFFF >> ((4 -width) * 8))) &(1 << (width * 8 -1))) != 0);
+  //
+  rtl_msb(&at, result, width);
+  cpu.eflags.SF = at;
 }
 
 static inline void rtl_update_ZFSF(const rtlreg_t* result, int width) {
