@@ -70,7 +70,7 @@ void difftest_step(uint32_t eip) {
   ref_difftest_exec(1);
   ref_difftest_getregs(&ref_r);
 
-  printf("ref_r.eflags.ZF = 0x%x\n",ref_r.eflags.ZF);
+  printf("ref_r.eflags.OF = 0x%x\n",ref_r.eflags.OF);
   printf("ref_r.eflags.SF = 0x%x\n",ref_r.eflags.SF);
   foot ++;
   // TODO: Check the registers state with the reference design.
