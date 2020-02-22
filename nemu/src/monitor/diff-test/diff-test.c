@@ -85,10 +85,10 @@ void difftest_step(uint32_t eip) {
   printf("cpu.edi = 0x%x ,ref_r.edi = 0x%x\n",cpu.edi, ref_r.edi);
   printf("cpu.eip = 0x%x ,ref_r.eip = 0x%x\n",cpu.eip, ref_r.eip);
 
-          printf("SF = %x\n",cpu.eflags.SF);
-          printf("ZF = %x\n",cpu.eflags.ZF);
-          printf("r SF = %x\n",ref_r.eflags.SF);
-          printf("r ZF = %x\n",ref_r.eflags.ZF);
+  printf("cpu.eflags.ZF = 0x%x ,ref_r.eflags.ZF = 0x%x\n",cpu.eflags.ZF, ref_r.eflags.ZF);
+  printf("cpu.eflags.SF = 0x%x ,ref_r.eflags.SF = 0x%x\n",cpu.eflags.SF, ref_r.eflags.SF);
+  printf("cpu.eflags.OF = 0x%x ,ref_r.eflags.OF = 0x%x\n",cpu.eflags.OF, ref_r.eflags.OF);
+  printf("cpu.eflags.CF = 0x%x ,ref_r.eflags.CF = 0x%x\n",cpu.eflags.CF, ref_r.eflags.CF);
  }
   //TODO();
 }
