@@ -90,7 +90,7 @@ make_EHelper(cltd) {
 	 else cpu.edx = 0;
     //TODO();
   }
-  printf("cltd over !\n");
+  //printf("cltd over !\n");
 
   print_asm(decoding.is_operand_size_16 ? "cwtl" : "cltd");
 }
