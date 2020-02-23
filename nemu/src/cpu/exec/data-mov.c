@@ -75,12 +75,20 @@ make_EHelper(leave) {/*
 }
 
 make_EHelper(cltd) {
+  printf("cltd come in !\n");
+  printf("cpu.eax = 0x%x\n",cpu.eax);
+  printf("AX = 0x%x\n",cpu.gpr[R_EAX]._16);
   if (decoding.is_operand_size_16) {
+
+
+
+
     TODO();
   }
   else {
     TODO();
   }
+  printf("cltd over !\n");
 
   print_asm(decoding.is_operand_size_16 ? "cwtl" : "cltd");
 }
