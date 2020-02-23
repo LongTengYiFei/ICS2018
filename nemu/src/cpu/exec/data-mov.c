@@ -75,18 +75,20 @@ make_EHelper(leave) {/*
 }
 
 make_EHelper(cltd) {
-  printf("cltd come in !\n");
+ /* printf("cltd come in !\n");
   printf("cpu.eax = 0x%x\n",cpu.eax);
-  printf("AX = 0x%x\n",cpu.gpr[R_EAX]._16);
+  printf("AX = 0x%x\n",cpu.gpr[R_EAX]._16);*/
   if (decoding.is_operand_size_16) {
-
-
-
-
-    TODO();
+         if(cpu.gpr[R_EAX]._16 < 0)
+		 cpu.gpr[R_EDX]._16 = 0xffff;
+	 else cpu.gpr[R_EDX]._16 = 0;
+//    TODO();
   }
   else {
-    TODO();
+         if(cpu.eax < 0)
+		 cpu.edx = 0xffffffff;
+	 else cpu.edx = 0;
+    //TODO();
   }
   printf("cltd over !\n");
 
