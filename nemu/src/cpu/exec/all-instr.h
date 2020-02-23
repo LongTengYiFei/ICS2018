@@ -6,6 +6,8 @@ make_EHelper(operand_size);
 
 make_EHelper(inv);
 make_EHelper(nemu_trap);
+//specia.c
+make_EHelper(endbr32);
 //control.c
 make_EHelper(call);
 make_EHelper(ret);

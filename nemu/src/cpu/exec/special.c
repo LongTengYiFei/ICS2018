@@ -35,7 +35,10 @@ make_EHelper(inv) {
 
   print_asm("invalid opcode");
 }
-
+make_EHelper(endbr32){
+  decoding.seq_eip += 3;
+  print_asm("endbr32");
+}
 make_EHelper(nemu_trap) {
 #if defined(DIFF_TEST)
   void difftest_skip_ref();
