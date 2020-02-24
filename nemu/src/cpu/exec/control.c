@@ -46,7 +46,10 @@ make_EHelper(ret) {
 }
 
 make_EHelper(call_rm) {
-  TODO();
+	t0 = decoding.seq_eip;
+	rtl_push(&t0);
+	rtl_jr(&id_dest->val);
+//  TODO();
 
   print_asm("call *%s", id_dest->str);
 }
