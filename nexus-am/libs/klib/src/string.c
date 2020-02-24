@@ -1,8 +1,9 @@
 #include "klib.h"
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
-
+//let's GO!
 size_t strlen(const char *s) {
+
   return 0;
 }
 
