@@ -78,16 +78,14 @@ make_EHelper(cltd) {
  /* printf("cltd come in !\n");
   printf("cpu.eax = 0x%x\n",cpu.eax);
   printf("AX = 0x%x\n",cpu.gpr[R_EAX]._16);*/
+	
   if (decoding.is_operand_size_16) {
-         if(cpu.gpr[R_EAX]._16 < 0)
-		 cpu.gpr[R_EDX]._16 = 0xffff;
-	 else cpu.gpr[R_EDX]._16 = 0;
+        rtl_sext(&t0, &reg_l(R_EAX),2);
+	rtl_shri(&reg_l(R_EDX),&t0, 16);
 //    TODO();
   }
   else {
-         if(cpu.eax < 0)
-		 cpu.edx = 0xffffffff;
-	 else cpu.edx = 0;
+    rtl_sari(reg_l(R_EDX),&reg_l(R_EAX),31);
     //TODO();
   }
   //printf("cltd over !\n");
