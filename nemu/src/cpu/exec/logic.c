@@ -129,12 +129,12 @@ make_EHelper(shr) {/*
   printf("shr come in!\n");
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
-  printf("id_dest->width = %d\n",id_dest->width);
+  printf("id_dest->width = %d\n",id_dest->width);*/
   rtl_shl(&t2, &id_dest->val, &id_src->val);
   operand_write(id_dest, &t2);
-  printf("t2 = result = 0x%x\n",t2);
+  //printf("t2 = result = 0x%x\n",t2);
   rtl_update_ZFSF(&t2, id_dest->width);
-  printf("shr over\n");*/
+  //printf("shr over\n");
   TODO();
   // unnecessary to update CF and OF in NEMU
 
