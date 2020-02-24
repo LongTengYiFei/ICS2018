@@ -135,7 +135,7 @@ make_EHelper(shr) {/*
   //printf("t2 = result = 0x%x\n",t2);
   rtl_update_ZFSF(&t2, id_dest->width);
   //printf("shr over\n");
-  TODO();
+  //TODO();
   // unnecessary to update CF and OF in NEMU
 
   print_asm_template2(shr);
