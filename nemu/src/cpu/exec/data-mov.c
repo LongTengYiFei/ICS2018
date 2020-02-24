@@ -85,7 +85,7 @@ make_EHelper(cltd) {
 //    TODO();
   }
   else {
-    rtl_sari(reg_l(R_EDX),&reg_l(R_EAX),31);
+    rtl_sari(&reg_l(R_EDX),&reg_l(R_EAX),31);
     //TODO();
   }
   //printf("cltd over !\n");
