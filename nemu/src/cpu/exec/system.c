@@ -47,8 +47,16 @@ make_EHelper(in) {
   print_asm_template2(in);
 
   printf("id_src->reg is 0x%x\n",id_src->reg);
-  int read = pio_read_b(id_src->reg);
-  printf("read is 0x%x\n",read);
+  printf("id_dest->reg is 0x%x\n",id_dest->reg);
+  printf("id_src->width is 0x%x\n",id_src->width);
+  printf("id_dest->width is 0x%x\n",id_dest->width);
+  int readb = pio_read_b(id_src->reg);
+  int readw = pio_read_w(id_src->reg);
+  int readl = pio_read_l(id_src->reg);
+  printf("readb is 0x%x\n",readb);
+  printf("readw is 0x%x\n",readw);
+  printf("readl is 0x%x\n",readl);
+  printf("edx is 0x%x\n",cpu.edx);
   printf("dl is 0x%x\n",cpu.edx & 0x000000ff);
 
 #if defined(DIFF_TEST)
