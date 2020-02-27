@@ -42,32 +42,28 @@ make_EHelper(iret) {
 }
 
 make_EHelper(in) {
-  //printf("in begin!\n");
   //TODO();
   print_asm_template2(in);
-
+/*
   int readb = pio_read_b(id_src->val);
   int readw = pio_read_w(id_src->val);
   int readl = pio_read_l(id_src->val);
   printf("readb is 0x%x\n",readb);
   printf("readw is 0x%x\n",readw);
   printf("readl is 0x%x\n",readl);
-
+*/
   printf("port dx is 0x%x\n",cpu.edx & 0x0000ffff);
   printf("id_src->val is 0x%x\n",id_src->val);
 #if defined(DIFF_TEST)
   difftest_skip_ref();
 #endif
-  //printf("in over!\n");
 }
 
 make_EHelper(out) {
   //TODO();
-  //printf("out begin!\n");
   print_asm_template2(out);
-
+  printf("out src width is 0x%x\n",id_src->width);
 #if defined(DIFF_TEST)
   difftest_skip_ref();
 #endif
-  //printf("out over!\n");
 }
