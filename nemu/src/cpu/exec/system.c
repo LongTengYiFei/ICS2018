@@ -49,6 +49,7 @@ make_EHelper(in) {
   printf("id_src->val is 0x%x\n",id_src->val);
   printf("id_dest->val is 0x%x\n",id_dest->val);
   printf("dx is 0x%x\n",cpu.edx & 0x0000ffff);
+  printf("eax is 0x%x\n",cpu.eax);
 /*  int readb = pio_read_b(id_src->val);
   int readw = pio_read_w(id_src->val);
   int readl = pio_read_l(id_src->val);
