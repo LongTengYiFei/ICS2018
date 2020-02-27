@@ -42,21 +42,24 @@ make_EHelper(iret) {
 }
 
 make_EHelper(in) {
-  TODO();
+  printf("in begin!\n");
+  //TODO();
 
   print_asm_template2(in);
 
 #if defined(DIFF_TEST)
   difftest_skip_ref();
 #endif
+  printf("in over!\n");
 }
 
 make_EHelper(out) {
-  TODO();
-
+  //TODO();
+  printf("out begin!\n");
   print_asm_template2(out);
 
 #if defined(DIFF_TEST)
   difftest_skip_ref();
 #endif
+  printf("out over!\n");
 }
