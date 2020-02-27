@@ -46,7 +46,6 @@ make_EHelper(in) {
   print_asm_template2(in);
 
   printf("id_dest->width is 0x%x\n",id_dest->width);
-  printf("id_src->width is 0x%x\n",id_src->width);
   int readb = pio_read_b(id_src->val);
   int readw = pio_read_w(id_src->val);
   int readl = pio_read_l(id_src->val);
@@ -54,6 +53,12 @@ make_EHelper(in) {
   printf("readw is 0x%x\n",readw);
   printf("readl is 0x%x\n",readl);
 
+  if(id_dest->width == 1)
+    reg_b(R_AL) = pio_read_b(cpu.edx & 0x0000ffff);
+  else if(id_dest->width == 2)
+    reg_w(R_AX) = pio_read_w(cpu.edx & 0x0000ffff);
+  else if(id_dest->width == 4)
+    reg_l(R_EAX) = pio_read_l(cpu.edx & 0x0000ffff);
   //printf("port dx is 0x%x\n",cpu.edx & 0x0000ffff);
   //printf("id_src->val is 0x%x\n",id_src->val);
 #if defined(DIFF_TEST)
