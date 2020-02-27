@@ -8,6 +8,8 @@ make_EHelper(inv);
 make_EHelper(nemu_trap);
 //specia.c
 make_EHelper(endbr32);
+make_EHelper(out);
+make_EHelper(in);
 //control.c
 make_EHelper(call);
 make_EHelper(ret);
