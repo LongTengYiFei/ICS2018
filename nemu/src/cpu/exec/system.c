@@ -52,11 +52,11 @@ make_EHelper(in) {
   printf("eax is 0x%x\n",cpu.eax);
 */
   
-  if(id_dest->width == 1)
+  if(id_src->width == 1)
     reg_b(R_AL) = pio_read_b(id_src->val);
-  else if(id_dest->width == 2)
+  else if(id_src->width == 2)
     reg_w(R_AX) = pio_read_w(id_src->val);
-  else if(id_dest->width == 4)
+  else if(id_src->width == 4)
     reg_l(R_EAX) = pio_read_l(id_src->val);
   //printf("port dx is 0x%x\n",cpu.edx & 0x0000ffff);
   //printf("id_src->val is 0x%x\n",id_src->val);
