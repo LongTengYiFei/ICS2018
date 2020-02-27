@@ -46,6 +46,7 @@ make_EHelper(in) {
   print_asm_template2(in);
 
   printf("id_dest->width is 0x%x\n",id_dest->width);
+  printf("id_src->width is 0x%x\n",id_src->width);
   int readb = pio_read_b(id_src->val);
   int readw = pio_read_w(id_src->val);
   int readl = pio_read_l(id_src->val);
