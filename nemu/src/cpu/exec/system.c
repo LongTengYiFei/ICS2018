@@ -64,6 +64,7 @@ make_EHelper(out) {
   print_asm_template2(out);
   printf("out src width is 0x%x\n",id_src->width);
   printf("port dx is 0x%x\n",cpu.edx & 0x0000ffff);
+  printf("eax is 0x%x\n",cpu.eax);
 #if defined(DIFF_TEST)
   difftest_skip_ref();
 #endif
