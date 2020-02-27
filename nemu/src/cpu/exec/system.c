@@ -60,6 +60,7 @@ make_EHelper(in) {
   printf("dl is 0x%x\n",cpu.edx & 0x000000ff);
 */
   printf("port dx is 0x%x\n",cpu.edx & 0x0000ffff);
+  printf("id_src->val is 0x%x\n",id_src->val);
 #if defined(DIFF_TEST)
   difftest_skip_ref();
 #endif
