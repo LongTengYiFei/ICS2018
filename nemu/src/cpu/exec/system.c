@@ -45,7 +45,7 @@ make_EHelper(in) {
   //printf("in begin!\n");
   //TODO();
   print_asm_template2(in);
-  int read = pio_read_b(id_dest->val);
+  int read = pio_read_b(id_dest->reg);
   printf("read is 0x%x\n",read);
   printf("dl is 0x%x\n",cpu.edx & 0x000000ff);
 
