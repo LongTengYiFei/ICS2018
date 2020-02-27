@@ -45,7 +45,7 @@ make_EHelper(in) {
   //printf("in begin!\n");
   //TODO();
   print_asm_template2(in);
-
+/*
   printf("id_src->reg is 0x%x\n",id_src->reg);
   printf("id_dest->reg is 0x%x\n",id_dest->reg);
   printf("id_src->width is 0x%x\n",id_src->width);
@@ -58,7 +58,8 @@ make_EHelper(in) {
   printf("readl is 0x%x\n",readl);
   printf("edx is 0x%x\n",cpu.edx);
   printf("dl is 0x%x\n",cpu.edx & 0x000000ff);
-
+*/
+  printf("port dx is 0x%x\n",cpu.edx & 0x0000ffff);
 #if defined(DIFF_TEST)
   difftest_skip_ref();
 #endif
