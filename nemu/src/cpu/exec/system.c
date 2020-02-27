@@ -76,14 +76,14 @@ make_EHelper(out) {
   printf("out dest value is 0x%x\n",id_dest->val);
   printf("port dx is 0x%x\n",cpu.edx & 0x0000ffff);
   printf("eax is 0x%x\n",cpu.eax);
-
+/*
   if(id_src->width == 1)
     pio_write_b(cpu.edx & 0x0000ffff,id_src->val);
   else if(id_src->width == 2)
     pio_write_w(cpu.edx & 0x0000ffff,id_src->val);
   else if(id_src->width == 4)
     pio_write_l(cpu.edx & 0x0000ffff,id_src->val);
-  
+  */
 #if defined(DIFF_TEST)
   difftest_skip_ref();
 #endif
