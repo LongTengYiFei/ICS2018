@@ -2,15 +2,14 @@
 #include <x86.h>
 #include <amdev.h>
 #include<stdio.h>
-unsigned long long now;
+static uint32_t start_time = 0;
 size_t timer_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_TIMER_UPTIME: {
       _UptimeReg *uptime = (_UptimeReg *)buf;
-      now = inl(0x48);
-      printf("come into timer_read\n");
+      uint32_t now = inl(0x48);
       uptime->hi = 0;
-      uptime->lo = 0;
+      uptime->lo = now - start_time;
       return sizeof(_UptimeReg);
     }
     case _DEVREG_TIMER_DATE: {
