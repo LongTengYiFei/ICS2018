@@ -51,8 +51,8 @@ make_EHelper(in) {
   printf("eax is 0x%x\n",cpu.eax);
 */
   
-  printf("in id_dest->width is 0x%x\n",id_dest->width);
-  printf("in id_src->width is 0x%x\n",id_src->width);
+ // printf("in id_dest->width is 0x%x\n",id_dest->width);
+ // printf("in id_src->width is 0x%x\n",id_src->width);
   if(id_src->width == 1)
     reg_b(R_AL) = pio_read_b(id_src->val);
   else if(id_src->width == 2)

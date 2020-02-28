@@ -4,6 +4,17 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
+  char buff[100];
+  //----------
+  va_list args;
+  va_start(args,fmt);
+  sprintf(buff,fmt, args);
+  va_end(args);
+  //----------
+  for(int i=0;;i++)
+	if(buff[i] != '\0')
+	      _putc(buff[i]);
+        else break;  
   return 0;
 }
 
