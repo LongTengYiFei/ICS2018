@@ -1,8 +1,7 @@
 #include <am.h>
 #include <x86.h>
 #include <amdev.h>
-#include<stdio.h>
-static uint32_t start_time = 0;
+static uint32_t start_time;
 size_t timer_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_TIMER_UPTIME: {
@@ -27,4 +26,5 @@ size_t timer_read(uintptr_t reg, void *buf, size_t size) {
 }
 
 void timer_init() {
+	start_time = inl(0x48);
 }

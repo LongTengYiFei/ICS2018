@@ -20,7 +20,6 @@ static _Device *video_dev;
 static _Device *timer_dev;
 
 uint32_t uptime() {
-  printf("come into uptime\n");
   _UptimeReg uptime;
   _Device *dev = getdev(&timer_dev, _DEV_TIMER);
   dev->read(_DEVREG_TIMER_UPTIME, &uptime, sizeof(uptime));
