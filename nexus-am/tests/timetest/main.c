@@ -16,7 +16,7 @@ int main(){
     } else {
       printf("%d seconds).\n", sec);
     }
-   // printf("di\n");
+   printf("uptime = %d\n",uptime());
 
     sec ++;
   }
