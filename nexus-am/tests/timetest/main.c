@@ -6,6 +6,8 @@ int main(){
   _RTCReg rtc;
   _ioe_init();
   int sec = 1;
+  printf("time test begin\n");
+  printf("%d\n",uptime());
   while (1) {
     while(uptime() < 1000 * sec) ;
 
@@ -20,5 +22,6 @@ int main(){
 
     sec ++;
   }
+  printf("time test over\n");
   return 0;
 }
