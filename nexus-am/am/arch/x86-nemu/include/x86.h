@@ -110,19 +110,19 @@ static inline void set_cr3(void *pdir) {
   __asm__ volatile("movl %0, %%cr3" : : "r"(pdir));
 }
 
-static inline uint8_t inb(int port) {
+static inline uint8_t inb(int port) {//byte
   char data;
   __asm__ volatile("inb %1, %0" : "=a"(data) : "d"((uint16_t)port));
   return data;
 }
 
-static inline uint16_t inw(int port) {
+static inline uint16_t inw(int port) {//word
   short data;
   __asm__ volatile("inw %1, %0" : "=a"(data) : "d"((uint16_t)port));
   return data;
 }
 
-static inline uint32_t inl(int port) {
+static inline uint32_t inl(int port) {//double word
   long data;
   __asm__ volatile("inl %1, %0" : "=a"(data) : "d"((uint16_t)port));
   return data;
