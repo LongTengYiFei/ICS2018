@@ -9,8 +9,8 @@ size_t timer_read(uintptr_t reg, void *buf, size_t size) {
     case _DEVREG_TIMER_UPTIME: {
       _UptimeReg *uptime = (_UptimeReg *)buf;
       now = inl(0x48);
-      printf("sizeof(now) = %d\n",sizeof(now));
-      printf("sizeof(pre) = %d\n",sizeof(pre));
+      //printf("sizeof(now) = %d\n",sizeof(now));
+      printf("pre= %d\n",pre);
       uptime->hi = now >> 32;
       uptime->lo = now & 0xffffffff;
       return sizeof(_UptimeReg);
