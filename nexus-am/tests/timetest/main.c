@@ -18,7 +18,6 @@ int main(){
     } else {
       printf("%d seconds).\n", sec);
     }
-   printf("uptime = %d\n",uptime());
 
     sec ++;
   }
