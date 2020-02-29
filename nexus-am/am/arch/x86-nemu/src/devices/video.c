@@ -22,11 +22,12 @@ size_t video_write(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_VIDEO_FBCTL: {
       _FBCtlReg *ctl = (_FBCtlReg *)buf;
-      
+      // Frame Buffer Controler 
       int i;
-      for(i=0; i<= ctl->h-1; i++)//yi hang yi hang de xie shu ju
+      int size = screen_width() * screen_height();
+      for(i=0; i<= size-1; i++)//yi hang yi hang de xie shu ju
 	      //write data row by row
-	      fb[i] = i;
+	      fb[i] = 0x0000ff00;
 
       if (ctl->sync) {
         // do nothing, hardware syncs.
