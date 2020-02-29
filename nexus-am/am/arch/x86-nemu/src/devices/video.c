@@ -24,8 +24,8 @@ size_t video_write(uintptr_t reg, void *buf, size_t size) {
       _FBCtlReg *ctl = (_FBCtlReg *)buf;
       
       int i;
-      int size = screen_width() * screen_height();
-      for(i=0; i<size; i++)
+      for(i=0; i<= ctl->h-1; i++)//yi hang yi hang de xie shu ju
+	      //write data row by row
 	      fb[i] = i;
 
       if (ctl->sync) {
