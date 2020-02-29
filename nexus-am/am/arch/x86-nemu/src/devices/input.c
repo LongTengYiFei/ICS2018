@@ -10,10 +10,9 @@ size_t input_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_INPUT_KBD: {
       _KbdReg *kbd = (_KbdReg *)buf;
-      int code = inl(0x60);
-      if(code != _KEY_NONE)
-	kbd->keydown = !(kbd->keydown);
-      kbd->keycode = code;
+      uint32_t p = inl(0x60);
+      kbd->keydown = ((p & 0x8000) == 0) ? 0: 1;
+      kbd->keycode = p;
       return sizeof(_KbdReg);
     }
   }
