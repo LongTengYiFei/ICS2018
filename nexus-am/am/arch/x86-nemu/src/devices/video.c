@@ -27,7 +27,7 @@ size_t video_write(uintptr_t reg, void *buf, size_t size) {
       int size = screen_width() * screen_height();
       for(i=0; i<= size-1; i++)//yi hang yi hang de xie shu ju
 	      //write data row by row
-	      fb[i] = 0x0000ff00;
+	      fb[i] = 0x00ff0000;
 
       if (ctl->sync) {
         // do nothing, hardware syncs.
