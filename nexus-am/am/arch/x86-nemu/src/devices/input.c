@@ -12,7 +12,7 @@ size_t input_read(uintptr_t reg, void *buf, size_t size) {
     case _DEVREG_INPUT_KBD: {
       _KbdReg *kbd = (_KbdReg *)buf;
       uint32_t code = inl(0x60);
-      kbd->keydown = 1;
+      kbd->keydown = 0;//i dont kwon why
       kbd->keycode = code;
       return sizeof(_KbdReg);
     }
