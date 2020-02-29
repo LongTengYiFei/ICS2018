@@ -1,6 +1,7 @@
 #include <am.h>
 #include <x86.h>
 #include <amdev.h>
+#include<stdio.h>
 //0x60 port
 //breakcode is keycode  ---release
 //makecode is keycode | 0x8000  -----push
@@ -11,6 +12,7 @@ size_t input_read(uintptr_t reg, void *buf, size_t size) {
     case _DEVREG_INPUT_KBD: {
       _KbdReg *kbd = (_KbdReg *)buf;
       uint32_t p = inl(0x60);
+      printf("p  = %d\n",p);
       kbd->keydown = ((p & 0x8000) == 0) ? 0: 1;
       kbd->keycode = p;
       return sizeof(_KbdReg);
