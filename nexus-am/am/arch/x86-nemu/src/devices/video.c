@@ -24,11 +24,10 @@ size_t video_write(uintptr_t reg, void *buf, size_t size) {
       _FBCtlReg *ctl = (_FBCtlReg *)buf;
       // Frame Buffer Controler 
       int i;
-      int size = screen_width() * screen_height();
-      for(i=0; i<= size-1; i++)//yi hang yi hang de xie shu ju
+      for(i=0; i<= ctl->h-1; i++)//yi hang yi hang de xie shu ju
 	      //write data row by row
-	      fb[i] = 0x00ff0000;
-
+	      //one pixel = 4 bytes
+              memcpy(fb+(ctl->y+i)*screen_width()+ctl->x,ctl->pixels+i*ctl->w,ctl->w*4);
       if (ctl->sync) {
         // do nothing, hardware syncs.
       }
