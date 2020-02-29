@@ -2,15 +2,16 @@
 #include <x86.h>
 #include <amdev.h>
 #include <klib.h>
-
+#define screen_port 0x100
 static uint32_t* const fb __attribute__((used)) = (uint32_t *)0x40000;
 
 size_t video_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_VIDEO_INFO: {
       _VideoInfoReg *info = (_VideoInfoReg *)buf;
-      info->width = 50;
-      info->height = 50;
+      int data = inl(screen_port);
+      info->width = data >> 16;
+      info->height = data & 0xffff;
       return sizeof(_VideoInfoReg);
     }
   }
