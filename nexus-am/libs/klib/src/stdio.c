@@ -8,7 +8,7 @@ int printf(const char *fmt, ...) {
   //----------
   va_list args;
   va_start(args,fmt);
-  sprintf(buff,fmt, args);
+  vsprintf(buff,fmt, args);
   va_end(args);
   //----------
   for(int i=0;;i++)
