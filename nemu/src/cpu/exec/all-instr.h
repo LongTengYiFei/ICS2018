@@ -6,6 +6,10 @@ make_EHelper(operand_size);
 
 make_EHelper(inv);
 make_EHelper(nemu_trap);
+//system.c
+
+make_EHelper(lidt);
+
 //specia.c
 make_EHelper(endbr32);
 make_EHelper(out);
