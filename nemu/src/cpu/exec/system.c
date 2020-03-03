@@ -5,7 +5,8 @@ void difftest_skip_dut();
 
 make_EHelper(lidt) {
   TODO();
-
+  printf("come into lidt\n");
+  printf("over lidt\n");
   print_asm_template1(lidt);
 }
 
