@@ -6,6 +6,7 @@ void difftest_skip_dut();
 make_EHelper(lidt) {
   printf("come into lidt\n");
   printf("id_dest->reg = 0x%x\n",id_dest->reg);
+  printf("id_dest->addr = 0x%x\n",id_dest->addr);
   printf("over lidt\n");
   TODO();
   print_asm_template1(lidt);
