@@ -7,9 +7,17 @@ make_EHelper(lidt) {
   printf("come into lidt\n");
   printf("id_dest->addr = 0x%x\n",id_dest->addr);
   printf("id_dest->width = 0x%x\n",id_dest->width);
+ /**
+   IF OperandSize = 16
+   THEN IDTR.Limit:Base <- m16:24 (* 24 bits of base loaded *)
+   ELSE IDTR.Limit:Base <- m16:32
+   FI;
+  */ 
   cpu.idtr.base = id_dest->addr;
+  cpu.idtr.len = id_dest->addr & 0xffff; 
+
   printf("over lidt\n");
-  TODO();
+  //TODO();
   print_asm_template1(lidt);
 }
 
