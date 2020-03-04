@@ -18,7 +18,6 @@ make_EHelper(lidt) {
   */ 
   cpu.idtr.base = id_dest->addr;
   cpu.idtr.len = id_dest->addr & 0xffff; 
-
   //printf("over lidt\n");
   //TODO();
   print_asm_template1(lidt);
@@ -47,7 +46,6 @@ make_EHelper(int) {
   printf("int over\n");
   TODO();
   print_asm("int %s", id_dest->str);
-
 #if defined(DIFF_TEST) && defined(DIFF_TEST_QEMU)
   difftest_skip_dut();
 #endif
