@@ -9,6 +9,7 @@ make_EHelper(nemu_trap);
 //system.c
 
 make_EHelper(lidt);
+make_EHelper(int);
 
 //specia.c
 make_EHelper(endbr32);
