@@ -4,9 +4,12 @@ void difftest_skip_ref();
 void difftest_skip_dut();
 
 make_EHelper(lidt) {
+/*
   printf("come into lidt\n");
   printf("id_dest->addr = 0x%x\n",id_dest->addr);
   printf("id_dest->width = 0x%x\n",id_dest->width);
+*/
+
  /**
    IF OperandSize = 16
    THEN IDTR.Limit:Base <- m16:24 (* 24 bits of base loaded *)
@@ -39,7 +42,7 @@ make_EHelper(mov_cr2r) {
 
 make_EHelper(int) {
   printf("come into int\n");
-  printf("id_dest->val = 0x%x\n",id_dest->val);
+  printf("id_dest->type = 0x%x\n",id_dest->type);
   printf("int over\n");
   TODO();
   print_asm("int %s", id_dest->str);
