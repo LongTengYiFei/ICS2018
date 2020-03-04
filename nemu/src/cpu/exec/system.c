@@ -43,6 +43,7 @@ make_EHelper(mov_cr2r) {
 make_EHelper(int) {
   printf("come into int\n");
   printf("id_dest->type = 0x%x\n",id_dest->type);
+  printf("id_dest->val = 0x%x\n",id_dest->val);
   printf("int over\n");
   TODO();
   print_asm("int %s", id_dest->str);
