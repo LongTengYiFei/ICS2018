@@ -7,6 +7,7 @@ make_EHelper(lidt) {
   printf("come into lidt\n");
   printf("id_dest->addr = 0x%x\n",id_dest->addr);
   printf("id_dest->width = 0x%x\n",id_dest->width);
+  cpu.idtr.base = id_dest->addr;
   printf("over lidt\n");
   TODO();
   print_asm_template1(lidt);
