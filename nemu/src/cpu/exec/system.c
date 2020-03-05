@@ -18,6 +18,8 @@ make_EHelper(lidt) {
   */ 
   cpu.idtr.base = id_dest->addr;
   cpu.idtr.len = id_dest->addr & 0xffff; 
+  printf("cpu.idtr.base = 0x%x\n",cpu.idtr.base);
+  printf("cpu.idtr.len = 0x%x\n",cpu.idtr.len);
   //printf("over lidt\n");
   //TODO();
   print_asm_template1(lidt);
