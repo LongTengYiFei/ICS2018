@@ -45,6 +45,7 @@ make_EHelper(int) {
   printf("come into int\n");
   printf("id_dest->type = 0x%x\n",id_dest->type);
   printf("id_dest->val = 0x%x\n",id_dest->val);
+  printf("decoding.seq_eip = 0x%x\n",decoding.seq_eip);
   printf("int over\n");
   TODO();
   print_asm("int %s", id_dest->str);
