@@ -21,7 +21,7 @@ make_EHelper(lidt) {
   printf("cpu.idtr.base = 0x%x\n",cpu.idtr.base);
   printf("cpu.idtr.len = 0x%x\n",cpu.idtr.len);
   //printf("over lidt\n");
-  TODO();
+  //TODO();
   print_asm_template1(lidt);
 }
 
@@ -48,7 +48,8 @@ make_EHelper(int) {
   printf("decoding.seq_eip = 0x%x\n",decoding.seq_eip);
   uint8_t NO = id_dest->val;
   vaddr_t ret_addr = decoding.seq_eip;
-  raise_intr(NO, ret_addr);
+  printf("cpu.eip = 0x%x\n",cpu.eip);
+  //raise_intr(NO, ret_addr);
   printf("int over\n");
   TODO();
   print_asm("int %s", id_dest->str);
