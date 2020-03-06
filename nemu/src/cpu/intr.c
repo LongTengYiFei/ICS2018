@@ -18,8 +18,9 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   
   offset_high = offset_high << 16;
   uint32_t dest = offset_high + offset_low;
-  rtl_jr(&dest);
-  //TODO();
+  printf("dest = 0x%x\n",dest);
+ // rtl_jr(&dest);
+  TODO();
   printf("raise_intr over\n");
 }
 
