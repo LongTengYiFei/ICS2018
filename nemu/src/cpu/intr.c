@@ -6,7 +6,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
    * That is, use ``NO'' to index the IDT.
    */
 	
-  printf("come into raise_intr\n");
+  //printf("come into raise_intr\n");
   rtl_push(&cpu.eflags.value);
   rtl_push(&cpu.cs);
   rtl_push(&cpu.eip);
@@ -18,10 +18,10 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   
   offset_high = offset_high << 16;
   uint32_t dest = offset_high + offset_low;
-  printf("dest = 0x%x\n",dest);
- // rtl_jr(&dest);
-  TODO();
-  printf("raise_intr over\n");
+  //printf("dest = 0x%x\n",dest);
+  rtl_jr(&dest);
+  //TODO();
+  //printf("raise_intr over\n");
 }
 
 void dev_raise_intr() {
