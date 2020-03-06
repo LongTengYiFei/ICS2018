@@ -16,12 +16,12 @@ make_EHelper(lidt) {
    ELSE IDTR.Limit:Base <- m16:32
    FI;
   */ 
-  cpu.idtr.base = id_dest->addr;
-  cpu.idtr.len = id_dest->addr & 0xffff; 
+  cpu.idtr.base = vaddr_read(id_dest->addr + 2, 4);
+  cpu.idtr.len = vaddr_read(id_dest->addr, 2); 
   printf("cpu.idtr.base = 0x%x\n",cpu.idtr.base);
   printf("cpu.idtr.len = 0x%x\n",cpu.idtr.len);
   //printf("over lidt\n");
-  //TODO();
+  TODO();
   print_asm_template1(lidt);
 }
 

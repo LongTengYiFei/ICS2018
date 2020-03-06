@@ -51,6 +51,8 @@ typedef struct {
      uint32_t base;
      uint32_t len;
   }idtr;
+  
+  uint32_t cs;
 
 } CPU_state;
 /*
