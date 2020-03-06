@@ -41,16 +41,15 @@ make_EHelper(mov_cr2r) {
 #endif
 }
 
-make_EHelper(int) {
+make_EHelper(int) {/*
   printf("come into int\n");
   printf("id_dest->type = 0x%x\n",id_dest->type);
   printf("id_dest->val = 0x%x\n",id_dest->val);
-  printf("decoding.seq_eip = 0x%x\n",decoding.seq_eip);
+  printf("decoding.seq_eip = 0x%x\n",decoding.seq_eip);*/
   uint8_t NO = id_dest->val;
   vaddr_t ret_addr = decoding.seq_eip;
-  //printf("cpu.eip = 0x%x\n",cpu.eip);
   raise_intr(NO, ret_addr);
-  printf("int over\n");
+  //printf("int over\n");
   //TODO();
   print_asm("int %s", id_dest->str);
 #if defined(DIFF_TEST) && defined(DIFF_TEST_QEMU)
