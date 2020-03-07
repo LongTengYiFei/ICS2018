@@ -9,7 +9,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   //printf("come into raise_intr\n");
   rtl_push(&cpu.eflags.value);
   rtl_push(&cpu.cs);
-  rtl_push(&cpu.eip);
+  rtl_push(&ret_addr);
   
   t0 = cpu.idtr.base;
   //one GD is 8 bytes
