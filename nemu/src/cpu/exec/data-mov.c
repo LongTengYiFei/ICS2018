@@ -43,7 +43,25 @@ make_EHelper(pop) {
 }
 
 make_EHelper(pusha) {
-  TODO();
+  t0 = cpu.esp;
+  t1 = cpu.eax;
+  rtl_push(&t1);
+  t1 = cpu.ecx;
+  rtl_push(&t1);
+  t1 = cpu.edx;
+  rtl_push(&t1);
+  t1 = cpu.ebx;
+  rtl_push(&t1);
+
+  rtl_push(&t0);
+
+  t1 = cpu.ebp;
+  rtl_push(&t1);
+  t1 = cpu.esi;
+  rtl_push(&t1);
+  t1 = cpu.edi;
+  rtl_push(&t1);
+//  TODO();
 
   print_asm("pusha");
 }
