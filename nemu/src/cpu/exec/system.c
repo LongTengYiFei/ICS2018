@@ -47,6 +47,7 @@ make_EHelper(int) {/*
   printf("id_dest->val = 0x%x\n",id_dest->val);
   printf("decoding.seq_eip = 0x%x\n",decoding.seq_eip);*/
   uint8_t NO = id_dest->val;
+  printf("come into in, NO is 0x%x\n",NO);
  // vaddr_t ret_addr = decoding.seq_eip;
   raise_intr(NO, cpu.eip);
   //printf("int over\n");
