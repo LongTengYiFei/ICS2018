@@ -1,5 +1,5 @@
 #include "common.h"
-
+#include "klib.h"
 void init_mm(void);
 void init_ramdisk(void);
 void init_device(void);
@@ -28,6 +28,7 @@ int main() {
   init_proc();
 
 #ifdef HAS_CTE
+  printf("pending yeild\n");
   _yield();
 #endif
 
