@@ -24,6 +24,7 @@ _Context* irq_handle(_Context *tf) {
     }
   }
 
+  printf("irq_handle over\n");
   return next;
 }
 
