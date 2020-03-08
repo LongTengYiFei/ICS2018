@@ -140,8 +140,25 @@ make_EHelper(dec) {
 }
 
 make_EHelper(neg) {
-  TODO();
-
+ switch(id_dest->width) {
+    case 4: {
+      rtl_li(&t1, 0x80000000);
+      rtl_setrelop(RELOP_EQ, &t2, &id_dest->val, &t1);
+      break;
+    }
+    case 1: {
+      rtl_li(&t1, 0x80);
+      rtl_setrelop(RELOP_EQ, &t2, &id_dest->val, &t1);
+      break;
+    }
+    case 2: {
+      rtl_li(&t1, 0x8000);
+      rtl_setrelop(RELOP_EQ, &t2, &id_dest->val, &t1);
+      break;
+    }
+    default: assert(0);
+//  TODO();
+ }
   print_asm_template1(neg);
 }
 
