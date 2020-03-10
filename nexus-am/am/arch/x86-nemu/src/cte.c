@@ -24,6 +24,7 @@ _Context* irq_handle(_Context *tf) {
     printf("tf->ebp = 0x%x\n",tf->ebp);
     printf("tf->esi = 0x%x\n",tf->esi);
     printf("tf->edi = 0x%x\n",tf->edi);
+    printf("tf->ef = 0x%x\n",tf->ef);
     printf("-------------------------\n");
     switch (tf->irq) {
       case 0x20: ev.event = _EVENT_IRQ_TIMER; break;
