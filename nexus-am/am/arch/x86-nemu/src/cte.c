@@ -21,7 +21,9 @@ _Context* irq_handle(_Context *tf) {
     printf("tf->eax = 0x%x\n",tf->eax);
 
     printf("tf->irq = 0x%x\n",tf->irq);
-    printf("tf->err = 0x%x\n",tf->err);
+    printf("tf->irq = d %d\n",tf->irq);
+    printf("tf->irq = c %c\n",tf->irq);
+    printf("tf->irq = s %s\n",tf->irq);
 
     printf("tf->eip = 0x%x\n",tf->eip);
     printf("tf-cs = 0x%x\n",tf->cs);
