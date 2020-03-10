@@ -9,13 +9,13 @@
 typedef uint32_t size_t;
 
 struct _Context {
-  //uintptr_t eflags, cs, eip;
-  struct _Protect *prot;
-  uintptr_t esi, ebx, eax, eip, edx, err, eflags, ecx, cs, esp, edi, ebp;
-  //uintptr_t eax, ecx, edx, ebx, pre_esp, ebp, esi, edi;
-  //uintptr_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
+  uintptr_t eflags, cs, eip;
+  //uintptr_t esi, ebx, eax, eip, edx, err, eflags, ecx, cs, esp, edi, ebp;
+  uintptr_t err;
   int irq;
-  //uintptr_t err;
+  uintptr_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
+  struct _Protect *prot;
+  //uintptr_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
   //uintptr_t eip, cs, eflags;
 };
 
