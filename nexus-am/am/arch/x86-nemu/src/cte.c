@@ -11,20 +11,21 @@ _Context* irq_handle(_Context *tf) {
   if (user_handler) {
     _Event ev = {0};
     printf("come into irq_handle!\n");
-    printf("tf->eflags = 0x%x\n",tf->eflags);
-    printf("tf->cs = 0x%x\n",tf->cs);
-    printf("tf->eip = 0x%x\n",tf->eip);
-    printf("tf->err = 0x%x\n",tf->err);
-    printf("tf->irq = 0x%x\n",tf->irq);
-    printf("tf->eax = 0x%x\n",tf->eax);
-    printf("tf->ecx = 0x%x\n",tf->ecx);
-    printf("tf->edx = 0x%x\n",tf->edx);
-    printf("tf->ebx = 0x%x\n",tf->ebx);
-    printf("tf->esp = 0x%x\n",tf->esp);
-    printf("tf->ebp = 0x%x\n",tf->ebp);
-    printf("tf->esi = 0x%x\n",tf->esi);
     printf("tf->edi = 0x%x\n",tf->edi);
-    printf("tf->ef = 0x%x\n",tf->ef);
+    printf("tf->esi = 0x%x\n",tf->esi);
+    printf("tf->ebp = 0x%x\n",tf->ebp);
+    printf("tf->esp = 0x%x\n",tf->esp);
+    printf("tf->ebx = 0x%x\n",tf->ebx);
+    printf("tf->edx = 0x%x\n",tf->edx);
+    printf("tf->ecx = 0x%x\n",tf->ecx);
+    printf("tf->eax = 0x%x\n",tf->eax);
+
+    printf("tf->irq = 0x%x\n",tf->irq);
+    printf("tf->err = 0x%x\n",tf->err);
+
+    printf("tf->eip = 0x%x\n",tf->eip);
+    printf("tf-cs = 0x%x\n",tf->cs);
+    printf("tf->eflags = 0x%x\n",tf->eflags);
     printf("-------------------------\n");
     switch (tf->irq) {
       case 0x20: ev.event = _EVENT_IRQ_TIMER; break;
