@@ -11,10 +11,6 @@ _Context* irq_handle(_Context *tf) {
   if (user_handler) {
     _Event ev = {0};
     printf("come into irq_handle!\n");
-    printf("tf->t4 = 0x%x\n",tf->t4);
-    printf("tf->t3 = 0x%x\n",tf->t3);
-    printf("tf->t2 = 0x%x\n",tf->t2);
-    printf("tf->t1 = 0x%x\n",tf->t1);
     printf("tf->edi = 0x%x\n",tf->edi);
     printf("tf->esi = 0x%x\n",tf->esi);
     printf("tf->ebp = 0x%x\n",tf->ebp);
