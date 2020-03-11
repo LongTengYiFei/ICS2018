@@ -22,7 +22,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   printf("dest = 0x%x\n",dest);
   rtl_jr(&dest);
   //TODO();
-  //printf("raise_intr over\n");
+  printf("raise_intr over\n\n");
 }
 
 void dev_raise_intr() {
