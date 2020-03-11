@@ -29,6 +29,7 @@ _Context* irq_handle(_Context *tf) {
 
     printf("tf->eip = 0x%x\n",tf->eip);
     printf("tf-cs = 0x%x\n",tf->cs);
+    printf("sizeof(tf->eflags) = 0x%d\n",sizeof(tf->eflags));
     printf("tf->eflags = 0x%x\n",tf->eflags);
     printf("-------------------------\n");
     switch (tf->irq) {
