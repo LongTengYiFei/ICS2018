@@ -4,6 +4,7 @@ void difftest_skip_ref();
 void difftest_skip_dut();
 
 make_EHelper(lidt) {
+  printf("is 16 %d\n",decoding.is_operand_size_16);
 /*
   printf("come into lidt\n");
   printf("id_dest->addr = 0x%x\n",id_dest->addr);
