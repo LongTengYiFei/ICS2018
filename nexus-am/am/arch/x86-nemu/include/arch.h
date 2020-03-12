@@ -14,7 +14,7 @@ struct _Context {
   uint16_t irq;
   uintptr_t err;
   uintptr_t eip;
-  uint16_t cs;
+  //uint16_t cs;
   uintptr_t eflags;
 };
 
