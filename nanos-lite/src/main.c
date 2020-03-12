@@ -28,7 +28,7 @@ int main() {
   init_proc();
 
 #ifdef HAS_CTE
-  printf("pending yeild\n");
+  //printf("pending yeild\n");
   _yield();
 #endif
 
