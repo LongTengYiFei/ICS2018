@@ -15,6 +15,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   
   t0 = cpu.idtr.base;
   //one GD is 8 bytes
+  //zhu yi!!
   uint32_t offset_low = vaddr_read(t0 + NO*8, 2);
   uint32_t offset_high = vaddr_read(t0 + NO*8 + 6, 2);
   
