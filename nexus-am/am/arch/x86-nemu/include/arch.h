@@ -13,6 +13,7 @@ struct _Context {
   uintptr_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
   int       irq;
   uintptr_t err, eip, cs, eflags;
+  uintptr_t pre_esp;
 };
 
 #define GPR1 eax
