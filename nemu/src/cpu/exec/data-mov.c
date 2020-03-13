@@ -72,8 +72,8 @@ make_EHelper(pusha) {
   rtl_push(&t1);
 //  TODO();
 
-  printf("pusha over!\n");
-  printf("\n");
+  //printf("pusha over!\n");
+  //printf("\n");
   print_asm("pusha");
 }
 
