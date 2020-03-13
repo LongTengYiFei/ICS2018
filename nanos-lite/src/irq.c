@@ -1,9 +1,8 @@
 #include "common.h"
 
 static _Context* do_event(_Event e, _Context* c) {
-  //printf("do_event() begin! e.event = %d\n",e.event);
   switch (e.event) {
-    case _EVENT_YIELD : printf("do_event : yield!!\n");
+    case _EVENT_YIELD : printf("do_event : yield!!\n");break;
     default: panic("Unhandled event ID = %d", e.event);
   }
 
