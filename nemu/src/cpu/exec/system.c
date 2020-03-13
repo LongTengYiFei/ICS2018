@@ -60,10 +60,14 @@ make_EHelper(int) {/*
 
 make_EHelper(iret) {
   printf("come into iret\n");  
-  rtl_pop(&t0);
-  printf("t0 = 0x%x\n",t0);
-  TODO();
+  rtl_pop(&t0);//eip
+  rtl_pop(&t1);//cs
+  rtl_pop(&t2);//eflags
 
+  cpu.cs = t1;
+  cpu.eflags.value = t2;
+  rtl_j(t0);
+  //TODO();
   print_asm("iret");
 }
 
