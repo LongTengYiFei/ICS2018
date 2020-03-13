@@ -43,8 +43,8 @@ make_EHelper(pop) {
 }
 
 make_EHelper(pusha) {
-  printf("come into pusha!\n");
-  t0 = cpu.esp;
+  //printf("come into pusha!\n");
+  t0 = cpu.esp;/*
   printf("cpu.esp = 0x%x\n",cpu.esp);
   printf("cpu.eax = 0x%x\n",cpu.eax);
   printf("cpu.ecx = 0x%x\n",cpu.ecx);
@@ -52,7 +52,7 @@ make_EHelper(pusha) {
   printf("cpu.ebx = 0x%x\n",cpu.ebx);
   printf("cpu.ebp = 0x%x\n",cpu.ebp);
   printf("cpu.esi = 0x%x\n",cpu.esi);
-  printf("cpu.edi = 0x%x\n",cpu.edi);
+  printf("cpu.edi = 0x%x\n",cpu.edi);*/
   t1 = cpu.eax;
   rtl_push(&t1);
   t1 = cpu.ecx;
