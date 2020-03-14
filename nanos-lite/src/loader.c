@@ -5,6 +5,8 @@
 static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("come into loader!\n");
   printf("ramdisk size = %d\n",get_ramdisk_size());
+  char *buf = NULL;
+  ramdisk_read(buf, 0, get_ramdisk_size());
   printf("loader over!\n");
   printf("\n");
   TODO();
