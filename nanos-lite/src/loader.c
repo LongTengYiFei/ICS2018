@@ -7,8 +7,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("ramdisk size = %d\n",get_ramdisk_size());
   char buf;
   //int ramdisk_size = get_ramdisk_size();
-  ramdisk_read(&buf, 0, 1);
-  ramdisk_read(&buf, 1, 1);
+  ramdisk_read(&buf, 8, 1);
   printf("buf = %d\n",buf);
   printf("loader over!\n");
   printf("\n");
