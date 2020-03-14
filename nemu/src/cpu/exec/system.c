@@ -59,7 +59,6 @@ make_EHelper(int) {/*
 }
 
 make_EHelper(iret) {
-  printf("come into iret\n");  
   rtl_pop(&t0);//eip
   rtl_pop(&t1);//cs
   rtl_pop(&t2);//eflags

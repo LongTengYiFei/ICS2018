@@ -10,6 +10,8 @@
 #include "debug.h"
 
 typedef char bool;
+void naive_uload();
+size_t get_ramdisk_size();
 #define true 1
 #define false 0
 
