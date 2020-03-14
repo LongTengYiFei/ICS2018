@@ -8,8 +8,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   char *buf = NULL;
   ramdisk_read(buf, 0, get_ramdisk_size());
   printf("buf[0] = %d\n", buf[0]);
-  printf("buf[1] = %d\n", buf[1]);
-  printf("buf[2] = %d\n", buf[2]);
+  printf("buf[1] = %d\n", *(buf + 1));
+  printf("buf[2] = %d\n", *(buf + 2));
   printf("loader over!\n");
   printf("\n");
   TODO();
