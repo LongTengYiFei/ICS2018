@@ -5,12 +5,10 @@
 static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("come into loader!\n");
   printf("ramdisk size = %d\n",get_ramdisk_size());
-  char *buf = NULL;
   int ramdisk_size = get_ramdisk_size();
-  ramdisk_read(buf, 0, ramdisk_size);
- /* 
-  for(int i=0;i<=ramdisk_size-1;i++)
-	  vaddr_write(0x4000000 + i, *(buf+i), 1);*/
+  
+  ramdisk_read(DEFAULT_ENTRY, 0, ramdisk_size);
+	  
   printf("loader over!\n");
   printf("\n");
   //TODO();
