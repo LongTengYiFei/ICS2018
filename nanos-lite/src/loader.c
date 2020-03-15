@@ -8,11 +8,12 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   char *buf = NULL;
   int ramdisk_size = get_ramdisk_size();
   ramdisk_read(buf, 0, ramdisk_size);
-  printf("buf = %d\n",*buf);
-  printf("buf = %d\n",*(buf+7));
+ /* 
+  for(int i=0;i<=ramdisk_size-1;i++)
+	  vaddr_write(0x4000000 + i, *(buf+i), 1);*/
   printf("loader over!\n");
   printf("\n");
-  TODO();
+  //TODO();
   return DEFAULT_ENTRY;
 }
 
