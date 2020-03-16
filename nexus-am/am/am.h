@@ -18,12 +18,12 @@ extern "C" {
 
 enum {
   _EVENT_NULL = 0,
-  _EVENT_ERROR,
+  _EVENT_ERROR,//1
   _EVENT_IRQ_TIMER,
   _EVENT_IRQ_IODEV,
   _EVENT_PAGEFAULT,
   _EVENT_YIELD,//5
-  _EVENT_SYSCALL,
+  _EVENT_SYSCALL,//6
 };
 
 #define _PROT_NONE   1    // no access
