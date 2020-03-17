@@ -7,7 +7,7 @@ void vectrap();
 void vecnull();
 
 _Context* irq_handle(_Context *tf) {
-  printf("tf->irq = 0x%x\n",tf->irq);
+  printf("tf->irq = 0x%d\n",tf->irq);
   _Context *next = tf;
   if (user_handler) {
     _Event ev = {0};
