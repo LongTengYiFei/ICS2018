@@ -18,9 +18,9 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   //one GD is 8 bytes
   //zhu yi!!
   uint32_t offset_low = vaddr_read(t0 + NO*8, 2);
-  uint32_t offset_high = vaddr_read(t0 + NO*8 + 6, 2);
+  uint32_t offset_high = vaddr_read(t0 + NO*8 + 4, 4);
   
-  offset_high = offset_high << 16;
+  offset_high = offset_high & 0xffff0000;
   uint32_t dest = offset_high + offset_low;
   //printf("dest = 0x%x\n",dest);
   rtl_jr(&dest);

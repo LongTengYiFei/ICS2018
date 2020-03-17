@@ -49,9 +49,7 @@ make_EHelper(int) {/*
   printf("decoding.seq_eip = 0x%x\n",decoding.seq_eip);*/
   uint8_t NO = id_dest->val;
   //printf("NO is 0x%x\n",NO);
-  printf("*eip = 0x%x\n",*eip);
-  printf("seq_eip = 0x%x\n",decoding.seq_eip);
-  raise_intr(NO, *eip);
+  raise_intr(NO, decoding.seq_eip);
   //printf("int over\n");
   //TODO();
   print_asm("int %s", id_dest->str);
