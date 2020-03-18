@@ -9,13 +9,13 @@ _Context* do_syscall(_Context *c) {
   // i add this
   a[1] = c->GPR2;
   a[2] = c->GPR3;
-  a[3] = c->GPR4;
+  a[3] = c->GPR4;/*
   printf("come into do syscall!\n");
   printf("a[0] = 0x%x\n",a[0]);
   printf("a[1] = 0x%x\n",a[1]);
   printf("a[2] = 0x%x\n",a[2]);
   printf("a[3] = 0x%x\n",a[3]);
-  printf("\n");
+  printf("\n");*/
   switch (a[0]) {
     case SYS_yield: c->GPR1 = sys_yield();break;
     case SYS_exit: sys_exit(a[1]); break;
