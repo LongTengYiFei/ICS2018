@@ -28,6 +28,7 @@ int main() {
   printf("init_fs over\n\n");
 
   init_proc();
+  printf("init_proc over\n\n");
 
 #ifdef HAS_CTE
   //printf("pending yeild\n");
