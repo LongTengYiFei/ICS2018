@@ -22,8 +22,10 @@ int main() {
 #ifdef HAS_CTE
   init_irq();
 #endif
+  printf("init_irq over\n\n");
 
   init_fs();
+  printf("init_fs over\n\n");
 
   init_proc();
 
