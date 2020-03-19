@@ -6,7 +6,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
    * That is, use ``NO'' to index the IDT.
    */
   	
-  //printf("come into raise_intr\n");
+  printf("come into raise_intr\n");
   //printf("NO is 0x%x\n",NO);
   rtl_push(&cpu.eflags.value);
   cpu.eflags.IF = 0;
