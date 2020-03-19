@@ -2,8 +2,8 @@
 #define __SYSCALL_H__
 
 enum {
-  SYS_exit,
-  SYS_yield,
+  SYS_exit,//0
+  SYS_yield,//1
   SYS_open,
   SYS_read,
   SYS_write,
