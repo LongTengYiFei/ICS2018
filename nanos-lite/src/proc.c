@@ -20,7 +20,7 @@ void hello_fun(void *arg) {
 }
 
 void init_proc() {
-     //naive_uload(NULL, NULL);
+     naive_uload(NULL, NULL);
      //printf("naive_uload over\n\n");
 }
 
