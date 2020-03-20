@@ -31,7 +31,6 @@ int main() {
   printf("init_proc over\n\n");
 
 #ifdef HAS_CTE
-  //printf("pending yeild\n");
   _yield();
 #endif
 
