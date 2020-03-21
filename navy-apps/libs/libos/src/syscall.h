@@ -6,7 +6,7 @@ enum {
   SYS_yield,//1
   SYS_open,
   SYS_read,
-  SYS_write,
+  SYS_write,//4
   SYS_kill,
   SYS_getpid,
   SYS_close,
