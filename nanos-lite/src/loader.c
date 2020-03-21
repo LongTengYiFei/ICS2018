@@ -3,7 +3,7 @@
 #define DEFAULT_ENTRY 0x4000000
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
-  int ramdisk_size = get_ramdisk_size();
+  size_t ramdisk_size = get_ramdisk_size();
   ramdisk_read((void *)DEFAULT_ENTRY, 0, ramdisk_size);
   return DEFAULT_ENTRY;
 }
