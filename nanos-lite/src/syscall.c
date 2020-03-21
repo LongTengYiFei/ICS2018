@@ -3,6 +3,7 @@
 #include "proc.h"
 uintptr_t sys_yield();
 void sys_exit(int exit_code);
+
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];
   a[0] = c->GPR1;
@@ -21,7 +22,6 @@ _Context* do_syscall(_Context *c) {
   switch (a[0]) {
     case SYS_exit: sys_exit(a[0]); break;
     case SYS_yield: c->GPR1 = sys_yield();break;
-    case SYS_write:  break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
