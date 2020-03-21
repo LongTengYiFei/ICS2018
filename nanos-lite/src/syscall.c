@@ -1,5 +1,6 @@
 #include "common.h"
 #include "syscall.h"
+#include "proc.h"
 uintptr_t sys_yield();
 void sys_exit(int exit_code);
 
