@@ -34,6 +34,7 @@ int _open(const char *path, int flags, mode_t mode) {
 }
 
 int _write(int fd, void *buf, size_t count){
+  printf("SYS_write = %d\n\n",SYS_write);
   _exit(SYS_write);  
   return 0;
 }
