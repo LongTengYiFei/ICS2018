@@ -1,16 +1,21 @@
 #include "proc.h"
-
+#include "fs.h"
 #define DEFAULT_ENTRY 0x4000000
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
-  size_t ramdisk_size = get_ramdisk_size();
-  ramdisk_read((void *)DEFAULT_ENTRY, 0, ramdisk_size);
-  return DEFAULT_ENTRY;
+  uint32_t entry = 0;
+  //we can ignore the flags and mode
+  int fd = fs_open(filename, 0, 0);
+  printf("come into loader\n");
+  printf("filename is %s\n",filename);
+  printf("fd  = %d\n",fd);
+
+  assert(0);
+  return entry;
 }
 
 void naive_uload(PCB *pcb, const char *filename) { 
   uintptr_t entry = loader(pcb, filename);
-  printf("entry = 0x%x\n\n",entry);
   ((void(*)())entry) ();
 }
 
