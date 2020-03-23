@@ -64,8 +64,6 @@ size_t fs_read(int fd, void*buf, size_t len){
   size_t fs_size = fs_filesz(fd);
   size_t disk_off = file_table[fd].disk_offset;
   size_t open_off = file_table[fd].open_offset; 
-  printf("disk off = %x\n",disk_off);
-  printf("open off = %x\n",open_off);
   if(open_off >= fs_size)
 	  return 0;
   if(open_off + len > fs_size)
