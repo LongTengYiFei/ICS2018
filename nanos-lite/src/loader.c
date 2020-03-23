@@ -6,8 +6,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   uint32_t entry = 0;
   //we can ignore the flags and mode
   int fd = fs_open(filename, 0, 0);
-  fs_read(fd, (void*)DEFAULT_ENTRY, fs_filesz(fd));//all of this file
-  fs_close(fd);
+  printf("fd = %d\n",fd);
+  assert(0);
+  //fs_read(fd, (void*)DEFAULT_ENTRY, fs_filesz(fd));//all of this file
+  //fs_close(fd);
   return entry;
 }
 
