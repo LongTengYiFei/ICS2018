@@ -9,8 +9,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("fd = %d\n",fd);
   size_t len = fs_read(fd, (void*)DEFAULT_ENTRY, fs_filesz(fd));//all of this file
   printf("len = %d\n",len);
-  //fs_close(fd);
-  assert(0);
+  fs_close(fd);
   return entry;
 }
 
