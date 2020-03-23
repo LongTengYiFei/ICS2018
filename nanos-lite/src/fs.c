@@ -56,6 +56,27 @@ int fs_close(int fd){
   return 0;
 }
 
+size_t fs_filesz(int fd){
+	return file_table[fd].size;
+}
+
+size_t fs_read(int fd, void*buf, size_t len){
+  size_t fs_size = fs_filesz(fd);
+  size_t disk_off = file_table[fd].disk_offset;
+  size_t open_off = file_table[fd].open_offset; 
+
+  if(open_off >= fs_size)
+	  return 0;
+  if(open_off + len > fs_size)
+	  len = fs_size - open_off;
+
+  ramdisk_read(buf, disk_off + open_off, len);  
+  file_table[fd].open_offset += len;
+
+  return len; 
+}
+
+
 void init_fs() {
   // TODO: initialize the size of /dev/fb
 }
