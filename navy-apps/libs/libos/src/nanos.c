@@ -8,7 +8,6 @@
 
 #if defined(__ISA_X86__)
 intptr_t _syscall_(int type, intptr_t a0, intptr_t a1, intptr_t a2){
-  //printf("come into syscall\n");
   int ret = -1;
   asm volatile("int $0x80": "=a"(ret): "a"(type), "b"(a0), "c"(a1), "d"(a2));
   return ret;
@@ -33,7 +32,7 @@ int _open(const char *path, int flags, mode_t mode) {
   return 0;
 }
 
-extern int _write(int fd, void *buf, size_t count){
+int _write(int fd, void *buf, size_t count){
   return _syscall_(SYS_write, fd, (uintptr_t)buf, count);
 }
 

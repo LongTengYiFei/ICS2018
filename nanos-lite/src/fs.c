@@ -78,9 +78,14 @@ size_t fs_read(int fd, void*buf, size_t len){
   return len; 
 }
 
-size_t fs_write(int fd, const void*buf, size_t len){
+size_t fs_write(int fd, void*buf, size_t len){
 
-
+        char *tmp = buf;
+        if(fd == FD_STDOUT)
+	    for(int i=0;i<=len-1;i++)
+		    _putc(*(tmp++));
+	    
+        else assert(0);
 return 0;
 }
 
