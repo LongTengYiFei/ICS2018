@@ -79,13 +79,24 @@ size_t fs_read(int fd, void*buf, size_t len){
 }
 
 size_t fs_write(int fd, void*buf, size_t len){
-        char *tmp = buf;
-        if(fd == FD_STDOUT)
-	    for(int i=0;i<=len-1;i++)
-		    _putc(*(tmp++));
-	    
-        else assert(0);
-return 0;
+  size_t fs_size = fs_filesz(fd);
+  char *tmp = buf;
+  switch(fd){
+    case FD_STDOUT:
+         for(int i=0;i<=len-1;i++)
+             _putc(*(tmp++));
+         break;
+
+    default:     
+           if(file_table[fd].open_offset >= fs_size)
+	      return 0;
+           if(file_table[fd].open_offset + len > fs_size)
+	      len = fs_size - file_table[fd].open_offset;
+           ramdisk_write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);  
+           file_table[fd].open_offset += len;
+	   break;
+  }
+  return len;
 }
 
 size_t fs_lseek(int fd, size_t offset, int whence){
