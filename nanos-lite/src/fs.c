@@ -79,7 +79,6 @@ size_t fs_read(int fd, void*buf, size_t len){
 }
 
 size_t fs_write(int fd, void*buf, size_t len){
-
         char *tmp = buf;
         if(fd == FD_STDOUT)
 	    for(int i=0;i<=len-1;i++)
@@ -89,6 +88,10 @@ size_t fs_write(int fd, void*buf, size_t len){
 return 0;
 }
 
+size_t fs_lseek(int fd, size_t offset, int whence){
+return 0;
+
+}
 void init_fs() {
   // TODO: initialize the size of /dev/fb
 }
