@@ -78,6 +78,11 @@ size_t fs_read(int fd, void*buf, size_t len){
   return len; 
 }
 
+size_t fs_write(int fd, const void*buf, size_t len){
+
+
+return 0;
+}
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
