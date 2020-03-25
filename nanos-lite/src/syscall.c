@@ -5,6 +5,7 @@
 uintptr_t sys_yield();
 void sys_exit(int exit_code);
 uintptr_t sys_write(int fd,  void* buf, size_t len);
+
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];
   a[0] = c->GPR1;
