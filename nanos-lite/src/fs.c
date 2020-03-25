@@ -109,8 +109,11 @@ size_t fs_lseek(int fd, size_t offset, int whence){
                  }
 		 break;
 	 case SEEK_CUR:
-		 file_table[fd].open_offset += offset;
-		 result = file_table[fd].open_offset;
+		 if((offset + file_table[fd].open_offset >= 0) && (offset + file_table[fd].open_offset <=fs_filesz(fd)))
+		 {
+			 file_table[fd].open_offset += offset;
+		         result = file_table[fd].open_offset;
+		 }
 	        break;
 	 case SEEK_END:
 		 file_table[fd].open_offset = offset + fs_filesz(fd);
