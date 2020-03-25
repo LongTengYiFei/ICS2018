@@ -11,7 +11,7 @@ enum {
   SYS_getpid,
   SYS_close,
   SYS_lseek,
-  SYS_brk,
+  SYS_brk,//9
   SYS_fstat,
   SYS_time,
   SYS_signal,
