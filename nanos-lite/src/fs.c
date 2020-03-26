@@ -113,7 +113,7 @@ size_t fs_lseek(int fd, size_t offset, int whence){
 	        break;
 	 case SEEK_END:
 		 file_table[fd].open_offset = offset + fs_filesz(fd);
-		 result = offset;
+		 result = file_table[fd].open_offset;
 	        break;	
    }
    return result;
