@@ -14,6 +14,7 @@ void naive_uload();
 size_t get_ramdisk_size();
 size_t ramdisk_read();
 size_t ramdisk_write();
+size_t serial_write(const void *buf, size_t offset, size_t len) ;
 #define true 1
 #define false 0
 
