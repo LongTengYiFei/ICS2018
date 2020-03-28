@@ -81,6 +81,7 @@ size_t fs_read(int fd, void*buf, size_t len){
 		 len = fs_size - file_table[fd].open_offset;
              file_table[fd].read(buf, file_table[fd].open_offset, len);
 	     file_table[fd].open_offset += len;
+	     break;
 	  default:
             if(file_table[fd].open_offset >= fs_size)
 	        return 0;
