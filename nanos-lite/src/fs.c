@@ -68,6 +68,11 @@ size_t fs_filesz(int fd){
 size_t fs_read(int fd, void*buf, size_t len){
   size_t fs_size = fs_filesz(fd);
   switch(fd){
+	  case FD_STDIN:
+	  case FD_STDOUT:
+	  case FD_STDERR:
+	  case FD_FB:
+		  break;
 	  case FD_DISPINFO:
 	    if(file_table[fd].open_offset >= fs_size)
 		 return 0;
