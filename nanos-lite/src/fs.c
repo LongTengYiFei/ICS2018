@@ -105,8 +105,8 @@ size_t fs_write(int fd, void*buf, size_t len){
          for(int i=0;i<=len-1;i++)
              _putc(*(tmp++));
          break;
-    case FD_STDERR:
-	 file_table[fd].write(buf, 0, len);
+    //case FD_STDERR:
+	 //file_table[fd].write(buf, 0, len);
     case FD_DISPINFO:
 	 break;
     case FD_FB:
