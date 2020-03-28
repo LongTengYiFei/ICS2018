@@ -67,15 +67,24 @@ size_t fs_filesz(int fd){
 
 size_t fs_read(int fd, void*buf, size_t len){
   size_t fs_size = fs_filesz(fd);
-  size_t disk_off = file_table[fd].disk_offset;
-  size_t open_off = file_table[fd].open_offset; 
-  if(open_off >= fs_size)
-	  return 0;
-  if(open_off + len > fs_size)
-	  len = fs_size - open_off;
+  switch(fd){
+	  case FD_DISPINFO:
+	    if(file_table[fd].open_offset >= fs_size)
+		 return 0;
+	     if(file_table[fd].open_offset + len > fs_size)
+		 len = fs_size - file_table[fd].open_offset;
+             file_table[fd].read(buf, file_table[fd].open_offset, len);
+	     file_table[fd].open_offset += len;
+	  default:
+            if(file_table[fd].open_offset >= fs_size)
+	        return 0;
+            if(file_table[fd].open_offset + len > fs_size)
+	        len = fs_size - file_table[fd].open_offset;
 
-  ramdisk_read(buf, disk_off + open_off, len);  
-  file_table[fd].open_offset += len;
+            ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);  
+            file_table[fd].open_offset += len;
+	    break;
+  }
   return len; 
 }
 
@@ -87,7 +96,14 @@ size_t fs_write(int fd, void*buf, size_t len){
          for(int i=0;i<=len-1;i++)
              _putc(*(tmp++));
          break;
-
+    case FD_FB:
+	 if(file_table[fd].open_offset >= fs_size)
+		 return 0;
+	 if(file_table[fd].open_offset + len > fs_size)
+		 len = fs_size - file_table[fd].open_offset;
+         file_table[fd].write(buf, file_table[fd].open_offset, len);
+	 file_table[fd].open_offset += len;
+	 break;
     default:     
            if(file_table[fd].open_offset >= fs_size)
 	      return 0;
