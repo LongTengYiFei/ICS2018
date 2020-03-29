@@ -6,6 +6,9 @@
 #include <time.h>
 #include "syscall.h"
 
+extern char _end;
+intptr_t program_break = (intptr_t)&_end;
+
 #if defined(__ISA_X86__)
 intptr_t _syscall_(int type, intptr_t a0, intptr_t a1, intptr_t a2){
   int ret = -1;
