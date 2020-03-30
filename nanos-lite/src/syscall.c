@@ -41,6 +41,9 @@ uintptr_t sys_write(int fd,  void* buf, size_t len){
    return fs_write(fd, buf, len);
 }
 
-size_t sys_brk(void * addr){
+
+//On success, brk() returns zero.  On error, -1 is returned
+int sys_brk(void * addr){
+
     return 0;
 }
