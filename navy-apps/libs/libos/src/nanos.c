@@ -44,12 +44,10 @@ void *_sbrk(intptr_t increment){
   intptr_t ret = program_break_old;
   program_break_old += increment;
 
-  if(_syscall_(SYS_brk, program_break_old, 0, 0) == 0){
+  if(_syscall_(SYS_brk, program_break_old, 0, 0) == 0)
 	  return (void *) ret;
-  }
-  else{
+  else
           return (void *)-1;
-  }
 }
 
 int _read(int fd, void *buf, size_t count) {
