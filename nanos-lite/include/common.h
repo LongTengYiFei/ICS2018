@@ -18,6 +18,7 @@ size_t serial_write(const void *buf, size_t offset, size_t len) ;
 size_t events_read();
 size_t dispinfo_read();
 size_t fb_write();
+int mm_brk();
 #define true 1
 #define false 0
 

@@ -40,3 +40,7 @@ uintptr_t sys_write(int fd,  void* buf, size_t len){
    //printf("come into sys write\n");
    return fs_write(fd, buf, len);
 }
+
+size_t sys_brk(void * addr){
+    return 0;
+}
