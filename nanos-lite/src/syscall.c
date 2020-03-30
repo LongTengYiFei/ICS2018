@@ -37,6 +37,6 @@ void sys_exit(int exit_code){
   _halt(exit_code);
 }
 uintptr_t sys_write(int fd,  void* buf, size_t len){
-   //printf("come into sys write\n");
+   printf("come into sys write\n");
    return fs_write(fd, buf, len);
 }
