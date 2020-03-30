@@ -9,7 +9,7 @@ enum {
   SYS_write,//4
   SYS_kill,
   SYS_getpid,
-  SYS_close,
+  SYS_close,//7
   SYS_lseek,//8
   SYS_brk,//9
   SYS_fstat,
