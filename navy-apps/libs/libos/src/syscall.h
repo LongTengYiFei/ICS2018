@@ -4,7 +4,7 @@
 enum {
   SYS_exit,//0
   SYS_yield,//1
-  SYS_open,
+  SYS_open,//2
   SYS_read,
   SYS_write,//4
   SYS_kill,
