@@ -10,7 +10,7 @@ enum {
   SYS_kill,
   SYS_getpid,
   SYS_close,
-  SYS_lseek,
+  SYS_lseek,//8
   SYS_brk,//9
   SYS_fstat,
   SYS_time,
