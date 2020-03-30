@@ -39,13 +39,13 @@ static Finfo file_table[] __attribute__((used)) = {
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
 
 int fs_open(const char *pathname, int flags, int mode){
-    printf("come into fs_open\n");
+    //printf("come into fs_open\n");
     //we can ignore the flags and mode
     for(int i=0;i<=NR_FILES-1;i++)
        if(strcmp(file_table[i].name, pathname) == 0)
        {       
 	       file_table[i].open_offset = 0;
-	       printf("fs_open i = %d\n",i);
+	       //printf("fs_open i = %d\n",i);
 	       return i; 
        }
     
