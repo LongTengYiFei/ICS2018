@@ -16,10 +16,10 @@ _Context* do_syscall(_Context *c) {
   
   switch (a[0]) {
     case SYS_exit: naive_uload(NULL, "/bin/init"); break;
-    case SYS_yield: c->GPR1 = sys_yield();break;
-    case SYS_write: c->GPR1 = sys_write(a[1], (void*)a[2], a[3]);break;
+    case SYS_yield: c->GPR1 = sys_yield(); break;
+    case SYS_write: c->GPR1 = sys_write(a[1], (void*)a[2], a[3]); break;
     case SYS_brk: c->GPR1 = 0; break; 
-    case SYS_open: c->GPR1 = fs_open((void*)a[1], a[2], a[3]);
+    case SYS_open: c->GPR1 = fs_open((void*)a[1], a[2], a[3]); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
