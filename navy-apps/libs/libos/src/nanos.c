@@ -45,13 +45,13 @@ void *_sbrk(intptr_t increment){
   char buf[40];
   buf[39] = '\0';
   sprintf(buf, "pb=0x%x,inc=%d,&_end=%p\n",program_break, increment, &_end);
-  _write(1, buf, 30);
+  _write(1, buf, 40);
 
   intptr_t old_program_break = program_break;
   if(_syscall_(SYS_brk, old_program_break + increment, 0, 0) == 0){
 	  program_break += increment;
           sprintf(buf, "pb=0x%x,inc=%d\n",program_break, increment);
-          _write(1, buf, 30);
+          _write(1, buf, 40);
 	  return (void *) old_program_break;
   }
   else
