@@ -47,8 +47,7 @@ int fs_open(const char *pathname, int flags, int mode){
 	       file_table[i].open_offset = 0;
 	       //printf("fs_open i = %d\n",i);
 	       return i; 
-       }
-    
+       } 
     //no found
     assert(0);
     return -1;
