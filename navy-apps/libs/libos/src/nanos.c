@@ -40,9 +40,9 @@ extern int _end;
 static intptr_t program_break_old = &_end;
 void *_sbrk(intptr_t increment){
   if(program_break_old = -1) 
-	  program_break_old = &end;
-  program_break_new = program_break_old + increment;
+	  program_break_old = &_end;
 
+  intptr_t program_break_new = program_break_old + increment;
   if(_syscall_(SYS_brk, program_break_new, 0, 0) == 0)
 	  return (void *) program_break_old;
   else
