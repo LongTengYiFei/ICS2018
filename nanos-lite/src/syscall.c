@@ -17,10 +17,8 @@ _Context* do_syscall(_Context *c) {
   switch (a[0]) {
     case SYS_exit: sys_exit(a[1]); break;
     case SYS_yield: c->GPR1 = sys_yield(); break;
-    case SYS_write: c->GPR1 = sys_write(a[1], (void*)a[2], a[3]); break;
-    
-    //On success, brk() returns zero.  On error, -1 is returned
-    case SYS_brk: c->GPR1 = sys_brk(); break; 
+    case SYS_write: c->GPR1 = sys_write(a[1], (void*)a[2], a[3]); break; 
+    case SYS_brk: c->GPR1 = sys_brk(); break; //On success, brk() returns zero.  On error, -1 is returned
     case SYS_open: c->GPR1 = fs_open((void*)a[1], a[2], a[3]); break;
     case SYS_lseek: c->GPR1 = fs_lseek(a[1], a[2], a[3]); break;
     case SYS_read: c->GPR1 = fs_read(a[1], (void*)a[2], a[3]); break;
