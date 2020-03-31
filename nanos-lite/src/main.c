@@ -26,7 +26,9 @@ int main() {
 
   init_fs();
   printf("init_fs over\n\n");
-
+  
+  printf("size of(int) =%d\n",sizeof(int));
+  printf("size of(size_t) =%d\n",sizeof(size_t));
   init_proc();
   printf("init_proc over\n\n");
 
