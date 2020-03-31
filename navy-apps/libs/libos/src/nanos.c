@@ -42,9 +42,12 @@ int _write(int fd, void *buf, size_t count){
 void *_sbrk(intptr_t increment){
   if(program_break == -1)
 	  program_break = &_end;
+  char buf[40];
+  buf[39] = '\0';
+  sprintf(buf, "pb=0x%x, inc=%d, &_end=%p\n",program_break, increment, &_end);
+  _write(1, buf, 30);
 
   intptr_t old_program_break = program_break;
-
   if(_syscall_(SYS_brk, old_program_break + increment, 0, 0) == 0){
 	  //program_break += increment;
 	  return (void *) old_program_break;
