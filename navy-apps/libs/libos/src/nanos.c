@@ -51,7 +51,7 @@ void *_sbrk(intptr_t increment){
   if(_syscall_(SYS_brk, old_program_break + increment, 0, 0) == 0){
 	  program_break += increment;
           sprintf(buf, "pb=0x%x,inc=%d\n",program_break, increment);
-          _write(1, buf, 20);
+          _write(1, buf, 30);
 	  return (void *) old_program_break;
   }
   else
