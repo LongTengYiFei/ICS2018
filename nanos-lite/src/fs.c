@@ -96,15 +96,11 @@ size_t fs_read(int fd, void*buf, size_t len){
 
 size_t fs_write(int fd, void*buf, size_t len){
   size_t fs_size = fs_filesz(fd);
-  char *tmp = buf;
   switch(fd){
     case FD_STDIN:
 	    break;
     case FD_TTY:
     case FD_STDOUT:
-         for(int i=0;i<=len-1;i++)
-             _putc(*(tmp++));
-         break;
     case FD_STDERR:
 	 file_table[fd].write(buf, 0, len);
 	 break;
