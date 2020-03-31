@@ -7,7 +7,7 @@
 #include "syscall.h"
 
 extern char _end;
-static intptr_t program_break = &_end;
+intptr_t program_break = &_end;
 
 #if defined(__ISA_X86__)
 intptr_t _syscall_(int type, intptr_t a0, intptr_t a1, intptr_t a2){
@@ -38,19 +38,23 @@ int _write(int fd, void *buf, size_t count){
   return _syscall_(SYS_write, fd, buf, count);
 }
 
-
+/*
+ *Calling sbrk() with an increment of 0 can be used to find the current location of the program break.
+ * On  success,  sbrk()  returns the previous program break.  (If the break was increased, then this value is a pointer to the start of the newly
+   allocated memory)
+*/
 void *_sbrk(intptr_t increment){
   if(program_break == -1)
 	  program_break = &_end;
   char buf[40];
   buf[39] = '\0';
-  sprintf(buf, "pb=0x%x,inc=%d,&_end=%p\n",program_break, increment, &_end);
+  sprintf(buf, "pb=0x%x,inc=0x%x,&_end=%p\n",program_break, increment, &_end);
   _write(1, buf, 40);
 
   intptr_t old_program_break = program_break;
   if(_syscall_(SYS_brk, old_program_break + increment, 0, 0) == 0){
 	  program_break += increment;
-          sprintf(buf, "pb=0x%x,inc=%d\n",program_break, increment);
+          sprintf(buf, "pb=0x%x,inc=0x%x\n",program_break, increment);
           _write(1, buf, 40);
 	  return (void *) old_program_break;
   }
