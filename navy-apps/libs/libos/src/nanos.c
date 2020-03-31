@@ -36,16 +36,14 @@ int _write(int fd, void *buf, size_t count){
   return _syscall_(SYS_write, fd, (uintptr_t)buf, count);
 }
 
-static intptr_t program_break_old = &end;
+static intptr_t program_break_old = &_end;
 void *_sbrk(intptr_t increment){
-  if(program_break_old = -1) program_break_old = &end;
-  
-  
-  intptr_t ret = program_break_old;
-  program_break_old += increment;
+  if(program_break_old = -1) 
+	  program_break_old = &end;
+  program_break_new = program_break_old + increment;
 
-  if(_syscall_(SYS_brk, program_break_old, 0, 0) == 0)
-	  return (void *) ret;
+  if(_syscall_(SYS_brk, program_break_new, 0, 0) == 0)
+	  return (void *) program_break_old;
   else
           return (void *)-1;
 }
