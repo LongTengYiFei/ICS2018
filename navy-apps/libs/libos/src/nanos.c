@@ -6,8 +6,8 @@
 #include <time.h>
 #include "syscall.h"
 
-extern char _ed;
-static intptr_t program_break = &_ed;
+extern char _end;
+static intptr_t program_break = &_end;
 
 #if defined(__ISA_X86__)
 intptr_t _syscall_(int type, intptr_t a0, intptr_t a1, intptr_t a2){
@@ -41,10 +41,10 @@ int _write(int fd, void *buf, size_t count){
 
 void *_sbrk(intptr_t increment){
   if(program_break == -1)
-	  program_break = &_ed;
+	  program_break = &_end;
   char buf[40];
   buf[39] = '\0';
-  sprintf(buf, "pb=0x%x,inc=%d,&_ed=%p\n",program_break, increment, &_ed);
+  sprintf(buf, "pb=0x%x,inc=%d,&_end=%p\n",program_break, increment, &_end);
   _write(1, buf, 40);
 
   intptr_t old_program_break = program_break;
