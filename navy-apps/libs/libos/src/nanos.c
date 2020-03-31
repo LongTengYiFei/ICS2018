@@ -37,12 +37,14 @@ int _write(int fd, void *buf, size_t count){
 }
 
 extern char _end;
-intptr_t program_break_old = (intptr_t)&_end;
+intptr_t program_break = (intptr_t)&_end;
 
 void *_sbrk(intptr_t increment){
-  intptr_t program_break_new = program_break_old + increment;
-  if(_syscall_(SYS_brk, program_break_new, 0, 0) == 0)
-	  return (void *) program_break_old;
+  intptr_t old_program_break = program_break;
+  if(_syscall_(SYS_brk, old_program_break + increment, 0, 0) == 0){
+	  program_break += increment;
+	  return (void *) old_program_break;
+  }
   else
           return (void *)-1;
 }
