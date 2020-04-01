@@ -23,6 +23,7 @@ static char dispinfo[128] __attribute__((used));
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
         strncpy(buf, dispinfo + offset, len);
+	Log("dispinfo_read:%s offset:%d len:%d",buf, offset, len);
 	return len;
 }
 

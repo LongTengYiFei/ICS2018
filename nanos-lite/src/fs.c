@@ -31,7 +31,7 @@ static Finfo file_table[] __attribute__((used)) = {
   {"stderr", 0, 0, 0, invalid_read, serial_write},
   [FD_FB] = {"/dev/fb", 0, 0, 0, NULL, fb_write},
   [FD_EVENTS] = {"/dev/events", 0, 0, 0, events_read},
-  [FD_DISPINFO] = {"/proc/dispinfo", 128 ,0, 0, dispinfo_read},
+  [FD_DISPINFO] = {"/proc/dispinfo", 128 ,0, 0, dispinfo_read, invalid_write},
   [FD_TTY] = {"/dev/tty", 0, 0, 0, invalid_read, serial_write},
 #include "files.h"
 };
@@ -45,7 +45,7 @@ int fs_open(const char *pathname, int flags, int mode){
        if(strcmp(file_table[i].name, pathname) == 0)
        {       
 	       file_table[i].open_offset = 0;
-	       //printf("fs_open i = %d\n",i);
+	       printf("fs_open i = %d\n",i);
 	       return i; 
        } 
     //no found
@@ -80,6 +80,7 @@ size_t fs_read(int fd, void*buf, size_t len){
 		 len = fs_size - file_table[fd].open_offset;
              file_table[fd].read(buf, file_table[fd].open_offset, len);
 	     file_table[fd].open_offset += len;
+	     Log("Dispinfo read over");
 	     break;
 	  default:
             if(file_table[fd].open_offset >= fs_size)
