@@ -38,12 +38,12 @@ void sys_exit(int exit_code){
 }
 
 uintptr_t sys_write(int fd,  void* buf, size_t len){
-   Log("sys write\n");
+   //Log("sys write\n");
    return fs_write(fd, buf, len);
 }
 
 int sys_brk(){
-    Log("sys_brk");
+    //Log("sys_brk");
     return 0;
 }
 

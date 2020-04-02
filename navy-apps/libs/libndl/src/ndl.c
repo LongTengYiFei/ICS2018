@@ -12,6 +12,7 @@ static void get_display_info();
 static int canvas_w, canvas_h, screen_w, screen_h, pad_x, pad_y;
 
 int NDL_OpenDisplay(int w, int h) {
+  //printf("come into opendis\n");
   if (!canvas) {
     NDL_CloseDisplay();
   }
@@ -31,7 +32,9 @@ int NDL_OpenDisplay(int w, int h) {
     printf("\033[X%d;%ds", w, h); fflush(stdout);
     evtdev = stdin;
   } else {
+    //printf("pending disinfo\n");
     get_display_info();
+    //printf("get_display info over\n");
     assert(screen_w >= canvas_w);
     assert(screen_h >= canvas_h);
     pad_x = (screen_w - canvas_w) / 2;
@@ -127,10 +130,13 @@ int NDL_WaitEvent(NDL_Event *event) {
 
 static void get_display_info() {
   FILE *dispinfo = fopen("/proc/dispinfo", "r");
+  //printf("file open over\n");
   assert(dispinfo);
   screen_w = screen_h = 0;
   char buf[128], key[128], value[128], *delim;
   while (fgets(buf, 128, dispinfo)) {
+    //printf("buf = %s\n",buf);
+    //printf("sizeof(buf) = %d\n",sizeof(buf));
     *(delim = strchr(buf, ':')) = '\0';
     sscanf(buf, "%s", key);
     sscanf(delim + 1, "%s", value);

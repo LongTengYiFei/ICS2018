@@ -45,7 +45,7 @@ int fs_open(const char *pathname, int flags, int mode){
        if(strcmp(file_table[i].name, pathname) == 0)
        {       
 	       file_table[i].open_offset = 0;
-	       printf("fs_open i = %d\n",i);
+	       //printf("fs_open i = %d\n",i);
 	       return i; 
        } 
     //no found
@@ -73,14 +73,16 @@ size_t fs_read(int fd, void*buf, size_t len){
 	  case FD_STDERR:
 	  case FD_FB:
 		  break;
+	  case FD_EVENTS:
+             len =  file_table[fd].read(buf,0 , len);
+	     break;
 	  case FD_DISPINFO:
-	    if(file_table[fd].open_offset >= fs_size)
+	     if(file_table[fd].open_offset >= fs_size)
 		 return 0;
 	     if(file_table[fd].open_offset + len > fs_size)
 		 len = fs_size - file_table[fd].open_offset;
              file_table[fd].read(buf, file_table[fd].open_offset, len);
 	     file_table[fd].open_offset += len;
-	     Log("Dispinfo read over");
 	     break;
 	  default:
             if(file_table[fd].open_offset >= fs_size)

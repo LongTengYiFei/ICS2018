@@ -22,13 +22,13 @@ int main() {
 #ifdef HAS_CTE
   init_irq();
 #endif
-  printf("init_irq over\n\n");
+  Log("init_irq over");
 
   init_fs();
-  printf("init_fs over\n\n");
+  Log("init_fs over");
   
   init_proc();
-  printf("init_proc over\n\n");
+  Log("init_proc over");
 
 #ifdef HAS_CTE
   _yield();
