@@ -1,5 +1,6 @@
 #include "fs.h"
 #include "string.h"
+#include "stdlib.h"
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
 
@@ -30,7 +31,7 @@ static Finfo file_table[] __attribute__((used)) = {
   {"stdout", 0, 0, 0, invalid_read, serial_write},
   {"stderr", 0, 0, 0, invalid_read, serial_write},
   [FD_FB] = {"/dev/fb", 0, 0, 0, NULL, fb_write},
-  [FD_EVENTS] = {"/dev/events", 0, 0, 0, events_read},
+  [FD_EVENTS] = {"/dev/events", 0, 0, 0, events_read,invalid_write},
   [FD_DISPINFO] = {"/proc/dispinfo", 128 ,0, 0, dispinfo_read, invalid_write},
   [FD_TTY] = {"/dev/tty", 0, 0, 0, invalid_read, serial_write},
 #include "files.h"
@@ -74,9 +75,11 @@ size_t fs_read(int fd, void*buf, size_t len){
 	  case FD_FB:
 		  break;
 	  case FD_EVENTS:
-             len =  file_table[fd].read(buf,0 , len);
+	     //Log("strlen(buf) = %d",strlen(buf));
+             len =  file_table[fd].read(buf, 0, len);
 	     break;
 	  case FD_DISPINFO:
+	     //Log("strlen(buf) = %d",strlen(buf));
 	     if(file_table[fd].open_offset >= fs_size)
 		 return 0;
 	     if(file_table[fd].open_offset + len > fs_size)

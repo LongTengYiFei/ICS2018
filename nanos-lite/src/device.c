@@ -1,6 +1,5 @@
 #include "common.h"
 #include <amdev.h>
-
 size_t serial_write(const void *buf, size_t offset, size_t len) {
   for(int i =0;i<=len-1;i++)
 	  _putc(((char *)buf)[i]);
@@ -23,17 +22,35 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   down = true;
    }
    if(key == _KEY_NONE){
-	   unsigned long t = uptime();
-	   sprintf(buf, "time %u\n", t);
-   
+	   uint32_t t = uptime();
+	   /*strncpy(buf, "t ",2);
+           char tmp[10];
+	   int i=0;
+	   while(t%10 !=0)
+	   {
+	      tmp[i] = t%10 + '0';
+	      i++;
+	      t /= 10; 
+	   }
+	   i--;
+	   int j=0;
+	   for(;i>=0;i--){
+	      strncpy(buf +2 +j, tmp+i, 1);
+	      j++;
+	   }
+	   strncpy(buf +strlen(buf), "\n", 1);*/
+	   Log("strlen(buf) = %d",strlen(buf));
+	   sprintf(buf, "t %d\n",t);
    }else
 	   sprintf(buf, "%s %s\n",down ? "kd": "ku", keyname[key]);
+   
    return strlen(buf);
 }
 
 static char dispinfo[128] __attribute__((used));
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
+	//Log("strlen(buf) = %d\n",strlen(buf));
         strncpy(buf, dispinfo + offset, len);
 	//Log("dispinfo_read:%s offset:%d len:%d",buf, offset, len);
 	return len;
