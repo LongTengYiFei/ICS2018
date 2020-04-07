@@ -13,7 +13,11 @@ int printf(const char *fmt, ...) {
   _putc('e');
   _putc('n');
   _putc('=');
-  _putc(strlen(fmt));
+  int fmtlen = strlen(fmt);
+  while(fmtlen != 0){
+    _putc('0'+fmtlen%10); 
+    fmtlen/=10;
+  }  
   //----------
   va_list args;
   va_start(args,fmt);
