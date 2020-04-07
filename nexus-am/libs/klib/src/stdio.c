@@ -25,7 +25,11 @@ int printf(const char *fmt, ...) {
   }*/ 
   for(int i=0;;i++)
 	if(buff[i] != '\0')
-	      _putc(buff[i]);
+	{
+		_putc(i);
+		_putc('\n');
+		_putc(buff[i]);
+	}
         else break;  
   return 0;
 }
