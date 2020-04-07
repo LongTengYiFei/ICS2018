@@ -6,6 +6,14 @@
 int printf(const char *fmt, ...) {
   
   char buff[100];
+  _putc('f');
+  _putc('m');
+  _putc('t');
+  _putc('l');
+  _putc('e');
+  _putc('n');
+  _putc('=');
+  _putc(strlen(fmt));
   //----------
   va_list args;
   va_start(args,fmt);
@@ -26,8 +34,6 @@ int printf(const char *fmt, ...) {
   for(int i=0;;i++)
 	if(buff[i] != '\0')
 	{
-		_putc(i);
-		_putc('\n');
 		_putc(buff[i]);
 	}
         else break;  
