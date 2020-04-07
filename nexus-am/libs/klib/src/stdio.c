@@ -4,6 +4,7 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
+  _putc('p');
   char buff[100];
   //----------
   va_list args;
