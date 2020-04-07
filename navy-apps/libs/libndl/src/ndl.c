@@ -93,7 +93,6 @@ static const char *keys[] = {
 
 int NDL_WaitEvent(NDL_Event *event) {
   char buf[256], *p = buf, ch;
-
   while (1) {
     while ((ch = getc(evtdev)) != -1) {
       *p ++ = ch;

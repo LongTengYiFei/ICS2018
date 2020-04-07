@@ -76,10 +76,13 @@ size_t fs_read(int fd, void*buf, size_t len){
 		  break;
 	  case FD_EVENTS:
 	     //Log("strlen(buf) = %d",strlen(buf));
+	     //Log("buf = %s",buf);
              len =  file_table[fd].read(buf, 0, len);
 	     break;
 	  case FD_DISPINFO:
 	     //Log("strlen(buf) = %d",strlen(buf));
+	     //Log("*buf = %s",buf);
+	     //Log("buf = 0x%x",buf);
 	     if(file_table[fd].open_offset >= fs_size)
 		 return 0;
 	     if(file_table[fd].open_offset + len > fs_size)
