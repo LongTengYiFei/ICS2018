@@ -17,10 +17,12 @@ int printf(const char *fmt, ...) {
   _putc('e');
   _putc('n');
   _putc('=');
+  _putc(len);
+  /*
   while(len != 0){
     _putc('0'+len%10); 
     len/=10;  
-  } 
+  }*/ 
   for(int i=0;;i++)
 	if(buff[i] != '\0')
 	      _putc(buff[i]);
