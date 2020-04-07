@@ -1,10 +1,10 @@
 #include "klib.h"
 #include <stdarg.h>
-
+#include <stdlib.h>
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
-  _putc('p');
+  
   char buff[100];
   //----------
   va_list args;
@@ -12,6 +12,15 @@ int printf(const char *fmt, ...) {
   vsprintf(buff,fmt, args);
   va_end(args);
   //----------
+  int len = strlen(buff);
+  _putc('l');
+  _putc('e');
+  _putc('n');
+  _putc('=');
+  while(len != 0){
+    _putc('0'+len%10); 
+    len/=10;  
+  } 
   for(int i=0;;i++)
 	if(buff[i] != '\0')
 	      _putc(buff[i]);
