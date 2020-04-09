@@ -47,7 +47,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   */
 	   //Log("buf's value = 0x%x",buf);
 	   //Log("strlen(buf) = %d",strlen(buf));
-	   Log("sizeof(buf) = %d",sizeof(buf));
+	   //Log("sizeof(buf) = %d",sizeof(buf));
 	   sprintf(buf, "t %d\n",t);
    }else{
 	   /*

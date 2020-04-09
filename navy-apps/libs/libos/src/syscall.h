@@ -15,7 +15,7 @@ enum {
   SYS_fstat,
   SYS_time,
   SYS_signal,
-  SYS_execve,
+  SYS_execve,//13
   SYS_fork,
   SYS_link,
   SYS_unlink,
