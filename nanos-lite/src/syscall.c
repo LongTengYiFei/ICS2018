@@ -45,6 +45,7 @@ void sys_exit(int exit_code){
 
 uintptr_t sys_write(int fd,  void* buf, size_t len){
    //Log("len = %d",len);
+   Log("sys write");
    return fs_write(fd, buf, len);
 }
 
