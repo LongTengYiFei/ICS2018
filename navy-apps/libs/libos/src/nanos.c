@@ -6,8 +6,6 @@
 #include <time.h>
 #include "syscall.h"
 
-extern char _end;
-intptr_t program_break = &_end;
 
 #if defined(__ISA_X86__)
 intptr_t _syscall_(int type, intptr_t a0, intptr_t a1, intptr_t a2){
@@ -43,6 +41,8 @@ int _write(int fd, void *buf, size_t count){
  * On  success,  sbrk()  returns the previous program break.  (If the break was increased, then this value is a pointer to the start of the newly
    allocated memory)
 */
+extern char _end;
+static intptr_t program_break = (intptr_t)&_end;
 void *_sbrk(intptr_t increment){
   if(program_break == -1)
 	  program_break = &_end;
