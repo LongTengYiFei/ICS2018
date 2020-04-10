@@ -50,7 +50,7 @@ uintptr_t sys_write(int fd,  void* buf, size_t len){
 }
 
 int sys_brk(){
-    //Log("sys_brk");
+    Log("sys_brk");
     return 0;
 }
 
