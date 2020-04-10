@@ -5,7 +5,7 @@
 int printf(const char *fmt, ...) {
   
   char buff[100];
-  
+/*  
   _putc('f');
   _putc('m');
   _putc('t');
@@ -18,7 +18,7 @@ int printf(const char *fmt, ...) {
     _putc('0'+fmtlen%10); 
     fmtlen/=10;
   }  
-  
+  */
   //----------
   va_list args;
   va_start(args,fmt);
