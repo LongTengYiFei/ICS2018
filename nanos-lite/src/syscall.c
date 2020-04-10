@@ -14,7 +14,7 @@ _Context* do_syscall(_Context *c) {
   a[1] = c->GPR2;
   a[2] = c->GPR3;
   a[3] = c->GPR4;
-  
+ 
   switch (a[0]) {
     case SYS_exit: naive_uload(NULL, "/bin/init"); break;
     case SYS_yield: c->GPR1 = sys_yield(); break;
@@ -44,7 +44,7 @@ void sys_exit(int exit_code){
 }
 
 uintptr_t sys_write(int fd,  void* buf, size_t len){
-   Log("len = %d",len);
+   //Log("len = %d",len);
    //Log("sys write");
    return fs_write(fd, buf, len);
 }
