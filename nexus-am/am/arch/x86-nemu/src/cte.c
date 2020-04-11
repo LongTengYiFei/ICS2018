@@ -50,6 +50,7 @@ int _cte_init(_Context*(*handler)(_Event, _Context*)) {
 }
 
 _Context *_kcontext(_Area stack, void (*entry)(void *), void *arg) {
+  printf("come into kcontext\n");
   return NULL;
 }
 
