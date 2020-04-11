@@ -44,7 +44,7 @@ int _write(int fd, void *buf, size_t count){
 extern char _end;
 static intptr_t program_break = (intptr_t)&_end;
 void *_sbrk(intptr_t increment){
-  if(program_break == -1)
+  if(increment == 0)
 	  program_break = &_end;
    
   char buf[40];
