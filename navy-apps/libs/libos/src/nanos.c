@@ -46,12 +46,12 @@ static intptr_t program_break = (intptr_t)&_end;
 void *_sbrk(intptr_t increment){
   if(increment == 0)
 	  program_break = &_end;
-   
+/*   
   char buf[40];
   buf[39] = '\0';
   sprintf(buf, "pb=0x%x,inc=0x%x,&_end=%p\n",program_break, increment, &_end);
   _write(1, buf, 40);
-  
+  */
   intptr_t old_program_break = program_break;
   if(_syscall_(SYS_brk, old_program_break + increment, 0, 0) == 0){
 	  program_break += increment;
