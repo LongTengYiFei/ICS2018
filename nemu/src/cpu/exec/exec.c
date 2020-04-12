@@ -238,8 +238,10 @@ static inline void update_eip(void) {
 
 void exec_wrapper(bool print_flag) {//update PC
   vaddr_t ori_eip = cpu.eip;
+  /*
   if(ori_eip < 0x4000000)
       printf("ori_eip = 0x%x\n",ori_eip);
+  */
 #ifdef DEBUG
   decoding.p = decoding.asm_buf;
   decoding.p += sprintf(decoding.p, "%8x:   ", ori_eip);

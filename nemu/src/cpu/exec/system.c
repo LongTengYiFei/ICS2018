@@ -63,7 +63,7 @@ make_EHelper(iret) {
   rtl_pop(&t1);//cs
   rtl_pop(&t2);//eflags
 
-  cpu.cs = t1;
+  cpu.cs = t1 & 0xffff;
   cpu.eflags.value = t2;
   rtl_j(t0);
   //TODO();
