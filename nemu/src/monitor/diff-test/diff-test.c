@@ -75,7 +75,7 @@ void difftest_step(uint32_t eip) {
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
   if(cpu.eip >= 0x4000000)
  if(cpu.eax != ref_r.eax ||cpu.ecx != ref_r.ecx ||cpu.edx != ref_r.edx ||cpu.ebx != ref_r.ebx ||cpu.esp != ref_r.esp ||cpu.ebp != ref_r.ebp ||cpu.esi != ref_r.esi ||cpu.edi != ref_r.edi ||cpu.eip != ref_r.eip ){
-  nemu_state = NEMU_ABORT;
+  nemu_state = NEMU_STOP;
   printf("cpu.eax = 0x%x ,ref_r.eax = 0x%x\n",cpu.eax, ref_r.eax);
   printf("cpu.ecx = 0x%x ,ref_r.ecx = 0x%x\n",cpu.ecx, ref_r.ecx);
   printf("cpu.edx = 0x%x ,ref_r.edx = 0x%x\n",cpu.edx, ref_r.edx);
