@@ -33,28 +33,27 @@ typedef struct {
   //vaddr_t eip;//uint32
   union{
    struct{
-     uint32_t CF : 1;
-     unsigned    : 5;
-     uint32_t ZF : 1;
-     uint32_t SF : 1;
-     unsigned    : 1;
-     uint32_t IF : 1;
-     unsigned    : 1;
-     uint32_t OF : 1;
-     unsigned    : 20;
-   
+     uint8_t CF : 1;
+     uint8_t    : 5;
+     uint8_t ZF : 1;
+     uint8_t SF : 1;
+     uint8_t    : 1;
+     uint8_t IF : 1;
+     uint8_t    : 1;
+     uint8_t OF : 1;
+     uint32_t    : 20; 
    };
    uint32_t value;
   }eflags;
-  uint32_t cr0;//?
-  uint32_t cr3;//?
-  bool INTR;
+  //uint32_t cr0;//?
+  //uint32_t cr3;//?
+  //bool INTR;
   struct{
      uint32_t base;
      uint16_t len;//git hub is 16
   }idtr; 
   uint16_t cs;
-  rtlreg_t es;//?
+  //rtlreg_t es;//?
   vaddr_t eip;//uint32
 } CPU_state;
 /*
