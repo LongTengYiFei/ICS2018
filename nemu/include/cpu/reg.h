@@ -17,7 +17,7 @@ enum { R_AL, R_CL, R_DL, R_BL, R_AH, R_CH, R_DH, R_BH };
 typedef struct {
  union{
   struct{
-     rtlreg_t ecx, eax, edx, ebx, esp, ebp, esi, edi;
+     rtlreg_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
   };
   union {
     uint32_t _32;
@@ -45,6 +45,8 @@ typedef struct {
    };
    uint32_t value;
   }eflags;
+  uint16_t cs;
+  vaddr_t eip;//uint32
   //uint32_t cr0;//?
   //uint32_t cr3;//?
   bool INTR;
@@ -54,9 +56,7 @@ typedef struct {
      uint16_t len;//git hub is 16
   }idtr; 
   
-  uint16_t cs;
   //rtlreg_t es;//?
-  vaddr_t eip;//uint32
 } CPU_state;
 /*
 #define eax gpr[0]._32
