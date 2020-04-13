@@ -46,14 +46,15 @@ typedef struct {
    };
    uint32_t value;
   }eflags;
-  
+  uint32_t cr0;//?
+  uint32_t cr3;//?
+  bool INTR;//i dont know what it is. 
   struct{
      uint32_t base;
      uint32_t len;
-  }idtr;
-  
+  }idtr; 
   uint16_t cs;
-
+  rtlreg_t es;//i dont know what it is. 
   vaddr_t eip;//uint32
 } CPU_state;
 /*
