@@ -124,6 +124,12 @@ static int  cmd_d(char *args){//delete a watchpoint
    free_wp(N);
 return 0;
 }
+static int  cmd_detach(char *args){
+	return 0;
+}
+static int  cmd_attach(char *args){
+	return 0;
+}
 //My Commands End------------------------------------
 static struct {
   char *name;
@@ -139,15 +145,12 @@ static struct {
   {"x","scan memmory",cmd_x},
   {"p","caculate the value of express",cmd_p},
   {"w","new a watchpoint",cmd_w},
-  {"d","delete a watchpoint",cmd_d}
+  {"d","delete a watchpoint",cmd_d},
+  {"detach","exit diffTest",cmd_detach},
+  {"attach","come into diffTest",cmd_attach}
   /* TODO: Add more commands */
 
 };
-
-
-
-
-
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
 
 static int cmd_help(char *args) {
