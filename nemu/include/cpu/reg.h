@@ -31,6 +31,7 @@ typedef struct {
    * in PA2 able to directly access these registers.
    */
   //vaddr_t eip;//uint32
+  vaddr_t eip;//uint32
   union{
    struct{
      uint8_t CF : 1;
@@ -45,6 +46,7 @@ typedef struct {
    };
    uint32_t value;
   }eflags;
+  uint16_t cs;
   //uint32_t cr0;//?
   //uint32_t cr3;//?
   bool INTR;
@@ -54,8 +56,6 @@ typedef struct {
      uint16_t len;//git hub is 16
   }idtr; 
   
-  uint16_t cs;
-  vaddr_t eip;//uint32
   //rtlreg_t es;//?
 } CPU_state;
 /*
