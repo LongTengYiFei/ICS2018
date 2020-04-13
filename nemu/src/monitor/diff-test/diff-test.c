@@ -21,7 +21,7 @@ void difftest_on() {
 	is_skip_difftest = false;
         //printf("ENTRY_START = 0x%x\n",ENTRY_START);	
         ref_difftest_memcpy_from_dut(0, guest_to_host(0), 0x7c00);
-        ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), PMEM_SIZE);
+        ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), PMEM_SIZE - ENTRY_START);
         ref_difftest_setregs(&cpu);
 
 }//on is not skip
