@@ -72,6 +72,7 @@ void difftest_step(uint32_t eip) {
 
   //printf("ref_r.eflags.OF = 0x%x\n",ref_r.eflags.OF);
   //printf("ref_r.eflags.SF = 0x%x\n",ref_r.eflags.SF);
+
   // TODO: Check the registers state with the reference design.
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
   foot++;
