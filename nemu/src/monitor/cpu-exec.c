@@ -96,6 +96,6 @@ void cpu_exec(uint64_t n) {
       }
     }
   }
-  if (cpu.eip >= 0x4000000) { nemu_state = NEMU_STOP; }
+ 
   if (nemu_state == NEMU_RUNNING) { nemu_state = NEMU_STOP; }
 }
