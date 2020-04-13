@@ -48,7 +48,7 @@ typedef struct {
   }eflags;
   struct{
      uint32_t base;
-     uint32_t len;
+     uint16_t len;//git hub is 16
   }idtr; 
   uint16_t cs;
   vaddr_t eip;//uint32
