@@ -125,10 +125,11 @@ static int  cmd_d(char *args){//delete a watchpoint
 return 0;
 }
 static int  cmd_detach(char *args){
-	difftest_skip_dut();
+	difftest_off();
 	return 0;
 }
 static int  cmd_attach(char *args){
+	difftest_on();
 	return 0;
 }
 //My Commands End------------------------------------
