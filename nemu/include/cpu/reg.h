@@ -47,11 +47,13 @@ typedef struct {
   }eflags;
   //uint32_t cr0;//?
   //uint32_t cr3;//?
-  //bool INTR;
+  bool INTR;
+  
   struct{
      uint32_t base;
      uint16_t len;//git hub is 16
   }idtr; 
+  
   uint16_t cs;
   //rtlreg_t es;//?
   vaddr_t eip;//uint32
