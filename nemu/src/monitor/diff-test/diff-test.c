@@ -28,7 +28,8 @@ void difftest_on() {
         ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), PMEM_SIZE - ENTRY_START);
         ref_difftest_setregs(&cpu);
         //idtr
-        CPU_state ref_r;	
+        CPU_state ref_r;
+
 	int ref_base = cpu.idtr.base;
 	int ref_len = cpu.idtr.len;
         vaddr_write(0x7e00, ref_len, 2); 
@@ -40,11 +41,16 @@ void difftest_on() {
         ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 5);
 	//exec(1)
 	uint32_t pre_eip = cpu.eip;
+	printf("get pre_eip = 0x%x\n",pre_eip);
 	cpu.eip = 0x7e40;
         ref_difftest_setregs(&cpu); 
+        ref_difftest_getregs(&ref_r); 
+	printf("0x7e40 has been set, ref_r.eip = 0x%x\n",ref_r.eip);
         ref_difftest_exec(1);
 	cpu.eip = pre_eip;
         ref_difftest_setregs(&cpu);
+        ref_difftest_getregs(&ref_r); 
+	printf("0x7e40 has been executed, ref_r.eip = 0x%x\n",ref_r.eip);
         return ;
 }//on is not skip
 
