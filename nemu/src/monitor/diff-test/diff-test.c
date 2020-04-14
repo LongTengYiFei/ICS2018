@@ -52,6 +52,8 @@ void difftest_on() {
         ref_difftest_setregs(&cpu);
         ref_difftest_getregs(&ref_r); 
 	printf("0x7e40 has been executed, ref_r.eip = 0x%x\n",ref_r.eip);
+	printf("ref_r.cs = 0x%x\n",ref_r.cs);
+	printf("cpu.cs = 0x%x\n",cpu.cs);
         return ;
 }//on is not skip
 
@@ -114,8 +116,6 @@ void difftest_step(uint32_t eip) {
   ref_difftest_exec(1);
   ref_difftest_getregs(&ref_r);
 
-  //printf("ref_r.eflags.OF = 0x%x\n",ref_r.eflags.OF);
-  //printf("ref_r.eflags.SF = 0x%x\n",ref_r.eflags.SF);
 
   // TODO: Check the registers state with the reference design.
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
@@ -133,10 +133,6 @@ void difftest_step(uint32_t eip) {
   printf("cpu.edi = 0x%x ,ref_r.edi = 0x%x\n",cpu.edi, ref_r.edi);
   printf("cpu.eip = 0x%x ,ref_r.eip = 0x%x\n",cpu.eip, ref_r.eip);
 
-  //printf("cpu.eflags.ZF = 0x%x ,ref_r.eflags.ZF = 0x%x\n",cpu.eflags.ZF, ref_r.eflags.ZF);
-  //printf("cpu.eflags.SF = 0x%x ,ref_r.eflags.SF = 0x%x\n",cpu.eflags.SF, ref_r.eflags.SF);
-  //printf("cpu.eflags.OF = 0x%x ,ref_r.eflags.OF = 0x%x\n",cpu.eflags.OF, ref_r.eflags.OF);
-  //printf("cpu.eflags.CF = 0x%x ,ref_r.eflags.CF = 0x%x\n",cpu.eflags.CF, ref_r.eflags.CF);
  }
   //TODO();
 }
