@@ -38,21 +38,22 @@ void difftest_on() {
 	//lidt
 	//opcode 0f01
         vaddr_write(0x7e40, 0x010f, 2);
-        vaddr_write(0x7e40 + 2,0x007e0000, 4);	
-        ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 6);
+        vaddr_write(0x7e40 + 2,0x18, 1);//(eax)	
+        ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 3);
 	//exec(1)
 	uint32_t pre_eip = cpu.eip;
-	printf("get pre_eip = 0x%x\n",pre_eip);
 	cpu.eip = 0x7e40;
-        ref_difftest_setregs(&cpu); 
-        ref_difftest_getregs(&ref_r); 
-	printf("0x7e40 has been set, ref_r.eip = 0x%x\n",ref_r.eip);
-        ref_difftest_exec(1);
-	cpu.eip = pre_eip;
         ref_difftest_setregs(&cpu);
-        ref_difftest_getregs(&ref_r); 
-	printf("0x7e40 has been executed, ref_r.eip = 0x%x\n",ref_r.eip);
-	printf("cpu.eip = 0x%x\n",cpu.eip);
+
+	uint32_t pre_eax = cpu.eax;
+	cpu.eax = 0x7e00;
+        ref_difftest_setregs(&cpu); 
+
+        ref_difftest_exec(1);
+
+	cpu.eip = pre_eip;//restore
+	cpu.eax = pre_eax;//restore
+        ref_difftest_setregs(&cpu);
         return ;
 }//on is not skip
 
