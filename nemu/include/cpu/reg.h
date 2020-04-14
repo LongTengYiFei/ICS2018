@@ -45,7 +45,7 @@ typedef struct {
    };
    uint32_t value;
   }eflags;
-  uint16_t cs;
+  uint32_t cs;
   
   struct{
      uint32_t base;
