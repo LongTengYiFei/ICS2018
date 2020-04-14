@@ -37,7 +37,7 @@ void difftest_on() {
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
 	//lidt
 	//opcode 0f01
-        vaddr_write(0x7e40, 0x0f01007e0000, 5); 
+        vaddr_write(0x7e40, 0x00007e00010f, 5); 
         ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 5);
 	//exec(1)
 	uint32_t pre_eip = cpu.eip;
