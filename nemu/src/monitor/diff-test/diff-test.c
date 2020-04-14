@@ -52,6 +52,7 @@ void difftest_on() {
         ref_difftest_setregs(&cpu);
         ref_difftest_getregs(&ref_r); 
 	printf("0x7e40 has been executed, ref_r.eip = 0x%x\n",ref_r.eip);
+	printf("cpu.eip = 0x%x\n",cpu.eip);
 	printf("ref_r.cs = 0x%x\n",ref_r.cs);
 	printf("cpu.cs = 0x%x\n",cpu.cs);
         return ;
