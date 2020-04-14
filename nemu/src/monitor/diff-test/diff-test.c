@@ -28,6 +28,7 @@ void difftest_on() {
         ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), PMEM_SIZE - ENTRY_START);
         ref_difftest_setregs(&cpu);
         //idtr
+        CPU_state ref_r;	
 	int ref_base = cpu.idtr.base;
 	int ref_len = cpu.idtr.len;
         vaddr_write(0x7e00, ref_len, 2); 
@@ -35,15 +36,15 @@ void difftest_on() {
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
 	//lidt
 	//opcode 0f01
-        vaddr_write(0x7e40, 0x0f017e00, 4); 
-        ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 4);
+        vaddr_write(0x7e40, 0x0f01007e0000, 5); 
+        ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 5);
 	//exec(1)
 	uint32_t pre_eip = cpu.eip;
 	cpu.eip = 0x7e40;
         ref_difftest_setregs(&cpu); 
         ref_difftest_exec(1);
 	cpu.eip = pre_eip;
-        ref_difftest_setregs(&cpu); 
+        ref_difftest_setregs(&cpu);
         return ;
 }//on is not skip
 
