@@ -30,14 +30,15 @@ void difftest_on() {
         //idtr
         CPU_state ref_r;
 
-	int ref_base = cpu.idtr.base;
-	int ref_len = cpu.idtr.len;
+	uint32_t ref_base = cpu.idtr.base;
+	uint16_t ref_len = cpu.idtr.len;
         vaddr_write(0x7e00, ref_len, 2); 
         vaddr_write(0x7e00 + 2, ref_base, 4); 
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
 	//lidt
 	//opcode 0f01
-        vaddr_write(0x7e40, 0x010f, 2);
+        vaddr_write(0x7e40, 0x0f, 1);
+        vaddr_write(0x7e40 +1, 0x01, 1);
         vaddr_write(0x7e40 + 2,0x18, 1);//(eax)	
         ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 3);
 	//exec(1)
@@ -54,13 +55,13 @@ void difftest_on() {
 	cpu.eip = pre_eip;//restore
 	cpu.eax = pre_eax;//restore
         ref_difftest_setregs(&cpu);
-
+        /*
         ref_difftest_getregs(&ref_r);
 	printf("ref_r.eflags =0x%x\n",ref_r.eflags);
 	printf("ref_r.cs =0x%x\n",ref_r.cs);
 	printf("cpu.eflags =0x%x\n",cpu.eflags.value);
 	printf("cpu.cs =0x%x\n",cpu.cs);
-	printf("%d\n",sizeof(uint32_t));
+	*/
         return ;
 }//on is not skip
 
