@@ -120,6 +120,10 @@ void difftest_step(uint32_t eip) {
   // TODO: Check the registers state with the reference design.
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
   foot++;
+  if(cpu.eip == 0x101b6d){
+      nemu_state = NEMU_STOP;
+      printf("foot = %d\n",foot);
+  }
  if(cpu.eax != ref_r.eax ||cpu.ecx != ref_r.ecx ||cpu.edx != ref_r.edx ||cpu.ebx != ref_r.ebx ||cpu.esp != ref_r.esp ||cpu.ebp != ref_r.ebp ||cpu.esi != ref_r.esi ||cpu.edi != ref_r.edi ||cpu.eip != ref_r.eip ){
   nemu_state = NEMU_ABORT;
   printf("foot = %d\n",foot);
