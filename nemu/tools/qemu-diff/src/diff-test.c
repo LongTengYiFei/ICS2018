@@ -21,7 +21,6 @@ void difftest_getregs(void *r) {
   union gdb_regs qemu_r;
   gdb_getregs(&qemu_r);
   memcpy(r, &qemu_r, DIFFTEST_REG_SIZE);
-  //memcpy(r + DIFFTEST_REG_SIZE + 4,&qemu_r + DIFFTEST_REG_SIZE + 4, 4);//cs is 4 bytes
 }
 
 void difftest_setregs(const void *r) {
@@ -30,7 +29,6 @@ void difftest_setregs(const void *r) {
   memcpy(&qemu_r, r, DIFFTEST_REG_SIZE);//GPR and eip
   uint32_t eflags = DIFFTEST_REG_SIZE;
   memcpy(&qemu_r + DIFFTEST_REG_SIZE, &eflags, 4);//eflags is 4 bytes
-  //memcpy(&qemu_r + DIFFTEST_REG_SIZE + 4, r+DIFFTEST_REG_SIZE + 4, 4);//cs is 4 bytes
   gdb_setregs(&qemu_r);
 }
 
