@@ -54,6 +54,12 @@ void difftest_on() {
 	cpu.eip = pre_eip;//restore
 	cpu.eax = pre_eax;//restore
         ref_difftest_setregs(&cpu);
+
+        ref_difftest_getregs(&ref_r);
+	printf("ref_r.eflags =0x%x\n",ref_r.eflags);
+	printf("ref_r.cs =0x%x\n",ref_r.cs);
+	printf("cpu.eflags =0x%x\n",cpu.eflags.value);
+	printf("cpu.cs =0x%x\n",cpu.cs);
         return ;
 }//on is not skip
 
