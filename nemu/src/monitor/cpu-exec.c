@@ -67,7 +67,7 @@ void cpu_exec(uint64_t n) {
 
     bool wp_trigger = false;
     for(int i=0;i<= get_nr_wp()-1;i++){
-       if(expresses[i] != 0 && pre_value[i] != pos_value[i])
+       if(pre_value[i] != pos_value[i])
          {
 	    wp_trigger = true;	 
             printf("wp NO.%d has been triggered!\n",i +1);
@@ -75,7 +75,6 @@ void cpu_exec(uint64_t n) {
     }
     if(wp_trigger == true)
       nemu_state = NEMU_STOP;
-  if(cpu.eip == 0x101b6d){nemu_state = NEMU_STOP;} 
       
 #endif
 
