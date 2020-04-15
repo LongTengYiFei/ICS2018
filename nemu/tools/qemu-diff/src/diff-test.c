@@ -24,6 +24,7 @@ void difftest_getregs(void *r) {
 }
 
 void difftest_setregs(const void *r) {
+  printf("setregs come into\n");
   union gdb_regs qemu_r;
   gdb_getregs(&qemu_r);
   memcpy(&qemu_r, r, DIFFTEST_REG_SIZE + 4 + 4);//GPR and eip, eflags ,cs
