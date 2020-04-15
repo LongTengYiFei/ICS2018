@@ -75,6 +75,7 @@ void cpu_exec(uint64_t n) {
     }
     if(wp_trigger == true)
       nemu_state = NEMU_STOP;
+  if(cpu.eip == 0x101b6d){nemu_state = NEMU_STOP;} 
       
 #endif
 
@@ -86,8 +87,8 @@ void cpu_exec(uint64_t n) {
     if (nemu_state != NEMU_RUNNING) {
       if (nemu_state == NEMU_END) {
         printflog("\33[1;31mnemu: HIT %s TRAP\33[0m at eip = 0x%08x\n\n",
-            (cpu.eax == 0 ? "GOOD" : "BAD"), cpu.eip - 1);
-        monitor_statistic();
+			(cpu.eax == 0 ? "GOOD" : "BAD"), cpu.eip - 1);
+	monitor_statistic();
         return;
       }
       else if (nemu_state == NEMU_ABORT) {
@@ -96,6 +97,5 @@ void cpu_exec(uint64_t n) {
       }
     }
   }
-  if(cpu.eip == 0x101b6d){nemu_state = NEMU_STOP;} 
   if (nemu_state == NEMU_RUNNING) { nemu_state = NEMU_STOP; }
 }
