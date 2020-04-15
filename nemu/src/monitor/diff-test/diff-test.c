@@ -121,8 +121,16 @@ void difftest_step(uint32_t eip) {
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
   foot++;
   if(cpu.eip == 0x101b6d){
-      nemu_state = NEMU_STOP;
       printf("foot = %d\n",foot);
+  printf("cpu.eax = 0x%x ,ref_r.eax = 0x%x\n",cpu.eax, ref_r.eax);
+  printf("cpu.ecx = 0x%x ,ref_r.ecx = 0x%x\n",cpu.ecx, ref_r.ecx);
+  printf("cpu.edx = 0x%x ,ref_r.edx = 0x%x\n",cpu.edx, ref_r.edx);
+  printf("cpu.ebx = 0x%x ,ref_r.ebx = 0x%x\n",cpu.ebx, ref_r.ebx);
+  printf("cpu.esp = 0x%x ,ref_r.esp = 0x%x\n",cpu.esp, ref_r.esp);
+  printf("cpu.ebp = 0x%x ,ref_r.ebp = 0x%x\n",cpu.ebp, ref_r.ebp);
+  printf("cpu.esi = 0x%x ,ref_r.esi = 0x%x\n",cpu.esi, ref_r.esi);
+  printf("cpu.edi = 0x%x ,ref_r.edi = 0x%x\n",cpu.edi, ref_r.edi);
+  printf("cpu.eip = 0x%x ,ref_r.eip = 0x%x\n",cpu.eip, ref_r.eip);
   }
  if(cpu.eax != ref_r.eax ||cpu.ecx != ref_r.ecx ||cpu.edx != ref_r.edx ||cpu.ebx != ref_r.ebx ||cpu.esp != ref_r.esp ||cpu.ebp != ref_r.ebp ||cpu.esi != ref_r.esi ||cpu.edi != ref_r.edi ||cpu.eip != ref_r.eip ){
   nemu_state = NEMU_ABORT;
