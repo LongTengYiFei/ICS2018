@@ -13,7 +13,6 @@ void difftest_getregs(void *r) {
 
 void difftest_setregs(const void *r) {
   memcpy(&cpu, r, DIFFTEST_REG_SIZE);//GPR and eip
-  printf("?");
 }
 
 void difftest_exec(uint64_t n) {

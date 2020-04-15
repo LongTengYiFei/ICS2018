@@ -26,7 +26,6 @@ void difftest_on() {
         //printf("ENTRY_START = 0x%x\n",ENTRY_START);	
         ref_difftest_memcpy_from_dut(0, guest_to_host(0), 0x7c00);
         ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), PMEM_SIZE - ENTRY_START);
-        printf("pending ref_difftest_setregs\n");
 	ref_difftest_setregs(&cpu);
         //idtr
         CPU_state ref_r;
