@@ -60,6 +60,7 @@ void difftest_on() {
 	printf("ref_r.cs =0x%x\n",ref_r.cs);
 	printf("cpu.eflags =0x%x\n",cpu.eflags.value);
 	printf("cpu.cs =0x%x\n",cpu.cs);
+	printf("%d\n",sizeof(uint32_t));
         return ;
 }//on is not skip
 
