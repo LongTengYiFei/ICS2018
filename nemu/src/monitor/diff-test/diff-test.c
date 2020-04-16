@@ -29,13 +29,20 @@ void difftest_on() {
 	ref_difftest_setregs(&cpu);
         //idtr
         CPU_state ref_r;
-
 	uint32_t ref_base = cpu.idtr.base;
 	uint16_t ref_len = cpu.idtr.len;
+	
 	printf("len = 0x%x\n",ref_len);
 	printf("base = 0x%x\n",ref_base);
+	
         vaddr_write(0x7e00, ref_len, 2); 
         vaddr_write(0x7e00 + 2, ref_base, 4); 
+
+	int len_low = vaddr_read(0x7e00, 1);
+	int len_high = vaddr_read(0x7e01, 1);
+	printf("low = 0x%x\n",len_low);
+	printf("high = 0x%x\n",len_high);
+
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
 	//lidt
 	//opcode 0f01
