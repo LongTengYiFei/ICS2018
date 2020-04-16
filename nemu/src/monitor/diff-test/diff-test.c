@@ -32,6 +32,8 @@ void difftest_on() {
 
 	uint32_t ref_base = cpu.idtr.base;
 	uint16_t ref_len = cpu.idtr.len;
+	printf("len = 0x%x\n",ref_len);
+	printf("base = 0x%x\n",ref_base);
         vaddr_write(0x7e00, ref_len, 2); 
         vaddr_write(0x7e00 + 2, ref_base, 4); 
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
