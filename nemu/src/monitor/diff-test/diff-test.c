@@ -40,9 +40,10 @@ void difftest_on() {
 
 	int len_low = vaddr_read(0x7e00, 1);
 	int len_high = vaddr_read(0x7e01, 1);
+	/*
 	printf("low = 0x%x\n",len_low);
 	printf("high = 0x%x\n",len_high);
-
+        */
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
 	//lidt
 	//opcode 0f01
@@ -128,6 +129,7 @@ void difftest_step(uint32_t eip) {
     return;
   }
   
+  ref_difftest_getregs(&ref_r);
   uint32_t pre_ref_eax = ref_r.eax;
   uint32_t pre_ref_ecx = ref_r.ecx;
   uint32_t pre_ref_edx = ref_r.edx;
