@@ -23,6 +23,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   offset_high = offset_high & 0xffff0000;
   uint32_t dest = offset_high + offset_low;
   printf("raise_intr dest = 0x%x\n",dest);
+  printf("raise_intr base = 0x%x\n",cpu.idtr.base);
   rtl_jr(&dest);
   //TODO();
   //printf("raise_intr over\n\n");
