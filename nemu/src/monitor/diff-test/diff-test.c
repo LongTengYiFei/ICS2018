@@ -44,12 +44,10 @@ void difftest_on() {
 	//exec(1)
 	uint32_t pre_eip = cpu.eip;
 	cpu.eip = 0x7e40;
-        ref_difftest_setregs(&cpu);
-
 	uint32_t pre_eax = cpu.eax;
 	cpu.eax = 0x7e00;
-        ref_difftest_setregs(&cpu); 
 
+        ref_difftest_setregs(&cpu); 
         ref_difftest_exec(1);
 
 	cpu.eip = pre_eip;//restore
