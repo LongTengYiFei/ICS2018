@@ -44,6 +44,9 @@ void difftest_on() {
 	printf("low = 0x%x\n",len_low);
 	printf("high = 0x%x\n",len_high);
         */
+	int base_first_byte = vaddr_read(0x7e00 +2,1);
+	printf("base_first_byte= 0x%x\n",base_first_byte);
+
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
 	//lidt
 	//opcode 0f01
