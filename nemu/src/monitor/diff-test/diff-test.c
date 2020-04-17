@@ -54,7 +54,7 @@ void difftest_on() {
 	//eax 0x18
         vaddr_write(0x7e40, 0x0f, 1);
         vaddr_write(0x7e40 +1, 0x01, 1);
-        vaddr_write(0x7e40 + 2,0x18, 1);
+        vaddr_write(0x7e40 +2,0x18, 1);
         ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 3);
 	//exec(1)
 	uint32_t pre_eip = cpu.eip;
