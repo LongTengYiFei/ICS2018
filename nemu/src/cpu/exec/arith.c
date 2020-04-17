@@ -160,6 +160,7 @@ make_EHelper(neg) {
 //  TODO();
  }
   print_asm_template1(neg);
+  difftest_skip_ref();
 }
 
 make_EHelper(adc) {
