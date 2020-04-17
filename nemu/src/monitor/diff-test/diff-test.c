@@ -49,12 +49,15 @@ void difftest_on() {
 	printf("base_first_byte= 0x%x\n",base_first_byte);
         */
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
-	//lidt---------------
-	//opcode 0f01
-        vaddr_write(0x7e40, 0x0f, 1);
-        vaddr_write(0x7e40 +1, 0x01, 1);
-        vaddr_write(0x7e40 + 2,0x18, 1);//(eax)	
-        ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 3);
+	//my instr---------------
+	//opcode 0f01 lidt
+	//eax 0x18
+        vaddr_write(0x7e40, 0xb8, 1);
+        vaddr_write(0x7e40 +1, 0x34, 1);
+        vaddr_write(0x7e40 + 2,0x12, 1);
+        vaddr_write(0x7e40 + 3,0x00, 1);	
+        vaddr_write(0x7e40 + 4,0x00, 1);	
+        ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 5);
 	//exec(1)
 	uint32_t pre_eip = cpu.eip;
 	cpu.eip = 0x7e40;
@@ -65,7 +68,7 @@ void difftest_on() {
         ref_difftest_exec(1);
         //check
 	ref_difftest_getregs(&ref_r);
-        
+        printf("my instr has been executed, ref_r.eax = 0x%x\n",ref_r.eax);
 
 
 	cpu.eip = pre_eip;//restore
