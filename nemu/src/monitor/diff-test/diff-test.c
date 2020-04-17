@@ -49,7 +49,7 @@ void difftest_on() {
 	printf("base_first_byte= 0x%x\n",base_first_byte);
         */
         ref_difftest_memcpy_from_dut(0x7e00, guest_to_host(0x7e00), 6);
-	//lidt
+	//lidt---------------
 	//opcode 0f01
         vaddr_write(0x7e40, 0x0f, 1);
         vaddr_write(0x7e40 +1, 0x01, 1);
@@ -63,6 +63,10 @@ void difftest_on() {
 
         ref_difftest_setregs(&cpu); 
         ref_difftest_exec(1);
+        //check
+	ref_difftest_getregs(&ref_r);
+        
+
 
 	cpu.eip = pre_eip;//restore
 	cpu.eax = pre_eax;//restore
