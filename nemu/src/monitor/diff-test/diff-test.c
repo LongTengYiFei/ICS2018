@@ -52,12 +52,10 @@ void difftest_on() {
 	//my instr---------------
 	//opcode 0f01 lidt
 	//eax 0x18
-        vaddr_write(0x7e40, 0xb8, 1);
-        vaddr_write(0x7e40 +1, 0x34, 1);
-        vaddr_write(0x7e40 + 2,0x12, 1);
-        vaddr_write(0x7e40 + 3,0x00, 1);	
-        vaddr_write(0x7e40 + 4,0x00, 1);	
-        ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 5);
+        vaddr_write(0x7e40, 0x0f, 1);
+        vaddr_write(0x7e40 +1, 0x01, 1);
+        vaddr_write(0x7e40 + 2,0x18, 1);
+        ref_difftest_memcpy_from_dut(0x7e40, guest_to_host(0x7e40), 3);
 	//exec(1)
 	uint32_t pre_eip = cpu.eip;
 	cpu.eip = 0x7e40;
