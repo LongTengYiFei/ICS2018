@@ -68,6 +68,7 @@ make_EHelper(iret) {
   cpu.eflags.value = t2;
   rtl_j(t0);
   //TODO();
+  difftest_skip_ref();
   print_asm("iret");
 }
 
