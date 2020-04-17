@@ -53,8 +53,9 @@ make_EHelper(int) {/*
   //printf("int over\n");
   //TODO();
   print_asm("int %s", id_dest->str);
+  difftest_skip_ref();
 #if defined(DIFF_TEST) && defined(DIFF_TEST_QEMU)
-  difftest_skip_dut();
+  //difftest_skip_dut();
 #endif
 }
 
