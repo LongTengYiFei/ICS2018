@@ -31,20 +31,26 @@ typedef struct {
    * in PA2 able to directly access these registers.
    */
   vaddr_t eip;//uint32
+
   union{
    struct{
      uint8_t CF : 1;
-     uint8_t    : 5;
+     uint8_t    : 1;
+     uint8_t PF : 1;
+     uint8_t    : 1;
+     uint8_t AF : 1;
+     uint8_t    : 1;
      uint8_t ZF : 1;
      uint8_t SF : 1;
-     uint8_t    : 1;
+     uint8_t TF : 1;
      uint8_t IF : 1;
-     uint8_t    : 1;
+     uint8_t DF : 1;
      uint8_t OF : 1;
-     uint32_t    : 20; 
+     uint32_t   : 20; 
    };
    uint32_t value;
   }eflags;
+
   uint32_t cs;
   
   struct{
@@ -53,16 +59,7 @@ typedef struct {
   }idtr; 
   
 } CPU_state;
-/*
-#define eax gpr[0]._32
-#define ecx gpr[1]._32
-#define edx gpr[2]._32
-#define ebx gpr[3]._32
-#define esp gpr[4]._32
-#define ebp gpr[5]._32
-#define esi gpr[6]._32
-#define edi gpr[7]._32
-*/
+
 extern CPU_state cpu;
 
 static inline int check_reg_index(int index) {//check index's validation

@@ -117,6 +117,7 @@ void init_difftest(char *ref_so_file, long img_size) {
   ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), img_size);
   ref_difftest_setregs(&cpu);
 }
+
 extern int foot = 0;
 void difftest_step(uint32_t eip) {
   //printf("DiffTest_step Come in!!\n");
@@ -157,8 +158,25 @@ void difftest_step(uint32_t eip) {
   // TODO: Check the registers state with the reference design.
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
   foot++;
- if(cpu.eax != ref_r.eax ||cpu.ecx != ref_r.ecx ||cpu.edx != ref_r.edx ||cpu.ebx != ref_r.ebx ||cpu.esp != ref_r.esp ||cpu.ebp != ref_r.ebp ||cpu.esi != ref_r.esi ||cpu.edi != ref_r.edi ||cpu.eip != ref_r.eip ){
-  nemu_state = NEMU_ABORT;
+  if(cpu.eax != ref_r.eax)
+  	nemu_state = NEMU_ABORT;
+  if(cpu.ecx != ref_r.ecx)
+  	nemu_state = NEMU_ABORT;
+  if(cpu.edx != ref_r.edx)
+  	nemu_state = NEMU_ABORT;
+  if(cpu.ebx != ref_r.ebx)
+  	nemu_state = NEMU_ABORT;
+  if(cpu.esp != ref_r.esp)
+  	nemu_state = NEMU_ABORT;
+  if(cpu.ebp != ref_r.ebp)
+  	nemu_state = NEMU_ABORT;
+  if(cpu.esi != ref_r.esi)
+  	nemu_state = NEMU_ABORT;
+  if(cpu.edi != ref_r.edi)
+  	nemu_state = NEMU_ABORT;
+  if(cpu.eip != ref_r.eip)
+  	nemu_state = NEMU_ABORT;
+
   printf("foot = %d\n",foot);
   printf("pre_ref_eax = 0x%x\n",pre_ref_eax);
   printf("pre_ref_ecx = 0x%x\n",pre_ref_ecx);
@@ -180,6 +198,4 @@ void difftest_step(uint32_t eip) {
   printf("cpu.edi = 0x%x ,ref_r.edi = 0x%x\n",cpu.edi, ref_r.edi);
   printf("cpu.eip = 0x%x ,ref_r.eip = 0x%x\n",cpu.eip, ref_r.eip);
 
- }
-  //TODO();
 }
