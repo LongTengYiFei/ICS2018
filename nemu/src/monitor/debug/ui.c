@@ -50,6 +50,7 @@ static int cmd_si(char *args){
    cpu_exec(step_count); 
  return 0;
 }
+
 static int cmd_info(char *args){
   //printf("info excute\n");
   //printf("args %s execute\n",args);
@@ -66,7 +67,6 @@ static int cmd_info(char *args){
           printf("EDI = %x\n",cpu.edi);
           printf("EIP = %x\n",cpu.eip);
           printf("EFLAGS = 0x%x\n",cpu.eflags);
-
     }
     if(strcmp(args,"w") == 0){
 	  printf("print watchpoint's information.\n");
