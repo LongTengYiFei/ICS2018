@@ -39,6 +39,8 @@ static inline void welcome() {
 }
 
 static inline int load_default_img() {
+  //i can change this code to difftest all instruct one by one 2020.04.22
+  /*
   const uint8_t img []  = {
     0xb8, 0x34, 0x12, 0x00, 0x00,        // 100000:  movl  $0x1234,%eax
     0xb9, 0x27, 0x00, 0x10, 0x00,        // 100005:  movl  $0x100027,%ecx
@@ -50,7 +52,11 @@ static inline int load_default_img() {
     0xb8, 0x00, 0x00, 0x00, 0x00,        // 100021:  movl  $0x0,%eax
     0xd6,                                // 100026:  nemu_trap
   };
-
+  */
+  const uint8_t img []  = {
+    0xb8, 0x34, 0x12, 0x00, 0x00,        // 100000:  movl  $0x1234,%eax
+    0xd6,                                // 100026:  nemu_trap
+  };
   Log("No image is given. Use the default build-in image.");
 
   memcpy(guest_to_host(ENTRY_START), img, sizeof(img));
