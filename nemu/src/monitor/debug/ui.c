@@ -65,7 +65,7 @@ static int cmd_info(char *args){
           printf("ESI = %x\n",cpu.esi);
           printf("EDI = %x\n",cpu.edi);
           printf("EIP = %x\n",cpu.eip);
-          printf("EFLAGS = 0x%x\n",cpu.eflags.value);
+          printf("EFLAGS = 0x%x\n",cpu.eflags);
 
     }
     if(strcmp(args,"w") == 0){

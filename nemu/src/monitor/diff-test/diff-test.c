@@ -149,6 +149,7 @@ void difftest_step(uint32_t eip) {
   uint32_t pre_ref_esi = ref_r.esi;
   uint32_t pre_ref_edi = ref_r.edi;
   uint32_t pre_ref_eip = ref_r.eip;
+  uint32_t pre_ref_eflags = ref_r.eflags.value;
 
 
   ref_difftest_exec(1);
@@ -176,6 +177,8 @@ void difftest_step(uint32_t eip) {
   	nemu_state = NEMU_ABORT;
   if(cpu.eip != ref_r.eip)
   	nemu_state = NEMU_ABORT;
+  if(cpu.eflags.value != ref_r.eflags.value)
+  	nemu_state = NEMU_ABORT;
   if(nemu_state == NEMU_ABORT){
     printf("foot = %d\n",foot);
     printf("pre_ref_eax = 0x%x\n",pre_ref_eax);
@@ -187,6 +190,7 @@ void difftest_step(uint32_t eip) {
     printf("pre_ref_esi = 0x%x\n",pre_ref_esi);
     printf("pre_ref_edi = 0x%x\n",pre_ref_edi);
     printf("pre_ref_eip = 0x%x\n",pre_ref_eip);
+    printf("pre_ref_eflags = 0x%x\n",pre_ref_eflags);
     printf("----------------------------\n");
     printf("cpu.eax = 0x%x ,ref_r.eax = 0x%x\n",cpu.eax, ref_r.eax);
     printf("cpu.ecx = 0x%x ,ref_r.ecx = 0x%x\n",cpu.ecx, ref_r.ecx);
@@ -197,5 +201,6 @@ void difftest_step(uint32_t eip) {
     printf("cpu.esi = 0x%x ,ref_r.esi = 0x%x\n",cpu.esi, ref_r.esi);
     printf("cpu.edi = 0x%x ,ref_r.edi = 0x%x\n",cpu.edi, ref_r.edi);
     printf("cpu.eip = 0x%x ,ref_r.eip = 0x%x\n",cpu.eip, ref_r.eip);
+    printf("cpu.eflags.value = 0x%x ,ref_r.eflags = 0x%x\n",cpu.eflags.value, ref_r.eflags.value);
    }
 }
