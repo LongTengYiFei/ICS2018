@@ -33,8 +33,9 @@ make_EHelper(add) {
 }
 
 make_EHelper(sub) {
-  //printf("EHelper(sub) begin!\n");
+  //OF, SF, ZF, AF, PF, CF
 
+  //printf("EHelper(sub) begin!\n");
   //printf("id_dest->val=0x%x ",id_dest->val);
   //printf("id_src->val=0x%x ",id_src->val);
   //printf("id_dest->width=0x%x ",id_dest->width);
@@ -51,7 +52,6 @@ make_EHelper(sub) {
   //printf("t1 = 0x%x ",t1);
   //printf("t2 = 0x%x\n",t2);
 
-  //set flags of sf zf af pf cf
   //CF
   t3 = (t0 > t1); 
   rtl_set_CF(&t3);
