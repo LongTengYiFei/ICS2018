@@ -60,15 +60,13 @@ static int cmd_info(char *args){
           printf("EDX = %x\n",cpu.edx);
           printf("ECX = %x\n",cpu.ecx);
           printf("EBX = %x\n",cpu.ebx);
+          printf("ESP = %x\n",cpu.esp);
           printf("EBP = %x\n",cpu.ebp);
           printf("ESI = %x\n",cpu.esi);
           printf("EDI = %x\n",cpu.edi);
-          printf("ESP = %x\n",cpu.esp);
+          printf("EIP = %x\n",cpu.eip);
           printf("EFLAGS = 0x%x\n",cpu.eflags.value);
 
- /*
-          printf("SF = %x\n",cpu.eflags.SF);
-          printf("ZF = %x\n",cpu.eflags.ZF);*/
     }
     if(strcmp(args,"w") == 0){
 	  printf("print watchpoint's information.\n");
