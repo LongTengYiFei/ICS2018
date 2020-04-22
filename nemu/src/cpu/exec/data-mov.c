@@ -1,7 +1,7 @@
 #include "cpu/exec.h"
 
 make_EHelper(mov) {
-
+  cpu.eflags.CF = 1;
   operand_write(id_dest, &id_src->val);
   print_asm_template2(mov);
 }
