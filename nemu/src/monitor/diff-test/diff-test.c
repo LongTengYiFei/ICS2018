@@ -176,26 +176,26 @@ void difftest_step(uint32_t eip) {
   	nemu_state = NEMU_ABORT;
   if(cpu.eip != ref_r.eip)
   	nemu_state = NEMU_ABORT;
-
-  printf("foot = %d\n",foot);
-  printf("pre_ref_eax = 0x%x\n",pre_ref_eax);
-  printf("pre_ref_ecx = 0x%x\n",pre_ref_ecx);
-  printf("pre_ref_edx = 0x%x\n",pre_ref_edx);
-  printf("pre_ref_ebx = 0x%x\n",pre_ref_ebx);
-  printf("pre_ref_esp = 0x%x\n",pre_ref_esp);
-  printf("pre_ref_ebp = 0x%x\n",pre_ref_ebp);
-  printf("pre_ref_esi = 0x%x\n",pre_ref_esi);
-  printf("pre_ref_edi = 0x%x\n",pre_ref_edi);
-  printf("pre_ref_eip = 0x%x\n",pre_ref_eip);
-  printf("----------------------------\n");
-  printf("cpu.eax = 0x%x ,ref_r.eax = 0x%x\n",cpu.eax, ref_r.eax);
-  printf("cpu.ecx = 0x%x ,ref_r.ecx = 0x%x\n",cpu.ecx, ref_r.ecx);
-  printf("cpu.edx = 0x%x ,ref_r.edx = 0x%x\n",cpu.edx, ref_r.edx);
-  printf("cpu.ebx = 0x%x ,ref_r.ebx = 0x%x\n",cpu.ebx, ref_r.ebx);
-  printf("cpu.esp = 0x%x ,ref_r.esp = 0x%x\n",cpu.esp, ref_r.esp);
-  printf("cpu.ebp = 0x%x ,ref_r.ebp = 0x%x\n",cpu.ebp, ref_r.ebp);
-  printf("cpu.esi = 0x%x ,ref_r.esi = 0x%x\n",cpu.esi, ref_r.esi);
-  printf("cpu.edi = 0x%x ,ref_r.edi = 0x%x\n",cpu.edi, ref_r.edi);
-  printf("cpu.eip = 0x%x ,ref_r.eip = 0x%x\n",cpu.eip, ref_r.eip);
-
+  if(nemu_state == NEMU_ABORT){
+    printf("foot = %d\n",foot);
+    printf("pre_ref_eax = 0x%x\n",pre_ref_eax);
+    printf("pre_ref_ecx = 0x%x\n",pre_ref_ecx);
+    printf("pre_ref_edx = 0x%x\n",pre_ref_edx);
+    printf("pre_ref_ebx = 0x%x\n",pre_ref_ebx);
+    printf("pre_ref_esp = 0x%x\n",pre_ref_esp);
+    printf("pre_ref_ebp = 0x%x\n",pre_ref_ebp);
+    printf("pre_ref_esi = 0x%x\n",pre_ref_esi);
+    printf("pre_ref_edi = 0x%x\n",pre_ref_edi);
+    printf("pre_ref_eip = 0x%x\n",pre_ref_eip);
+    printf("----------------------------\n");
+    printf("cpu.eax = 0x%x ,ref_r.eax = 0x%x\n",cpu.eax, ref_r.eax);
+    printf("cpu.ecx = 0x%x ,ref_r.ecx = 0x%x\n",cpu.ecx, ref_r.ecx);
+    printf("cpu.edx = 0x%x ,ref_r.edx = 0x%x\n",cpu.edx, ref_r.edx);
+    printf("cpu.ebx = 0x%x ,ref_r.ebx = 0x%x\n",cpu.ebx, ref_r.ebx);
+    printf("cpu.esp = 0x%x ,ref_r.esp = 0x%x\n",cpu.esp, ref_r.esp);
+    printf("cpu.ebp = 0x%x ,ref_r.ebp = 0x%x\n",cpu.ebp, ref_r.ebp);
+    printf("cpu.esi = 0x%x ,ref_r.esi = 0x%x\n",cpu.esi, ref_r.esi);
+    printf("cpu.edi = 0x%x ,ref_r.edi = 0x%x\n",cpu.edi, ref_r.edi);
+    printf("cpu.eip = 0x%x ,ref_r.eip = 0x%x\n",cpu.eip, ref_r.eip);
+   }
 }
