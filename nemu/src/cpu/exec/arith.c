@@ -117,6 +117,9 @@ make_EHelper(inc) {
   rtl_addi(&t2, &id_dest->val, 1);
   //printf("after inc , t2 = 0x%x\n",t2);
   operand_write(id_dest, &t2);
+
+
+
   //ZF,SF
   rtl_update_ZFSF(&t2, id_dest->width);
   //OF
@@ -126,8 +129,10 @@ make_EHelper(inc) {
   rtl_and(&t0, &t0, &t1);
   rtl_msb(&t0, &t0, id_dest->width);
   rtl_set_OF(&t0);
-
-  //printf("inc over!\n");
+  
+  t3 = 1;
+  rtl_update_AF(&id_dest->val, &t3, AF_ADD);
+  rtl_update_PF(&t2);
 
   print_asm_template1(inc);
 }
