@@ -245,9 +245,19 @@ static inline void rtl_update_PF(const rtlreg_t* result) {
     else cpu.eflags.PF = 0;
 }
 
-static inline void rtl_update_AF(const rtlreg_t* result) {
-
-	return;
+enum{AF_ADD, AF_SUB};
+static inline void rtl_update_AF(const rtlreg_t* dest, const rtlreg_t* src, int af_flag) {
+	at = *dest & 0xf;
+	t3 = *src & 0xf;
+        if(af_flag == AF_ADD){
+            if(at + t3 > 0xf)
+	    	cpu.eflags.AF = 1;
+	    else cpu.eflags.AF = 0;		
+	}else if(af_flag == AF_SUB){
+            if(at - t3 < 0)
+	    	cpu.eflags.AF = 1;
+	    else cpu.eflags.AF = 0;		
+	}else assert(0);
 }
 
 static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
