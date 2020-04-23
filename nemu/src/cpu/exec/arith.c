@@ -24,6 +24,9 @@ make_EHelper(add) {
   rtl_set_OF(&t3);
   //ZF SF
   rtl_update_ZFSF(&t0, 4);
+  
+  rtl_update_PF(&t0);
+  rtl_update_AF(&t1, &t2, AF_ADD);
   //write back
   operand_write(id_dest, &t0);
 
