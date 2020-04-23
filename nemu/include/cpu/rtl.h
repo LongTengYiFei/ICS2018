@@ -249,6 +249,7 @@ enum{AF_ADD, AF_SUB};
 static inline void rtl_update_AF(const rtlreg_t* dest, const rtlreg_t* src, int af_flag) {
 	at = *dest & 0xf;
 	t3 = *src & 0xf;
+	printf("%d\n",af_flag);
         if(af_flag == AF_ADD){
             if(at + t3 > 0xf)
 	    	cpu.eflags.AF = 1;
