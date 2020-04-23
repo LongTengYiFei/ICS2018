@@ -160,25 +160,6 @@ make_EHelper(dec) {
 }
 
 make_EHelper(neg) {
-	/*
- switch(id_dest->width) {
-    case 4: {
-      rtl_li(&t1, 0x80000000);
-      rtl_setrelop(RELOP_EQ, &t2, &id_dest->val, &t1);
-      break;
-    }
-    case 1: {
-      rtl_li(&t1, 0x80);
-      rtl_setrelop(RELOP_EQ, &t2, &id_dest->val, &t1);
-      break;
-    }
-    case 2: {
-      rtl_li(&t1, 0x8000);
-      rtl_setrelop(RELOP_EQ, &t2, &id_dest->val, &t1);
-      break;
-    }
-    default: assert(0);
-    */
 	rtl_mv(&t0, &id_dest->val);
 	rtl_not(&t0, &t0);
 	rtl_addi(&t0, &t0, 1);
@@ -269,6 +250,7 @@ make_EHelper(mul) {
 
 // imul with one operand
 make_EHelper(imul1) {
+  printf("come into instr imul1\n");
   rtl_lr(&t0, R_EAX, id_dest->width);
   rtl_imul_lo(&t1, &id_dest->val, &t0);
 
