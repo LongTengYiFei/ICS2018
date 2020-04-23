@@ -104,6 +104,9 @@ make_EHelper(cmp) {
   //printf("OF =%d\n",t3);
   
   rtl_update_ZFSF(&t0, 4);
+
+  rtl_update_PF(&t0);
+  rtl_update_AF(&t1, &t2, AF_SUB);
   //printf("t0 = 0x%x\n",t0);
   //printf("ZF =%d\n",cpu.eflags.ZF);
   //printf("cmp over!\n");
