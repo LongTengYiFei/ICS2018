@@ -52,9 +52,8 @@ make_EHelper(sub) {
   //printf("t1 = 0x%x ",t1);
   //printf("t2 = 0x%x\n",t2);
   
-  //PF
-  uint8_t low_eight_bits = t0;
-  printf("low_eight_bits = 0x%x\n",low_eight_bits);
+  //Parity Flag
+  rtl_update_PF(&t0); 
 
   //CF
   t3 = (t0 > t1); 

@@ -219,8 +219,31 @@ make_rtl_setget_eflags(OF)
 make_rtl_setget_eflags(ZF)
 make_rtl_setget_eflags(SF)
 
-make_rtl_setget_eflags(PF)//i add this at 2020.04.23
 
+static inline void rtl_update_PF(const rtlreg_t* result) {
+    at = *result & 0xff;//get low 8 bits
+    int count_of_digit_one = 0;
+    if((at & 0b00000001) == 0b00000001)
+	    count_of_digit_one ++;
+    if((at & 0b00000010) == 0b00000010)
+	    count_of_digit_one ++;
+    if((at & 0b00000100) == 0b00000100)
+	    count_of_digit_one ++;
+    if((at & 0b00001000) == 0b00001000)
+	    count_of_digit_one ++;
+    if((at & 0b00010000) == 0b00010000)
+	    count_of_digit_one ++;
+    if((at & 0b00100000) == 0b00100000)
+	    count_of_digit_one ++;
+    if((at & 0b01000000) == 0b01000000)
+	    count_of_digit_one ++;
+    if((at & 0b10000000) == 0b10000000)
+	    count_of_digit_one ++;
+
+    if(count_of_digit_one % 2 == 0)
+	    cpu.eflags.PF = 1;
+    else cpu.eflags.PF = 0;
+}
 static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // eflags.ZF <- is_zero(result[width * 8 - 1 .. 0])
   // zero flag, if the result = 0,then flag= 1,esle flag =0;
