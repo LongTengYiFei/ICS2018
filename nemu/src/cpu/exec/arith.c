@@ -48,12 +48,15 @@ make_EHelper(sub) {
   //printf("EHelper(sub) over!\n");
   //t0 result, t1 reg, t2 imm
   rtl_sub(&t0, &t1, &t2);
-  //printf("t0 = 0x%x ",t0);
-  //printf("t1 = 0x%x ",t1);
-  //printf("t2 = 0x%x\n",t2);
+  printf("t0 = 0x%x ",t0);
+  printf("t1 = 0x%x ",t1);
+  printf("t2 = 0x%x\n",t2);
   
   //Parity Flag
   rtl_update_PF(&t0); 
+  
+  //Adjust Flag
+  rtl_update_AF(&t0); 
 
   //CF
   t3 = (t0 > t1); 

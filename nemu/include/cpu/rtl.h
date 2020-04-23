@@ -244,6 +244,12 @@ static inline void rtl_update_PF(const rtlreg_t* result) {
 	    cpu.eflags.PF = 1;
     else cpu.eflags.PF = 0;
 }
+
+static inline void rtl_update_AF(const rtlreg_t* result) {
+
+	return;
+}
+
 static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // eflags.ZF <- is_zero(result[width * 8 - 1 .. 0])
   // zero flag, if the result = 0,then flag= 1,esle flag =0;
