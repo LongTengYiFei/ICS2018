@@ -48,12 +48,13 @@ make_EHelper(sub) {
   //printf("EHelper(sub) over!\n");
   //t0 result, t1 reg, t2 imm
   rtl_sub(&t0, &t1, &t2);
-  printf("t0 = 0x%x ",t0);
+  //printf("t0 = 0x%x ",t0);
   //printf("t1 = 0x%x ",t1);
   //printf("t2 = 0x%x\n",t2);
   
   //PF
-
+  uint8_t low_eight_bits = t0;
+  printf("low_eight_bits = 0x%x\n",low_eight_bits);
 
   //CF
   t3 = (t0 > t1); 
