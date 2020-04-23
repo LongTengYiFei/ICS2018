@@ -48,9 +48,12 @@ make_EHelper(sub) {
   //printf("EHelper(sub) over!\n");
   //t0 result, t1 reg, t2 imm
   rtl_sub(&t0, &t1, &t2);
-  //printf("t0 = 0x%x ",t0);
+  printf("t0 = 0x%x ",t0);
   //printf("t1 = 0x%x ",t1);
   //printf("t2 = 0x%x\n",t2);
+  
+  //PF
+
 
   //CF
   t3 = (t0 > t1); 
@@ -59,8 +62,10 @@ make_EHelper(sub) {
   //OF
   t3 = ((((int32_t)(t1) < 0) == (((int32_t)(t2) >> 31) == 0)) &&(((int32_t)(t0) < 0) !=((int32_t)(t1) <0)));  
   rtl_set_OF(&t3);
+
   //ZF SF
   rtl_update_ZFSF(&t0, 4);
+
   //write back
   operand_write(id_dest, &t0);
   //printf("EHelper(sub) over!\n");

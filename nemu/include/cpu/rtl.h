@@ -219,6 +219,8 @@ make_rtl_setget_eflags(OF)
 make_rtl_setget_eflags(ZF)
 make_rtl_setget_eflags(SF)
 
+make_rtl_setget_eflags(PF)//i add this at 2020.04.23
+
 static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // eflags.ZF <- is_zero(result[width * 8 - 1 .. 0])
   // zero flag, if the result = 0,then flag= 1,esle flag =0;
