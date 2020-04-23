@@ -254,10 +254,7 @@ static inline void rtl_update_AF(const rtlreg_t* dest, const rtlreg_t* src, int 
 	    	cpu.eflags.AF = 1;
 	    else cpu.eflags.AF = 0;		
 	}else if(af_flag == AF_SUB){
-	    printf("at = 0x%x\n",at);
-	    printf("t3 = 0x%x\n",t3);
-	    printf("at - t3 = 0x%x\n",at - t3);
-            if(at - t3 < 0)
+            if(at < t3)
 	    	cpu.eflags.AF = 1;
 	    else cpu.eflags.AF = 0;		
 	}else assert(0);
