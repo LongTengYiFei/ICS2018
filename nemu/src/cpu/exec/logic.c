@@ -9,7 +9,8 @@ make_EHelper(test) {
   t0 = 0;
   rtl_set_CF(&t0);
   rtl_set_OF(&t0);
-
+  
+  rtl_update_PF(&t1);
   //printf("test over!\n");
 
   print_asm_template2(test);
@@ -21,7 +22,7 @@ make_EHelper(and) {
   t0 = 0;
   rtl_set_CF(&t0);
   rtl_set_OF(&t0);
-/*
+  /*
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->width = %d ",id_dest->width);
