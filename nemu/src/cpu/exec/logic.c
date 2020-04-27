@@ -106,10 +106,11 @@ if(id_dest->width == 2)
   operand_write(id_dest, &t2);
   rtl_update_ZFSF(&t2, id_dest->width);
   // unnecessary to update CF and OF in NEMU
-  //CF  20200427
+  
+  //CF OF PF  20200427
   rtl_set_CF(&t2);
-  //OF
-  //PF
+  rtl_update_PF(&t2);
+  
   print_asm_template2(sar);
 }
 
