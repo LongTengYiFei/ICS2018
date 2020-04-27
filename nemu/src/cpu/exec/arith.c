@@ -1,5 +1,6 @@
 #include "cpu/exec.h"
 
+void difftest_skip_ref();
 make_EHelper(add) {
   //printf("add begin!\n");
   //printf("id_dest->type = %d ",id_dest->type);
@@ -250,7 +251,7 @@ make_EHelper(mul) {
 
 // imul with one operand
 make_EHelper(imul1) {
-  printf("come into instr imul1\n");
+  //printf("come into instr imul1\n");
   rtl_lr(&t0, R_EAX, id_dest->width);
   rtl_imul_lo(&t1, &id_dest->val, &t0);
 
@@ -271,6 +272,7 @@ make_EHelper(imul1) {
     default: assert(0);
   }
 
+  difftest_skip_ref();
   print_asm_template1(imul);
 }
 
