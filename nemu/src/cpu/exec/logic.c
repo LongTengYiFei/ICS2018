@@ -89,16 +89,16 @@ make_EHelper(or) {
 
 make_EHelper(sar) {
   //shift arith right
-
+  /*
   printf("sar come in!\n");
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->width = %d ",id_dest->width);
   printf("id_src->width = %d\n",id_src->width);
-
-if(id_dest->width == 1)
+  */
+  if(id_dest->width == 1)
 	id_dest->val = (int8_t)id_dest->val;
-if(id_dest->width == 2)
+  if(id_dest->width == 2)
 	id_dest->val = (int16_t)id_dest->val;
 
   rtl_sar(&t2, &id_dest->val, &id_src->val);
