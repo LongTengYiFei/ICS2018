@@ -155,6 +155,8 @@ make_EHelper(dec) {
   rtl_and(&t0, &t0, &t1);
   rtl_msb(&t0, &t0, id_dest->width);
   rtl_set_OF(&t0);
+
+  rtl_update_PF(&t2);
   //TODO();
 
   print_asm_template1(dec);
