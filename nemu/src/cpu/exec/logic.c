@@ -31,9 +31,8 @@ make_EHelper(and) {
   //opration and
   rtl_and(&t1, &id_dest->val, &id_src->val);
   //printf("t1 = 0x%x\n",t1);
-  //zf sf  
   rtl_update_ZFSF(&t1, id_dest->width);
-  //write back
+  rtl_update_PF(&t1);
   operand_write(id_dest, &t1);
   //printf("result = t1 = 0x%x\n",t1);
   //printf("and over!\n");
