@@ -134,13 +134,12 @@ make_EHelper(shl) {
 
   rtl_update_PF(&t2);
   cpu.eflags.AF = 0;
-  /*
+  //CF
   t3 = id_dest->val;
   for(int i=1;i<=id_src->val;i++){
 	  cpu.eflags.CF = t3 & 0x80000000;
           t3 = t3 << 1; 
   }
-*/
 
   print_asm_template2(shl);
 }
