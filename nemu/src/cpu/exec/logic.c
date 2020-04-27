@@ -89,13 +89,13 @@ make_EHelper(or) {
 
 make_EHelper(sar) {
   //shift arith right
-/*
+
   printf("sar come in!\n");
   printf("id_dest->val = 0x%x ",id_dest->val);
   printf("id_src->val = 0x%x\n",id_src->val);
   printf("id_dest->width = %d ",id_dest->width);
   printf("id_src->width = %d\n",id_src->width);
-*/
+
 if(id_dest->width == 1)
 	id_dest->val = (int8_t)id_dest->val;
 if(id_dest->width == 2)
@@ -108,7 +108,6 @@ if(id_dest->width == 2)
   // unnecessary to update CF and OF in NEMU
   
   //CF OF PF  20200427
-  rtl_set_CF(&t2);
   rtl_update_PF(&t2);
   
   print_asm_template2(sar);
