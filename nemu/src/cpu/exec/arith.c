@@ -156,6 +156,8 @@ make_EHelper(dec) {
   rtl_msb(&t0, &t0, id_dest->width);
   rtl_set_OF(&t0);
 
+  t3 = 1;
+  rtl_update_AF(&id_dest->val, &t3, AF_SUB);
   rtl_update_PF(&t2);
   //TODO();
 
