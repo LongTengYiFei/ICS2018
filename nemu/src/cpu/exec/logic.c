@@ -11,6 +11,7 @@ make_EHelper(test) {
   rtl_set_OF(&t0);
   
   rtl_update_PF(&t1);
+  cpu.eflags.AF = 0;
   //printf("test over!\n");
 
   print_asm_template2(test);
