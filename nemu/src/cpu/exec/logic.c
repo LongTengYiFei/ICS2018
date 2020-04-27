@@ -79,6 +79,7 @@ make_EHelper(or) {
   rtl_set_CF(&t0);
   rtl_set_OF(&t0);
 
+  rtl_update_PF(&t2);
   operand_write(id_dest, &t1);
   //printf("t1 = result = 0x%x\n",t1);
   //printf("or over!\n");
