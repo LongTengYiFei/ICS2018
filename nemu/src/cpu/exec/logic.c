@@ -30,12 +30,10 @@ make_EHelper(and) {
   printf("id_src->width = %d\n",id_src->width);*/
   //opration and
   rtl_and(&t1, &id_dest->val, &id_src->val);
-  //printf("t1 = 0x%x\n",t1);
   rtl_update_ZFSF(&t1, id_dest->width);
   rtl_update_PF(&t1);
+  cpu.eflags.AF = 0;
   operand_write(id_dest, &t1);
-  //printf("result = t1 = 0x%x\n",t1);
-  //printf("and over!\n");
 
   print_asm_template2(and);
 }
