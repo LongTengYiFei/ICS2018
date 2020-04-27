@@ -110,7 +110,7 @@ if(id_dest->width == 2)
   //CF OF PF  20200427
   rtl_update_PF(&t2);
   
-  t3 = t2;
+  t3 = id_dest->val;
   for(int i=1;i<=id_src->val;i++){
 	  cpu.eflags.CF = t3 & 0x1;
           t3 = t3 >> 1; 
