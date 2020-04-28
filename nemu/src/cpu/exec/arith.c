@@ -1,6 +1,7 @@
 #include "cpu/exec.h"
 
 void difftest_skip_ref();
+void difftest_skip_dut();
 make_EHelper(add) {
   //printf("add begin!\n");
   //printf("id_dest->type = %d ",id_dest->type);
@@ -274,8 +275,8 @@ make_EHelper(imul1) {
       break;
     default: assert(0);
   }
-
-  difftest_skip_ref();
+  //***
+  difftest_skip_dut();
   print_asm_template1(imul);
 }
 
