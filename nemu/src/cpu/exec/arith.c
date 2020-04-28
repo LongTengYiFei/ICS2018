@@ -81,16 +81,15 @@ make_EHelper(sub) {
 }
 
 make_EHelper(cmp) {
-  
+  /* 
   printf("cmp begin!\n");
   printf("id_dest->width =%d ",id_dest->width);
   printf("id_src->width =%d\n",id_src->width);
   printf("id_dest->val =%d ",id_dest->val);
   printf("id_src->val =%d\n",id_src->val);
   printf("cpu.eax =%d\n",cpu.eax);
+  */
   //printf("cpu.edx =%d\n",cpu.edx);
-
- 
   //sign extent
   rtl_sext(&t1, &id_dest->val, id_dest->width);
   rtl_sext(&t2, &id_src->val, id_src->width);
