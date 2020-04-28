@@ -149,7 +149,10 @@ void difftest_step(uint32_t eip) {
   uint32_t pre_ref_esi = ref_r.esi;
   uint32_t pre_ref_edi = ref_r.edi;
   uint32_t pre_ref_eip = ref_r.eip;
-  uint32_t pre_ref_eflags = ref_r.eflags.value;
+  uint8_t pre_ref_CF = ref_r.eflags.CF;
+  uint8_t pre_ref_OF = ref_r.eflags.OF;
+  uint8_t pre_ref_SF = ref_r.eflags.SF;
+  uint8_t pre_ref_ZF = ref_r.eflags.ZF;
 
 
   ref_difftest_exec(1);
@@ -197,7 +200,10 @@ void difftest_step(uint32_t eip) {
     printf("pre_ref_esi = 0x%x\n",pre_ref_esi);
     printf("pre_ref_edi = 0x%x\n",pre_ref_edi);
     printf("pre_ref_eip = 0x%x\n",pre_ref_eip);
-    printf("pre_ref_eflags = 0x%x\n",pre_ref_eflags);
+    printf("pre_ref_eflags.CF = 0x%x\n",pre_ref_CF);
+    printf("pre_ref_eflags.OF = 0x%x\n",pre_ref_OF);
+    printf("pre_ref_eflags.ZF = 0x%x\n",pre_ref_ZF);
+    printf("pre_ref_eflags.SF = 0x%x\n",pre_ref_SF);
     printf("----------------------------\n");
     printf("cpu.eax = 0x%x ,ref_r.eax = 0x%x\n",cpu.eax, ref_r.eax);
     printf("cpu.ecx = 0x%x ,ref_r.ecx = 0x%x\n",cpu.ecx, ref_r.ecx);
@@ -208,6 +214,9 @@ void difftest_step(uint32_t eip) {
     printf("cpu.esi = 0x%x ,ref_r.esi = 0x%x\n",cpu.esi, ref_r.esi);
     printf("cpu.edi = 0x%x ,ref_r.edi = 0x%x\n",cpu.edi, ref_r.edi);
     printf("cpu.eip = 0x%x ,ref_r.eip = 0x%x\n",cpu.eip, ref_r.eip);
-    printf("cpu.eflags.value = 0x%x ,ref_r.eflags = 0x%x\n",cpu.eflags.value, ref_r.eflags.value);
+    printf("cpu.eflags.CF = 0x%x ,ref_r.eflags.CF = 0x%x\n",cpu.eflags.CF, ref_r.eflags.CF);
+    printf("cpu.eflags.OF = 0x%x ,ref_r.eflags.OF = 0x%x\n",cpu.eflags.OF, ref_r.eflags.OF);
+    printf("cpu.eflags.ZF = 0x%x ,ref_r.eflags.ZF = 0x%x\n",cpu.eflags.ZF, ref_r.eflags.ZF);
+    printf("cpu.eflags.SF = 0x%x ,ref_r.eflags.SF = 0x%x\n",cpu.eflags.SF, ref_r.eflags.SF);
    }
 }
