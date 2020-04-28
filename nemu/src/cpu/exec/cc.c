@@ -18,20 +18,20 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
   //printf("subcode & 0xe = 0x%x\n",subcode & 0xe);
   switch (subcode & 0xe) {
     case CC_O:// 0 overflow
-      *dest = (cpu.eflags.OF == 1);
+      *dest = cpu.eflags.OF;
       break;
     case CC_B:// 2 below
-      *dest = (cpu.eflags.CF == 1);
+      *dest = cpu.eflags.CF;
       break;
     case CC_E://4 equal
-      *dest = (cpu.eflags.ZF == 1);
+      *dest = cpu.eflags.ZF;
       break;
     case CC_BE:// 6 below or equal
       //cf==1 or zf==1
       *dest = ((cpu.eflags.CF)||(cpu.eflags.ZF));
       break;
     case CC_S:// 8 sign
-      *dest = (cpu.eflags.SF == 1);
+      *dest = cpu.eflags.SF;
       break;
 
     case CC_L://12 c less
