@@ -104,6 +104,7 @@ size_t fs_read(int fd, void*buf, size_t len){
 }
 
 size_t fs_write(int fd, void*buf, size_t len){
+	//printf("fs_write sizeof(buf) = %d\n",sizeof(buf));
   size_t fs_size = fs_filesz(fd);
   switch(fd){
     case FD_STDIN:
@@ -113,6 +114,7 @@ size_t fs_write(int fd, void*buf, size_t len){
     case FD_STDERR:
 	 file_table[fd].write(buf, 0, len);
 	 break;
+    case FD_EVENTS:
     case FD_DISPINFO:
 	 break;
     case FD_FB:

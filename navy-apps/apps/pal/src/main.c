@@ -554,7 +554,7 @@ main_loop() {
    //
    PAL_TrademarkScreen();
    PAL_SplashScreen();
-   printf("SplashScreen over\n");
+
    //
    // Run the main game routine
    //

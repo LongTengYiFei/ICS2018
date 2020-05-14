@@ -1,142 +1,120 @@
 #include "klib.h"
 #include <stdarg.h>
+
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
-  
-  char buff[100];
-/*  
-  _putc('f');
-  _putc('m');
-  _putc('t');
-  _putc('l');
-  _putc('e');
-  _putc('n');
-  _putc('=');
-  int fmtlen = strlen(fmt);
-  while(fmtlen != 0){
-    _putc('0'+fmtlen%10); 
-    fmtlen/=10;
-  }  
-  */
-  //----------
   va_list args;
+  int i,len;
+  char out[200];
   va_start(args,fmt);
-  vsprintf(buff,fmt, args);
+  vsprintf(out,fmt,args);
   va_end(args);
-  //----------
-  //
-  /*
-  int len = strlen(buff);
-  _putc('l');
-  _putc('e');
-  _putc('n');
-  _putc('=');
-  _putc(len);
-  */
-  /*
-  while(len != 0){
-    _putc('0'+len%10); 
-    len/=10;  
-  }*/ 
-  for(int i=0;;i++)
-	if(buff[i] != '\0')
-	{
-		_putc(buff[i]);
-	}
-        else break;  
+  len = strlen(out);
+  for(i = 0;i < len;i ++)
+  {
+    _putc(out[i]);
+  }
   return 0;
 }
-int write_Int(char *buffer, int value, int prefix_n, char prefix, int digit){
-   int len = 0;
-   char rec[100];
-   int vt = value;
-   if(value < 0){
-      value*= -1;
-      *buffer++ = '-';
-   }
-   while(1){
-    if(digit){
-      int t = value %10;
-      rec[len++] = '0'+t;
-      value /=10;
-    }else{
-	    int t = value % 16;
-	    rec[len] = t<10?'0'+t:'a'+t-10;
-	    value /=16;
-    }
-   if(!value)break;
-   }
-   int tmp = len;
-   if(len < prefix_n){
-	   int j = prefix_n -len;
-	      while(j -- ){
-		      *buffer++ = prefix;
+
+int vsprintf(char *out, const char *fmt, va_list ap) {
+  char c;
+  char *str = out;
+  const char *tmp;
+  char num_s[100];
+  int i,j,len,num;
+  int flag,field_width;
+
+  for(;*fmt; fmt++)
+  {
+      if(*fmt != '%')
+      {
+	  *str++ = *fmt;
+	  continue;
+      }
+
+      flag = 0;
+      fmt++;
+      while(*fmt == ' ' || *fmt == '0')
+      {
+	if(*fmt == ' ')  flag |= 8;
+	else if(*fmt == '0') flag |= 1;
+	fmt++;
+      }
+
+      field_width = 0;
+      if(*fmt >= '0' && *fmt <= '9')
+      {
+	      while(*fmt >= '0' && *fmt <= '9')
+	      {
+		      field_width = field_width*10 + *fmt -'0';
+		      fmt++;
 	      }
-	      len = prefix_n;
-   }
-   while(tmp -- )
-	   *buffer++ =rec[tmp];
+      }
+      else if(*fmt == '*')
+      {
+	      fmt++;
+	      field_width = va_arg(ap,int);
+      }
+      //base = 10;
 
-   return vt >=0?len:len+1;
+      switch(*fmt)
+      {
+	  case 's':
+	      tmp = va_arg(ap,char *);
+	      len = strlen(tmp);
+	      for(i = 0;i < len;i ++)
+	      {
+		   *str++ = *tmp++;
+	      }
+	      continue;
+	  case 'd': break;
+      }
+
+      num = va_arg(ap,int);
+      j = 0;
+      if(num == 0)
+      {
+	  num_s[j++] = '0';
+      }
+      else
+      {
+	  if(num < 0)
+	  {
+	      *str++ = '-';
+	      num = -num;
+	  }
+	  //j = 0;
+	  while(num)
+	  {
+	      num_s[j++] = num%10 + '0';
+	      num /= 10;
+	  }
+      }
+      if(j < field_width)
+      {
+	      num = field_width - j;
+	      c = flag & 1 ? '0' : ' ';
+	      while(num--)
+	      {
+		      *str++ = c;
+	      }
+      }
+      while(j--)
+      {
+	  *str++ = num_s[j];
+      }
+  }
+  *str = '\0';
+  return 0;
 }
-int vsprintf(char *out, const char*fmt, va_list ap){
- char *buffer = out;
- unsigned int fmt_length = strlen(fmt);
- unsigned int index = 0;
- 
- int temp;
- char ctemp;
- char *stemp;
- int width = 0;
- char apd = ' ';
 
- for(index = 0;index<=fmt_length;++index){
-	 if(fmt[index]!='%')
-		 (*buffer++)=fmt[index];
-	 else{
-		 index++;
-		 while(fmt[index] == ' '||fmt[index] == '0'){
-			 if(fmt[index] == ' ')apd = ' ';
-			 else if(fmt[index] == '0')apd = '0';                         
-			 index++;
-		 }
-		 width = 0;
-		 if(fmt[index] >='0' &&fmt[index] <='9'){
-			 while(fmt[index]>='0' &&fmt[index]<='9'){width = width *10+fmt[index] - '0';
-				 index++;
-			 }
-		 }
-
-  switch(fmt[index]){
-	  case 'd':
-		 temp=va_arg(ap,int);
-		buffer=buffer+write_Int(buffer,temp,width,apd,1);
-	       break;
-	  case's':
-stemp=(char*)va_arg(ap,char*);
-strcpy(buffer,stemp);
-buffer+=strlen(stemp);
-break;
-	  case'c':
-ctemp=va_arg(ap,int);
-*buffer++ = ctemp;
-break;
-	  case'x':
-temp=va_arg(ap,int);
-buffer=buffer+write_Int(buffer,temp,width,apd,0);
-break;
-	  case'p':
-temp=va_arg(ap,int);
-buffer=buffer+write_Int(buffer,temp,width,apd,0);
-  }}}
- return strlen(out);
-}
 int sprintf(char *out, const char *fmt, ...) {
   va_list args;
-  int val;
-  va_start(args, fmt);
-  val = vsprintf(out, fmt, args);
+  int  val;
+  va_start(args,fmt);
+  val = vsprintf(out,fmt,args);
   va_end(args);
   return val;
 }

@@ -24,54 +24,17 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   down = true;
    }
    if(key == _KEY_NONE){
-	   uint32_t t = uptime();
-	   //Log("strlen(buf) = %d",strlen(buf));
-	   //Log("t = %d",t);
-	   /*
-	   strncpy(buf, "t ",2);
-           char tmp[10];
-	   int i=0;
-	   while(t != 0)
-	   {
-	      tmp[i] = t%10 + '0';
-	      i++;
-	      t /= 10; 
-	   }
-	   i--;
-	   int j=0;
-	   for(;i>=0;i--){
-	      strncpy(buf +2 +j, tmp+i, 1);
-	      j++;
-	   }
-	   strncpy(buf +2 +j, "\n\0", 2);
-	   */
-	   //Log("buf's value = 0x%x",buf);
-	   //Log("strlen(buf) = %d",strlen(buf));
-	   //Log("sizeof(buf) = %d",sizeof(buf));
-	   sprintf(buf, "t %d\n",t);
+	   unsigned long t = uptime();
+	   sprintf(buf, "time %u\n",t);
    }else{
-	   /*
-	   if(down == true){
-	       strncpy(buf, "kd ", 3);
-	       strncpy(buf+3, keyname[key], strlen(keyname[key]));
-	       strncpy(buf+3+strlen(keyname[key]), "\n\0", 2);
-	   }else{
-	       strncpy(buf, "ku ", 3);
-	       strncpy(buf+3, keyname[key], strlen(keyname[key])); 
-	       strncpy(buf+3+strlen(keyname[key]), "\n\0", 2);
-	   }
-	   */
 	   sprintf(buf, "%s %s\n",down ? "kd": "ku", keyname[key]);
    }
-   //Log("buf = %s",buf);
    return strlen(buf);
 }
 
 static char dispinfo[128] __attribute__((used));
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
-	//Log("strlen(buf) = %d\n",strlen(buf));
         strncpy(buf, dispinfo + offset, len);
-	//Log("dispinfo_read:%s offset:%d len:%d",buf, offset, len);
 	return len;
 }
 
@@ -80,7 +43,6 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   offset /= 4;
   row = offset / screen_width();
   col = offset % screen_width();
-
   draw_rect((uint32_t *)buf, col, row, len/4, 1);
   return len;
 }

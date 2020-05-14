@@ -22,13 +22,23 @@ char *strcpy(char* dst,const char* src) {
 }
 
 char* strncpy(char* dst, const char* src, size_t n) {
-//no security
-  int i = 0;
-  for(;i<=n-1;i++)
-	 dst[i] = src[i];
-
-  dst[i] = '\0';
-  return dst;
+        size_t size_src = strlen(src);
+	if( n > size_src) return strncpy(dst, src, size_src);
+	else // n <= size_src
+	{
+		char ch[n+1];
+		char *head = ch;
+		size_t i = 0;
+		while( i < n ) {
+			*(head+i) = *(src+i);
+			i++;
+		}
+		ch[n] = '\0';
+		head = ch;
+		char *result = dst;
+		while((*(dst++) = *(head++))) ;
+		return result;
+	}
 }
 
 char* strcat(char* dst, const char* src) {
@@ -84,7 +94,13 @@ void* memcpy(void* out, const void* in, size_t n) {
 }
 
 int memcmp(const void* s1, const void* s2, size_t n){ 
-	return 0;
+const unsigned char *p1 = s1, *p2 = s2;
+  while(n--)
+    if( *p1 != *p2 )
+      return *p1 - *p2;
+    else
+      p1++,p2++;
+  return 0;
 }
 
 #endif

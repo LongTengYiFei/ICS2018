@@ -2,7 +2,7 @@
 
 int main() {
   FILE *fp = fopen("/dev/events", "r");
-  ///printf("sizeof(fp) = %d\n",sizeof(fp));
+  //printf("sizeof(fp) = %d\n",sizeof(fp));
   volatile int j = 0;
   while(1) {
     j ++;

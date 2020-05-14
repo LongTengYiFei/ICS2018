@@ -17,12 +17,12 @@ _Context* do_syscall(_Context *c) {
   switch (a[0]) {
     case SYS_exit: naive_uload("NULL", "/bin/init"); break;
     case SYS_yield: c->GPR1 = sys_yield(); break;
-    case SYS_write: c->GPR1 = sys_write(a[1], (void*)a[2], a[3]); break; 
+    case SYS_write: c->GPR1 = sys_write((int)a[1], (void*)a[2], (size_t)a[3]); break; 
+    case SYS_read:  c->GPR1 = fs_read((int)a[1], (void*)a[2], (size_t)a[3]); break;
     case SYS_brk: c->GPR1 = sys_brk(); break; //On success, brk() returns zero.  On error, -1 is returned
     case SYS_open: c->GPR1 = fs_open((void*)a[1], a[2], a[3]); break;
-    case SYS_lseek: c->GPR1 = fs_lseek(a[1], a[2], a[3]); break;
-    case SYS_read: c->GPR1 = fs_read(a[1], (void*)a[2], a[3]); break;
-    case SYS_close: c->GPR1 = fs_close(a[1]); break;
+    case SYS_lseek: c->GPR1 = fs_lseek((int)a[1], a[2], (int)a[3]); break;
+    case SYS_close: c->GPR1 = fs_close((int)a[1]); break;
     case SYS_execve: c->GPR1 = sys_execve((void*)a[1], (void*)a[2], (void*)a[3]); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
@@ -43,7 +43,7 @@ void sys_exit(int exit_code){
 }
 
 uintptr_t sys_write(int fd,  void* buf, size_t len){
-   //Log("len = %d",len);
+   Log("len = %d",len);
    //Log("sys write");
    return fs_write(fd, buf, len);
 }
