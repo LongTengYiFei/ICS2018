@@ -42,7 +42,7 @@ int _write(int fd, void *buf, size_t count){
    allocated memory)
 */
 extern char _end;
-static intptr_t program_break = (intptr_t)&_end;
+intptr_t program_break = (intptr_t)&_end;
 void *_sbrk(intptr_t increment){
   if(increment == 0)
 	  program_break = &_end;

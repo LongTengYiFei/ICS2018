@@ -7,13 +7,14 @@ int printf(const char *fmt, ...) {
   va_list args;
   int i,len;
   char out[200];
+  //val = 0;
   va_start(args,fmt);
   vsprintf(out,fmt,args);
   va_end(args);
   len = strlen(out);
   for(i = 0;i < len;i ++)
   {
-    _putc(out[i]);
+      _putc(out[i]);	  
   }
   return 0;
 }
@@ -42,7 +43,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 	else if(*fmt == '0') flag |= 1;
 	fmt++;
       }
-
+      
       field_width = 0;
       if(*fmt >= '0' && *fmt <= '9')
       {
