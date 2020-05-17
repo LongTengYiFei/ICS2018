@@ -2,11 +2,10 @@
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
-size_t strlen(const char *s) { // pass
-	size_t size = 0;
-	while(*(s++)) size++;
-	// printf("%s %d\n", s, (int)size);
-	return size;
+size_t strlen(const char *s) {
+    size_t i;
+    for (i = 0; s[i] != '\0'; i++) ;
+    return i;
 }
 
 char *strcpy(char* dst,const char* src) { //pass
@@ -27,7 +26,7 @@ char* strncpy(char* dst, const char* src, size_t n) { //pass
 		while( i < n ) {
 			*(head+i) = *(src+i);
 			i++;
-		} 
+		}
 		ch[n] = '\0';
 		head = ch;
 		char *result = dst;
@@ -37,18 +36,17 @@ char* strncpy(char* dst, const char* src, size_t n) { //pass
 	}
 }
 
-char* strcat(char* dst, const char* src) { //pass
-	// printf("strcat1 %s %s\n", dst, src);
-	char *result = dst;
-	while(*dst) dst++;
-	strcpy(dst, src);
-	// printf("strcat2 %s\n", dst);
-	return result;
+char* strcat(char* dst, const char* src) {
+  // printf("strcat1 %s %s\n", dst, src);
+  char *result = dst;
+  while(*dst) dst++;
+  strcpy(dst, src);
+  // printf("strcat2 %s\n", dst);
+  return result;
 }
 
-int strcmp(const char* s1, const char* s2) { //pass
-	// printf("strcmp1 %s %s\n", s1, s2);
-	int a = 0;
+int strcmp(const char* s1, const char* s2) {
+  int a = 0;
 	while( (a = (*s1 - *s2)) == 0 && *s1 && *s2) {
 		s1++;
 		s2++;
@@ -57,8 +55,8 @@ int strcmp(const char* s1, const char* s2) { //pass
 	return a;
 }
 
-int strncmp(const char* s1, const char* s2, size_t n) { //pass
-	assert((s1 != NULL) && (s2 != NULL));
+int strncmp(const char* s1, const char* s2, size_t n) {
+  assert((s1 != NULL) && (s2 != NULL));
 	int a = 0;
 	while( (a = (*s1 - *s2)) == 0 && *s1 && *s2 && n--) {
 		s1++;
@@ -68,44 +66,28 @@ int strncmp(const char* s1, const char* s2, size_t n) { //pass
 }
 
 void* memset(void* v,int c,size_t n) {
-	void* ret = v;
-    while(n--)
-    {
-        *(char*)v = (char)c;
-        v = (char*)v + 1; //移动一个字节
-    }
-    return ret;
+  unsigned char* p=v;
+  while(n--)
+    *p++ = (unsigned char)c;
+  return v;
 }
 
 void* memcpy(void* out, const void* in, size_t n) {
-	void *ret = out; //可能会出现覆盖的问题
-	char *begin1 = (char *)out;
-	const char *begin2 = (const char *)in;
-	while(n--)
-	{
-		*(begin1+n-1) = *(begin2+n-1);
-	}
-	return ret;
+  char *dp = out;
+  const char *sp = in;
+  while (n--)
+    *dp++ = *sp++;
+  return out;
 }
 
 int memcmp(const void* s1, const void* s2, size_t n){
-  /*assert((s1 != NULL) && (s2 != NULL));
-  char *tmp1 = (char *)s1;
-  char *tmp2 = (char *)s2;
-  while(n--){
-     while(*tmp1 == *tmp2){
-        if(*tmp1 == '\0')
-            return 0;
-        tmp1++;
-        tmp2++;
-     }
-  }
-  if(*tmp1 > *tmp2)
-       return 1;
-  if(*tmp1 < *tmp2)
-       return -1;*/
+  const unsigned char *p1 = s1, *p2 = s2;
+  while(n--)
+    if( *p1 != *p2 )
+      return *p1 - *p2;
+    else
+      p1++,p2++;
   return 0;
 }
 
 #endif
-

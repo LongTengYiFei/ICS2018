@@ -45,7 +45,6 @@ int fs_open(const char *pathname, int flags, int mode){
        if(strcmp(file_table[i].name, pathname) == 0)
        {       
 	        file_table[i].open_offset = 0;
-		//Log("fd = %d",i);
 	        return i; 
        } 
     //no found
@@ -54,7 +53,6 @@ int fs_open(const char *pathname, int flags, int mode){
 }
 
 int fs_close(int fd){
-	//Log("come in");
 //we need set the open offset to 0
 //becase this is close
 	file_table[fd].open_offset = 0; 
@@ -67,7 +65,6 @@ size_t fs_filesz(int fd){
 }
 
 size_t fs_read(int fd, void*buf, size_t len){
-	//Log("fd = %d", fd);
 	size_t fs_size = fs_filesz(fd);
 	switch(fd){
 	  case FD_STDIN:
@@ -76,14 +73,9 @@ size_t fs_read(int fd, void*buf, size_t len){
 	  case FD_FB:
 		  break;
 	  case FD_EVENTS:
-	     //Log("strlen(buf) = %d",strlen(buf));
-	     //Log("buf = %s",buf);
              len =  file_table[fd].read(buf, 0, len);
 	     break;
 	  case FD_DISPINFO:
-	     //Log("strlen(buf) = %d",strlen(buf));
-	     //Log("*buf = %s",buf);
-	     //Log("buf = 0x%x",buf);
 	     if(file_table[fd].open_offset >= fs_size)
 		 return 0;
 	     if(file_table[fd].open_offset + len > fs_size)
@@ -105,8 +97,6 @@ size_t fs_read(int fd, void*buf, size_t len){
 }
 
 size_t fs_write(int fd, void*buf, size_t len){
-	//Log("fd = %d", fd);
-	//printf("fs_write sizeof(buf) = %d\n",sizeof(buf));
   size_t fs_size = fs_filesz(fd);
   switch(fd){
     case FD_STDIN:
@@ -116,7 +106,7 @@ size_t fs_write(int fd, void*buf, size_t len){
     case FD_STDERR:
 	 file_table[fd].write(buf, 0, len);
 	 break;
-    //case FD_EVENTS:
+    case FD_EVENTS:
     case FD_DISPINFO:
 	 break;
     case FD_FB:
@@ -140,7 +130,6 @@ size_t fs_write(int fd, void*buf, size_t len){
 }
 
 size_t fs_lseek(int fd, size_t offset, int whence){
-	//Log("1");
    size_t result = -1;
    switch(whence){
          case SEEK_SET:

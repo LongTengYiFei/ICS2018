@@ -232,9 +232,13 @@ PAL_TrademarkScreen(
 --*/
 {
    PAL_SetPalette(3, FALSE);
+   Log("PAL_trademark_setPalette over");
    PAL_RNGPlay(6, 0, 1000, 25);
+   Log("PAL_trademark_RNG over");
    UTIL_Delay(1000);
+   Log("PAL_trademark_delay over");
    PAL_FadeOut(1);
+   Log("PAL_trademark_Fadeout over");
 }
 
 VOID
@@ -547,14 +551,15 @@ main_loop() {
    sdlpal_psp_init();
 #endif
    PAL_Init(wScreenWidth, wScreenHeight, fFullScreen);
-
+   //Log("PAL_Init  all over");
 
    //
    // Show the trademark screen and splash screen
    //
-   //PAL_TrademarkScreen();
-   //PAL_SplashScreen();
-
+   PAL_TrademarkScreen();
+   //Log("TrademarkScreen over");
+   PAL_SplashScreen();
+   //Log("SplashScreen over");
    //
    // Run the main game routine
    //
