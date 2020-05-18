@@ -66,6 +66,7 @@ size_t fs_filesz(int fd){
 
 size_t fs_read(int fd, void*buf, size_t len){
 	size_t fs_size = fs_filesz(fd);
+	Log("fd = %d",fd);
 	switch(fd){
 	  case FD_STDIN:
 	  case FD_STDOUT:
