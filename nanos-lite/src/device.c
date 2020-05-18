@@ -24,6 +24,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   down = true;
    }
    if(key == _KEY_NONE){
+	   //Log("sizeof(unsigned long) = %d",sizeof(unsigned long));
+	   //Log("sizeof(uptime()) = %d",sizeof(uptime()));
 	   sprintf(buf, "t %u\n",uptime());//zhao le hen jiu de bug,zhong yu zhao dao le
    }else{
 	   sprintf(buf, "%s %s\n",down ? "kd": "ku", keyname[key]);
