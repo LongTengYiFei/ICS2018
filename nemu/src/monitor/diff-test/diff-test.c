@@ -21,7 +21,8 @@ static bool is_skip_difftest;
 void difftest_skip_ref() { is_skip_ref = true; }
 void difftest_skip_dut() { is_skip_dut = true; }
 void difftest_off() { is_skip_difftest = true; }//off is skip
-void difftest_on() { 
+void difftest_on() {
+        printf("difftest on come in\n");	
 	is_skip_difftest = false;
         //printf("ENTRY_START = 0x%x\n",ENTRY_START);	
         ref_difftest_memcpy_from_dut(0, guest_to_host(0), 0x7c00);
