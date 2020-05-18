@@ -129,7 +129,8 @@ static int  cmd_detach(char *args){
 	return 0;
 }
 static int  cmd_attach(char *args){
-	difftest_on();
+	//difftest_on();
+	difftest_on_v2();
 	return 0;
 }
 //My Commands End------------------------------------

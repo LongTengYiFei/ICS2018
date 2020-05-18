@@ -16,6 +16,7 @@ static void (*ref_difftest_exec)(uint64_t n);
 static bool is_skip_ref;
 static bool is_skip_dut;
 static bool is_skip_difftest;
+long memsize;
 
 #define PMEM_SIZE (128 * 1024 * 1024)
 void difftest_skip_ref() { is_skip_ref = true; }
@@ -26,7 +27,7 @@ void difftest_on() {
 	is_skip_difftest = false;
         //printf("ENTRY_START = 0x%x\n",ENTRY_START);	
         ref_difftest_memcpy_from_dut(0, guest_to_host(0), 0x7c00);
-        ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), PMEM_SIZE - ENTRY_START);
+        ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), memsize);
 	ref_difftest_setregs(&cpu);
         //idtr
         CPU_state ref_r;
@@ -82,7 +83,20 @@ void difftest_on() {
 	*/
         return ;
 }//on is not skip
+void difftest_on_v2(){
+    ref_difftest_memcpy_from_dut(0, guest_to_host(0), 0x7c00);
+    ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), memsize);
+    ref_difftest_memcpy_from_dut(0x7e00, &cpu.idtr.len, 2);
+    ref_difftest_memcpy_from_dut(0x7e02, &cpu.idtr.base, 4);
+    uint8_t inst[] = {0x0f,0x01,0x1D,0x00,0x7e,0x00,0x00};
+    ref_difftest_memcpy_from_dut(0x7e40, inst, sizeof(inst));
+    CPU_state tmp = cpu;
+    tmp.eip = 0x7e40;
+    ref_difftest_setregs(&tmp);
+    ref_difftest_exec(1);
 
+    ref_difftest_setregs(&cpu);
+}
 void init_difftest(char *ref_so_file, long img_size) {
    #ifndef DIFF_TEST
      return;
@@ -116,6 +130,7 @@ void init_difftest(char *ref_so_file, long img_size) {
 
   ref_difftest_init();
   ref_difftest_memcpy_from_dut(ENTRY_START, guest_to_host(ENTRY_START), img_size);
+  memsize = img_size;
   ref_difftest_setregs(&cpu);
 }
 
