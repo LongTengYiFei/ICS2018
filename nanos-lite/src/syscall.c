@@ -14,6 +14,7 @@ _Context* do_syscall(_Context *c) {
   a[1] = c->GPR2;
   a[2] = c->GPR3;
   a[3] = c->GPR4;
+  Log("a[0] = %d",a[0]);
   switch (a[0]) {
     case SYS_exit: naive_uload("NULL", "/bin/init"); break; c->GPR1 = -1;
     case SYS_yield: c->GPR1 = sys_yield(); break;
