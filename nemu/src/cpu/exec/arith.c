@@ -255,7 +255,6 @@ make_EHelper(mul) {
 
 // imul with one operand
 make_EHelper(imul1) {
-  printf("come into instr imul1\n");
   rtl_lr(&t0, R_EAX, id_dest->width);
   rtl_imul_lo(&t1, &id_dest->val, &t0);
 
@@ -275,8 +274,6 @@ make_EHelper(imul1) {
       break;
     default: assert(0);
   }
-  //***
-  difftest_skip_dut();
   print_asm_template1(imul);
 }
 
