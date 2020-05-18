@@ -47,11 +47,9 @@ make_EHelper(int) {/*
   printf("id_dest->type = 0x%x\n",id_dest->type);
   printf("id_dest->val = 0x%x\n",id_dest->val);
   printf("decoding.seq_eip = 0x%x\n",decoding.seq_eip);*/
-  uint8_t NO = id_dest->val;
-  //printf("NO is 0x%x\n",NO);
-  raise_intr(NO, decoding.seq_eip);
-  //printf("int over\n");
-  //TODO();
+  
+	uint8_t NO = id_dest->val;
+ 	raise_intr(NO, decoding.seq_eip);
   print_asm("int %s", id_dest->str);
 #if defined(DIFF_TEST) && defined(DIFF_TEST_QEMU)
   difftest_skip_dut();
