@@ -198,7 +198,9 @@ static inline void rtl_pop(rtlreg_t* dest) {
 static inline void rtl_setrelopi(uint32_t relop, rtlreg_t *dest,
     const rtlreg_t *src1, int imm) {
   // dest <- (src1 relop imm ? 1 : 0)
-  TODO();
+	rtl_li(&at, imm);
+        rtl_setrelop(relop, dest, src1, &at);
+
 }
 
 static inline void rtl_msb(rtlreg_t* dest, const rtlreg_t* src1, int width) {
