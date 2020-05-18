@@ -53,6 +53,7 @@ int fs_open(const char *pathname, int flags, int mode){
 }
 
 int fs_close(int fd){
+	Log("fd = %d",fd);
 //we need set the open offset to 0
 //becase this is close
 	file_table[fd].open_offset = 0; 
@@ -98,6 +99,7 @@ size_t fs_read(int fd, void*buf, size_t len){
 }
 
 size_t fs_write(int fd, void*buf, size_t len){
+	Log("fd = %d",fd);
   size_t fs_size = fs_filesz(fd);
   switch(fd){
     case FD_STDIN:
@@ -131,6 +133,7 @@ size_t fs_write(int fd, void*buf, size_t len){
 }
 
 size_t fs_lseek(int fd, size_t offset, int whence){
+	Log("fd = %d",fd);
    size_t result = -1;
    switch(whence){
          case SEEK_SET:
