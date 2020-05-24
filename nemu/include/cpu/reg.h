@@ -54,8 +54,8 @@ typedef struct {
   uint32_t cs,ss,ds,es,fs,gs;
   
   struct{
-     uint32_t base;
      uint16_t len;//git hub is 16
+     uint32_t base;
   }idtr; 
  	uint32_t CR0,CR3;
        	bool INTR;	
