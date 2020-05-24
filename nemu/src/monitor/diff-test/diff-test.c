@@ -4,8 +4,8 @@
 #include "monitor/monitor.h"
 #include "diff-test.h"
 struct {
-   uint32_t base;
    uint16_t len;
+   uint32_t base;
 }IDTR;
 
 static void (*ref_difftest_memcpy_from_dut)(paddr_t dest, void *src, size_t n);
@@ -136,8 +136,6 @@ void init_difftest(char *ref_so_file, long img_size) {
 
 extern int foot = 0;
 void difftest_step(uint32_t eip) {
-  //printf("DiffTest_step Come in!!\n");
-
   if(is_skip_difftest == true)
 	  return ;
 
@@ -165,14 +163,9 @@ void difftest_step(uint32_t eip) {
   uint32_t pre_ref_esi = ref_r.esi;
   uint32_t pre_ref_edi = ref_r.edi;
   uint32_t pre_ref_eip = ref_r.eip;
-  uint8_t pre_ref_CF = ref_r.eflags.CF;
-  uint8_t pre_ref_OF = ref_r.eflags.OF;
-  uint8_t pre_ref_SF = ref_r.eflags.SF;
-  uint8_t pre_ref_ZF = ref_r.eflags.ZF;
 
 
   ref_difftest_exec(1);
-  printf("ref_has_executed\n");
   ref_difftest_getregs(&ref_r);
 
 
