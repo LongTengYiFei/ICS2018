@@ -51,13 +51,14 @@ typedef struct {
    uint32_t value;
   }eflags;
 
-  uint32_t cs;
+  uint32_t cs,ss,ds,es,fs,gs;
   
   struct{
      uint32_t base;
      uint16_t len;//git hub is 16
   }idtr; 
-  
+ 	uint32_t CR0,CR3;
+       	bool INTR;	
 } CPU_state;
 
 extern CPU_state cpu;

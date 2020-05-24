@@ -3,153 +3,69 @@
 void difftest_skip_ref();
 void difftest_skip_dut();
 make_EHelper(add) {
-  //printf("add begin!\n");
-  //printf("id_dest->type = %d ",id_dest->type);
-  //printf("id_src->type = %d\n",id_src->type);
-  //printf("id_dest->val = 0x%x ",id_dest->val);
-  //printf("id_src->val = 0x%x\n",id_src->val);
-
-  //sign extend
   rtl_sext(&t1, &id_dest->val, id_dest->width);
   rtl_sext(&t2, &id_src->val, id_src->width);
-
   rtl_add(&t0, &t1, &t2);
-  //printf("t0 = result = 0x%x ",t0);
-  //printf("t1 = dest = 0x%x ",t1);
-  //printf("t2 = src = 0x%x\n",t2);
-  //CF
   t3 = (t0 < t1);
   rtl_set_CF(&t3);
-  //printf("cpu.eflags.CF = %d\n",cpu.eflags.CF);
-  //OF why?
   t3 = ((((int32_t)(t1) >= 0) ^(((int32_t)(t2) >= 0))) && (((int32_t)(t0) < 0) ^(((int32_t)(t2) >=0))));
   rtl_set_OF(&t3);
-  //ZF SF
   rtl_update_ZFSF(&t0, 4);
-  
   rtl_update_PF(&t0);
   rtl_update_AF(&t1, &t2, AF_ADD);
-  //write back
   operand_write(id_dest, &t0);
-
-// printf("cpu.esp = 0x%x\n",cpu.esp);
-  //printf("add over!\n");
   print_asm_template2(add);
 }
 
 make_EHelper(sub) {
-  //OF, SF, ZF, AF, PF, CF
-
-  //printf("EHelper(sub) begin!\n");
-  //printf("id_dest->val=0x%x ",id_dest->val);
-  //printf("id_src->val=0x%x ",id_src->val);
-  //printf("id_dest->width=0x%x ",id_dest->width);
-  //printf("id_src->width=0x%x\n",id_src->width);
-  
   rtl_sext(&t1, &id_dest->val, id_dest->width);
-  //printf("sizeof(t1)=%ld ",sizeof(t1));
   rtl_sext(&t2, &id_src->val, id_src->width);
-  //printf("sizeof(t2)=%ld \n",sizeof(t2));
-  //printf("EHelper(sub) over!\n");
-  //t0 result, t1 reg, t2 imm
   rtl_sub(&t0, &t1, &t2);
-  /*
-  printf("t0 = 0x%x ",t0);
-  printf("t1 = 0x%x ",t1);
-  printf("t2 = 0x%x\n",t2);
-  */
-  //Parity Flag
   rtl_update_PF(&t0); 
-  
-  //Adjust Flag
   rtl_update_AF(&t1, &t2, AF_SUB); 
-
-  //CF
   t3 = (t0 > t1); 
   rtl_set_CF(&t3);
-
-  //OF
   t3 = ((((int32_t)(t1) < 0) == (((int32_t)(t2) >> 31) == 0)) &&(((int32_t)(t0) < 0) !=((int32_t)(t1) <0)));  
   rtl_set_OF(&t3);
-
-  //ZF SF
   rtl_update_ZFSF(&t0, 4);
-
-  //write back
   operand_write(id_dest, &t0);
-  //printf("EHelper(sub) over!\n");
   print_asm_template2(sub);
 }
 
 make_EHelper(cmp) {
-  /* 
-  printf("cmp begin!\n");
-  printf("id_dest->width =%d ",id_dest->width);
-  printf("id_src->width =%d\n",id_src->width);
-  printf("id_dest->val =%d ",id_dest->val);
-  printf("id_src->val =%d\n",id_src->val);
-  printf("cpu.eax =%d\n",cpu.eax);
-  */
-  //printf("cpu.edx =%d\n",cpu.edx);
-  //sign extent
   rtl_sext(&t1, &id_dest->val, id_dest->width);
   rtl_sext(&t2, &id_src->val, id_src->width);
-  
   rtl_sub(&t0, &t1, &t2);
-  //why?
   t3 = (t0 > t1);
   rtl_set_CF(&t3);//carry flag
-  //printf("CF =%d ",t3);
   t3 = ((((int32_t)(t1) < 0) == (((int32_t)(t2) >> 31) == 0)) &&(((int32_t)(t0) < 0) !=((int32_t)(t1) <0)));  
   rtl_set_OF(&t3);//overflow flag
-  //printf("OF =%d\n",t3);
-  
   rtl_update_ZFSF(&t0, 4);
-
   rtl_update_PF(&t0);
   rtl_update_AF(&t1, &t2, AF_SUB);
-  //printf("t0 = 0x%x\n",t0);
-  //printf("ZF =%d\n",cpu.eflags.ZF);
-  //printf("cmp over!\n");
   print_asm_template2(cmp);
 }
 
 make_EHelper(inc) {
-  //adds 1 to oprand, it dose not change the carry flag
-  //printf("inc come in!\n");
-  //printf("id_dest->type = %d ",id_dest->type);
-  //printf("id_dest->reg = %d\n",id_dest->reg);
-  //printf("id_dest->addr = %d\n",id_dest->addr);
-  //printf("id_dest->val = 0x%x\n",id_dest->val);
   rtl_addi(&t2, &id_dest->val, 1);
-  //printf("after inc , t2 = 0x%x\n",t2);
   operand_write(id_dest, &t2);
-
-
-
-  //ZF,SF
   rtl_update_ZFSF(&t2, id_dest->width);
-  //OF
   rtl_xor(&t0, &id_dest->val, &id_src->val);
   rtl_not(&t0, &t0);
   rtl_xor(&t1, &id_dest->val, &t2);
   rtl_and(&t0, &t0, &t1);
   rtl_msb(&t0, &t0, id_dest->width);
   rtl_set_OF(&t0);
-  
   t3 = 1;
   rtl_update_AF(&id_dest->val, &t3, AF_ADD);
   rtl_update_PF(&t2);
-
   print_asm_template1(inc);
 }
 
 make_EHelper(dec) {
   rtl_subi(&t2, &id_dest->val, 1);
   operand_write(id_dest, &t2);
-  //ZF,SF
   rtl_update_ZFSF(&t2, id_dest->width);
-  //OF
   rtl_xor(&t0, &id_dest->val, &id_src->val);
   rtl_xor(&t1, &id_dest->val, &t2);
   rtl_and(&t0, &t0, &t1);
@@ -159,8 +75,6 @@ make_EHelper(dec) {
   t3 = 1;
   rtl_update_AF(&id_dest->val, &t3, AF_SUB);
   rtl_update_PF(&t2);
-  //TODO();
-
   print_asm_template1(dec);
 }
 
@@ -178,13 +92,10 @@ make_EHelper(neg) {
 	rtl_not(&t1, &t1);
 	rtl_msb(&t1, &t1, id_dest->width);
 	rtl_set_OF(&t1);
-//  TODO();
   print_asm_template1(neg);
 }
 
 make_EHelper(adc) {
-  //printf("come in to adc\n");
-  //printf("id_dest->width = %d\n",id_dest->width);
   rtl_add(&t2, &id_dest->val, &id_src->val);
   rtl_setrelop(RELOP_LTU, &t3, &t2, &id_dest->val);
   rtl_get_CF(&t1);
