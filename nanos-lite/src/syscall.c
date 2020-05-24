@@ -14,9 +14,8 @@ _Context* do_syscall(_Context *c) {
   a[1] = c->GPR2;
   a[2] = c->GPR3;
   a[3] = c->GPR4;
-  Log("a[0] = %d",a[0]);
   switch (a[0]) {
-    case SYS_exit: naive_uload("NULL", "/bin/init"); break; c->GPR1 = -1;
+    case SYS_exit:  naive_uload(NULL, "/bin/events"); c->GPRx = 0; break;
     case SYS_yield: c->GPR1 = sys_yield(); break;
     case SYS_write: c->GPR1 = sys_write((int)a[1], (void*)a[2], (size_t)a[3]); break; 
     case SYS_read:  c->GPR1 = fs_read((int)a[1], (void*)a[2], (size_t)a[3]); break;
@@ -44,12 +43,10 @@ void sys_exit(int exit_code){
 }
 
 uintptr_t sys_write(int fd,  void* buf, size_t len){
-   //Log("len = %d",len);
    return fs_write(fd, buf, len);
 }
 
 int sys_brk(){
-    //Log("come in");
     return 0;
 }
 
